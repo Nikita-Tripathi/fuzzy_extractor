@@ -3,17 +3,15 @@ from math import ceil
 import numpy as np
 from secrets import randbits
 from subprocess import check_output
-from galois_field import GFpn
 import galois
 from PIL import Image
-from multiprocessing import Pool, Process
-from concurrent.futures import ProcessPoolExecutor, as_completed
+
 import sys, time, random
 import mx_par
 
 
 
-# RUNS ON PYTHON 3.8.9
+# RUNS ON PYTHON 3.8.9 +
 #   (on my system its in /usr/bin/python3, with /usr/bin/pip3 package manager)
 
 class FuzzyExtractor:
@@ -44,14 +42,14 @@ class FuzzyExtractor:
         #   Could be more efficient to pre-compute these on university servers in parallel (5-10 sets of 10^6 matrices) and pick them randomly
         # Irreducible polynomial for GF(2^128)
         self.irreducible_poly = galois.primitive_poly(2, 128)
-        self.gf = GFpn(
-            2, [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0,
-                0, 1, 1, 1]
-        )
+        # self.gf = GFpn(
+        #     2, [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        #         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        #         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        #         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        #         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0,
+        #         0, 1, 1, 1]
+        # )
 
 
     def bitarr(self, i):
@@ -72,6 +70,10 @@ class FuzzyExtractor:
         # Step (v): Compute ciphertext
         ctxt = m ^ d
         return ctxt
+    
+    # def LPN_enc_batch(self, A) TODO implement this
+    # * precompute the noisy msg X self.l in GEN
+    # * call the batch enc function with all the LPN matrices & the subsamples
 
     def LPN_dec(self, A, key, ctxt):
         # multiply LPN matrix by the key
@@ -240,8 +242,6 @@ def img_opener(path, mask=False):
 def main():
     mask1 = "./test_msk/04560d632_mano.bmp"
     code1 = "./test_code/04560d632_code.bmp"
-    # mask2 = "./test_msk/04560d632_mano.bmp"
-    # code2 = "./test_code/04560d632_code.bmp"
     mask2 = "./test_msk/04560d634_mano.bmp"
     code2 = "./test_code/04560d634_code.bmp"
 
@@ -258,7 +258,7 @@ def main():
     # Tag calculation works (as efficient as I could get it for now)
     # Sampling - works
     t1 = time.time()
-    fe = FuzzyExtractor(l=10000)
+    fe = FuzzyExtractor(l=100)
     t2 = time.time()
     print(f"Initialized (generated lpn arrays & GF(2^128)) in {t2 - t1} seconds")
 

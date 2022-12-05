@@ -1,10 +1,9 @@
-from galois_field import GFpn
+# Imports
 import galois
 from multiprocessing import Pool, Process
 from pathos.multiprocessing import ProcessingPool as Pool
 from concurrent.futures import ProcessPoolExecutor, as_completed
 import time
-import timeit
 
 def increment(i, m, x):
     return (x ** i) * m[i]
