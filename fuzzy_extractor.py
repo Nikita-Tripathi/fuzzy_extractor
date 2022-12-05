@@ -43,15 +43,15 @@ class FuzzyExtractor:
         #   at l=1000, 5.369 - 5.398 sec
         #   Could be more efficient to pre-compute these on university servers in parallel (5-10 sets of 10^6 matrices) and pick them randomly
         # Irreducible polynomial for GF(2^128)
-        self.irreducible_poly = [
-            1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0,
-            0, 1, 1, 1
-        ]
-        self.gf = GFpn(2,self.irreducible_poly)
+        self.irreducible_poly = galois.primitive_poly(2, 128)
+        self.gf = GFpn(
+            2, [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0,
+                0, 1, 1, 1]
+        )
 
 
     def bitarr(self, i):
@@ -136,21 +136,29 @@ class FuzzyExtractor:
         for c in self.ctexts:
             for i in c:
                 bigctxt += str(i)
-        m = [self.gf.elm([int(j) for j in bigctxt[i:i+self.lbd]]) for i in range(0, len(bigctxt), self.lbd)]
-        # print(bigctxt)
-        # print(m)
+        t = time.time()
+        # m = [self.gf.elm([int(j) for j in bigctxt[i:i+self.lbd]]) for i in range(0, len(bigctxt), self.lbd)]
+        # t1 = time.time()
+        m = [galois.Poly.Int(int(bigctxt[i:i+self.lbd], base=2)) for _ in range(0, len(bigctxt), self.lbd)]
+        t2 = time.time()
+        print(f"Constructing vector m took {t2-t} seconds for galois")
+
         # step 5: Parse R_1 into x and y (both have length self.lbd)
         # print(len(m), self.L, len(R_1[:self.lbd]), len(R_1[self.lbd:]))
-        x = self.gf.elm([int(j) for j in R_1[:self.lbd]])
-        y = self.gf.elm([int(j) for j in R_1[self.lbd:]])
+        # x = self.gf.elm([int(j) for j in R_1[:self.lbd]])
+        # y = self.gf.elm([int(j) for j in R_1[self.lbd:]])
+        x = galois.Poly.Int(int(R_1[:self.lbd], base=2))
+        y = galois.Poly.Int(int(R_1[self.lbd:], base=2))
 
         # step 6: Compute T = x^L + x^2 * m(x) + x*y
         # https://asecuritysite.com/principles/gf <--- use this for polynomial mult in GF
-        # mx_ = mx_par.mx_parallel(m, x, self.L - 4)
-        # print(mx_) #FIXME this does not work at all! Workers keep calling the main function over and over
-        mx = self.m(m, x, self.L-4) # NOTE: this operation takes 3 seconds for l = 10, L-4 = 96
-        print(mx)
-        self.T = x ** self.L + ((x ** 2) * mx) + x * y
+        mx = mx_par.mx_parallel(m, x, self.L - 4, self.irreducible_poly)
+        print(f'Parallel calc: {mx}') #FIXME this works but takes too long compared to serial
+        # mx = self.m(m, x, self.L-4) # NOTE: this operation takes 3 seconds for l = 10, L-4 = 96
+        # print(f'Serial calc: {mx}')
+        # self.T = x ** self.L + ((x ** 2) * mx) + x * y
+        self.T = (pow(x, self.L, self.irreducible_poly) + (pow(x, 2, self.irreducible_poly) * mx) + (x * y)) % self.irreducible_poly
+        # print(self.T)
         # step 7: Output key R, self.ctexts, and self.T
 
         return R
@@ -164,28 +172,37 @@ class FuzzyExtractor:
             dec = self.LPN_dec(self.lpn_matrices[i], sample_i, self.ctexts[i])
             # STEP iv
             if not (len(dec) == 0 or dec[:self.t].any()): # i.e., if dec is not None
-                R, R_1 = dec[self.t:self.t + self.xi], dec[self.t + self.xi:]
-                # print(R,R_1)
+                R = ''
+                for c in dec[self.t:self.t + self.xi]:
+                    R += str(c)
+                R_1 = ''
+                for c in dec[self.t + self.xi:]:
+                    R_1 += str(c)
+                # R = np.array2string(dec[self.t:self.t + self.xi], separator='')[1:-1]
+                # R_1 = np.array2string(dec[self.t + self.xi:], separator='')[1:-1]
                 bigctxt = ''
                 for c in self.ctexts:
                     for i in c:
                         bigctxt += str(i)
-                m = [self.gf.elm([int(j) for j in bigctxt[i:i+self.lbd]]) for i in range(0, len(bigctxt), self.lbd)]
-                x = self.gf.elm([j for j in R_1[:self.lbd]])
-                y = self.gf.elm([j for j in R_1[self.lbd:]])
+                # m = [self.gf.elm([int(j) for j in bigctxt[i:i+self.lbd]]) for i in range(0, len(bigctxt), self.lbd)]
+                # x = self.gf.elm([j for j in R_1[:self.lbd]])
+                # y = self.gf.elm([j for j in R_1[self.lbd:]])
+                m = [galois.Poly.Int(int(bigctxt[i:i+self.lbd], base=2)) for _ in range(0, len(bigctxt), self.lbd)]
+                x = galois.Poly.Int(int(R_1[:self.lbd], base=2))
+                y = galois.Poly.Int(int(R_1[self.lbd:], base=2))
 
-                mx = self.m(m, x, self.L-4) # NOTE: this operation takes 3 seconds for l = 10, L-4 = 96
+                mx = mx_par.mx_parallel(m, x, self.L-4, self.irreducible_poly) # NOTE: this operation takes 3 seconds for l = 10, L-4 = 96
 
-                T_rep = x ** self.L + ((x ** 2) * mx) + x * y
+                # T_rep = x ** self.L + ((x ** 2) * mx) + x * y
+                T_rep = (pow(x, self.L, self.irreducible_poly) + (pow(x, 2, self.irreducible_poly) * mx) + (x * y)) % self.irreducible_poly
                 print(self.T)
                 print(T_rep)
-                if (T_rep - self.T) == self.gf.elm([]): #FIXME: some errors in ==
+                if T_rep  == self.T: #FIXME: some errors in ==
                     print("Check passed")
                     return ''.join([str(b) for b in R])
             else:
                 print("Bad decryption :", dec[:15])
-        # Could use secrets.compare_digest(a, b)
-        # to compare T and T' ??
+
         print("Checks failed")
         return None
     
@@ -223,6 +240,8 @@ def img_opener(path, mask=False):
 def main():
     mask1 = "./test_msk/04560d632_mano.bmp"
     code1 = "./test_code/04560d632_code.bmp"
+    # mask2 = "./test_msk/04560d632_mano.bmp"
+    # code2 = "./test_code/04560d632_code.bmp"
     mask2 = "./test_msk/04560d634_mano.bmp"
     code2 = "./test_code/04560d634_code.bmp"
 
@@ -239,16 +258,16 @@ def main():
     # Tag calculation works (as efficient as I could get it for now)
     # Sampling - works
     t1 = time.time()
-    fe = FuzzyExtractor(l=7000)
+    fe = FuzzyExtractor(l=10000)
     t2 = time.time()
     print(f"Initialized (generated lpn arrays & GF(2^128)) in {t2 - t1} seconds")
 
     # HACK ACCORDING TO FULLERS PAPER (SECTION 4), TRANSFORM #5 HAS THE BEST RATE FOR IMAGES OF SAME IRIS
     a = fe.gen(c1[5], m1)
     t3 = time.time()
-    print(f"Ran GEN in {t3 - t2} seconds")
+    print(f"Ran GEN in {t3 - t2} seconds") # For l = 10000 = 10^4 typically takes 370 seconds
     # # print(fe.T)
-    b = fe.rep(c2[5])
+    b = fe.rep(c2[5]) # For l = 10000 = 10^4 typically takes 370 seconds
     print(f"Ran REP in {time.time() - t3} seconds")
 
     print(a)

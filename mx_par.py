@@ -1,36 +1,36 @@
 from galois_field import GFpn
+import galois
 from multiprocessing import Pool, Process
+from pathos.multiprocessing import ProcessingPool as Pool
 from concurrent.futures import ProcessPoolExecutor, as_completed
 import time
+import timeit
 
 def increment(i, m, x):
-    if i%1000 == 0: print("increment called for i = ", i)
     return (x ** i) * m[i]
 
-def mx_parallel(fm, fx, fL):
+def mx_different(fm, fx, fL):
     t1 = time.time()
-    gf = GFpn(
-        2, [
-            1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0,
-            0, 1, 1, 1
-        ]
-    )
-    with ProcessPoolExecutor() as executor:
-        functions = []
-        for i in range(fL):
-            function = executor.submit(increment, i, fm, fx)
-            functions.append(function)
-        
-        sum = gf.elm([])
-        for func in as_completed(functions):
-            sum = sum + func.result()
-    print(sum)
-    print(f"Parallel m took {time.time() - t1} seconds")
-    return sum
+    p = Pool()
+    results = p.map(lambda a : (fx ** a) * fm[a], range(fL))
+    t2 = time.time()
+    s = sum(results)
+    print(f"Parallel m with {p.ncpus} workers took {time.time() - t1} seconds. {t2-t1} for map, {time.time() - t2} for sum")
+    p.close()
+    return s
+
+def mx_parallel(fm, fx, fL, poly):
+    t1 = time.time()
+    p = Pool()
+    results = p.map(lambda a : pow(fx, a, poly) * fm[a], range(fL))
+    t2 = time.time()
+    s = galois.Poly.Int(0)
+    for i in results:
+        s = s + i
+    s = s % poly
+    print(f"Parallel m with {p.ncpus} workers took {time.time() - t1} seconds. {t2-t1} for map, {time.time() - t2} for sum")
+    # p.close()
+    return s
 
 
 
