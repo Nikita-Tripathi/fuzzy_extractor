@@ -8,15 +8,6 @@ import time
 def increment(i, m, x):
     return (x ** i) * m[i]
 
-def mx_different(fm, fx, fL):
-    t1 = time.time()
-    p = Pool()
-    results = p.map(lambda a : (fx ** a) * fm[a], range(fL))
-    t2 = time.time()
-    s = sum(results)
-    print(f"Parallel m with {p.ncpus} workers took {time.time() - t1} seconds. {t2-t1} for map, {time.time() - t2} for sum")
-    p.close()
-    return s
 
 def mx_parallel(fm, fx, fL, poly):
     t1 = time.time()
@@ -32,7 +23,10 @@ def mx_parallel(fm, fx, fL, poly):
     return s
 
 
-
+def mx_serial(fm, fx, fL, poly):
+    
+    
+    return
 
 # def m(self, fm, fx, fL):
 #     t1 = time.time()

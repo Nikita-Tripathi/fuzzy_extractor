@@ -5,6 +5,8 @@ from secrets import randbits
 from subprocess import check_output
 import galois
 from PIL import Image
+import multiprocessing
+import hashlib
 
 import sys, time, random
 import mx_par
@@ -32,7 +34,7 @@ class FuzzyExtractor:
         self.t = t
         self.ecc_msg_len = t + lbd * 2 + xi
         # Below are the accumulators for the ciphertext and the positions list
-        self.ctexts = [[] for _ in range(self.l)]
+        # self.ctexts = [[] for _ in range(self.l)]
         # self.positions = [[] for _ in range(self.l)]
         self.lpn_matrices = [ np.array([self.bitarr(k) for a in range(ecc_len)]) for _ in range(self.l)]
         # At l = 10^6, lpn_matrix generation will take several hours (serial code - could be less in parallel, won't be less than an hour though) 
@@ -42,14 +44,14 @@ class FuzzyExtractor:
         #   Could be more efficient to pre-compute these on university servers in parallel (5-10 sets of 10^6 matrices) and pick them randomly
         # Irreducible polynomial for GF(2^128)
         self.irreducible_poly = galois.primitive_poly(2, 128)
-        # self.gf = GFpn(
-        #     2, [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-        #         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-        #         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-        #         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-        #         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0,
-        #         0, 1, 1, 1]
-        # )
+        self.hash = hashlib.sha3_512()
+
+        self.L = ceil((self.hash.digest_size * 8) / self.lbd) + 4
+        self.hash = hashlib.sha3_512().name
+        print(self.L)
+
+
+
 
 
     def bitarr(self, i):
@@ -74,6 +76,22 @@ class FuzzyExtractor:
     # def LPN_enc_batch(self, A) TODO implement this
     # * precompute the noisy msg X self.l in GEN
     # * call the batch enc function with all the LPN matrices & the subsamples
+    def LPN_batch_enc(self, keys, msgs):
+        # Multiply LPN matrices by the LPN keys (subsamples of iris code)
+        d = [np.matmul(self.lpn_matrices[i], keys[i]) % 2 for i in range(self.l)]
+        # Prep the messages to encode (put each on a new line)
+        # msg = '\n'.join(msgs)
+        with open('src.src', 'w') as f:
+            f.writelines(msgs)
+        # Encode messages and parse the output appropriately
+        noisy_msg = check_output(["bash", "ldpc_enc_batch.bash", f"-s {randbits(32)}", f"-m src.src", f"-e {self.error_rate}"])
+
+        noisy_msg = noisy_msg.decode('ASCII').split('\n')[:-1]
+        # Transform the str output to a binary vector
+        m = [np.array([int(b) for b in nm]) for nm in noisy_msg]
+        # Compute l ciphetexts
+        ctxt = [m[i] ^ d[i] for i in range(self.l)]
+        return ctxt
 
     def LPN_dec(self, A, key, ctxt):
         # multiply LPN matrix by the key
@@ -108,6 +126,36 @@ class FuzzyExtractor:
         return acc
     
 
+    def mac(self, key, ciphertexts):
+        t = time.time()
+        h = hashlib.new(self.hash)
+        bigctxt = ''
+        for c in ciphertexts:
+            for i in c:
+                bigctxt += str(i)
+        # print(f"R_1: {key}\nCiphertext: {bigctxt}")
+        # Generate a digest of entire ciphertexts
+        bigctxt = bigctxt.encode()
+        h.update(bigctxt)
+        bigctxt = h.hexdigest()
+        bigctxt = bin(int(bigctxt, base=16))[2:].zfill(512)
+
+        # Encode digest into vector m
+        m = [galois.Poly.Int(int(bigctxt[i:i+self.lbd], base=2)) for _ in range(0, len(bigctxt), self.lbd)]
+
+        # split key into x and y
+        x = galois.Poly.Int(int(key[:self.lbd], base=2))
+        y = galois.Poly.Int(int(key[self.lbd:], base=2))
+
+        mx = mx_par.mx_parallel(m, x, self.L-4, self.irreducible_poly) 
+
+        T_rep = (pow(x, self.L, self.irreducible_poly) + (pow(x, 2, self.irreducible_poly) * mx) + (x * y)) % self.irreducible_poly
+        
+        print(f'Calculated MAC in {time.time() - t} seconds')
+
+        return T_rep
+        
+
 
     # w is the input string (iris encoding), n is the iris mask (used for sampling unmasked bits)
     def gen(self, w, n):
@@ -119,50 +167,20 @@ class FuzzyExtractor:
 
         # Generate l sets of unmasked positions 
         self.positions = [ random.SystemRandom().sample(np.flatnonzero(n).tolist(), k=self.k) for _ in range(self.l) ]
-        # print(self.positions)
+
+        samples = []
         # step 2: start a loop
         for i in range(self.l):
             # Get a sample of w at positions
             sample_i = np.array([w[pos] for pos in self.positions[i]])
+            samples.append(sample_i)
 
-            # LPN encryption of (R|R_1)
-            p_i = self.LPN_enc(self.lpn_matrices[i], sample_i, to_enc)
 
-            self.ctexts[i] = p_i
+        self.ctexts = self.LPN_batch_enc(samples, [to_enc for _ in range(self.l)])
 
-        # step 3:
-        self.L = ceil(self.l * self.nu / self.lbd) + 4
-        # step 4: Encode (concat. of all ciphertexts) to a vector m of length L-4 in GF(2^self.lbd)
-        # NOTE: each entry of vector m will have length self.lbd (128)
-        bigctxt = ''
-        for c in self.ctexts:
-            for i in c:
-                bigctxt += str(i)
-        t = time.time()
-        # m = [self.gf.elm([int(j) for j in bigctxt[i:i+self.lbd]]) for i in range(0, len(bigctxt), self.lbd)]
-        # t1 = time.time()
-        m = [galois.Poly.Int(int(bigctxt[i:i+self.lbd], base=2)) for _ in range(0, len(bigctxt), self.lbd)]
-        t2 = time.time()
-        print(f"Constructing vector m took {t2-t} seconds for galois")
+        self.T = self.mac(R_1, self.ctexts) 
 
-        # step 5: Parse R_1 into x and y (both have length self.lbd)
-        # print(len(m), self.L, len(R_1[:self.lbd]), len(R_1[self.lbd:]))
-        # x = self.gf.elm([int(j) for j in R_1[:self.lbd]])
-        # y = self.gf.elm([int(j) for j in R_1[self.lbd:]])
-        x = galois.Poly.Int(int(R_1[:self.lbd], base=2))
-        y = galois.Poly.Int(int(R_1[self.lbd:], base=2))
-
-        # step 6: Compute T = x^L + x^2 * m(x) + x*y
-        # https://asecuritysite.com/principles/gf <--- use this for polynomial mult in GF
-        mx = mx_par.mx_parallel(m, x, self.L - 4, self.irreducible_poly)
-        print(f'Parallel calc: {mx}') #FIXME this works but takes too long compared to serial
-        # mx = self.m(m, x, self.L-4) # NOTE: this operation takes 3 seconds for l = 10, L-4 = 96
-        # print(f'Serial calc: {mx}')
-        # self.T = x ** self.L + ((x ** 2) * mx) + x * y
-        self.T = (pow(x, self.L, self.irreducible_poly) + (pow(x, 2, self.irreducible_poly) * mx) + (x * y)) % self.irreducible_poly
-        # print(self.T)
         # step 7: Output key R, self.ctexts, and self.T
-
         return R
         
     # w_ is W' in the paper, ciphertext and T can be found in self.ctexts and self.T respectively
@@ -177,29 +195,18 @@ class FuzzyExtractor:
                 R = ''
                 for c in dec[self.t:self.t + self.xi]:
                     R += str(c)
+                
                 R_1 = ''
                 for c in dec[self.t + self.xi:]:
                     R_1 += str(c)
-                # R = np.array2string(dec[self.t:self.t + self.xi], separator='')[1:-1]
-                # R_1 = np.array2string(dec[self.t + self.xi:], separator='')[1:-1]
-                bigctxt = ''
-                for c in self.ctexts:
-                    for i in c:
-                        bigctxt += str(i)
-                # m = [self.gf.elm([int(j) for j in bigctxt[i:i+self.lbd]]) for i in range(0, len(bigctxt), self.lbd)]
-                # x = self.gf.elm([j for j in R_1[:self.lbd]])
-                # y = self.gf.elm([j for j in R_1[self.lbd:]])
-                m = [galois.Poly.Int(int(bigctxt[i:i+self.lbd], base=2)) for _ in range(0, len(bigctxt), self.lbd)]
-                x = galois.Poly.Int(int(R_1[:self.lbd], base=2))
-                y = galois.Poly.Int(int(R_1[self.lbd:], base=2))
+                print("R_1:", R_1)
 
-                mx = mx_par.mx_parallel(m, x, self.L-4, self.irreducible_poly) # NOTE: this operation takes 3 seconds for l = 10, L-4 = 96
+                T_rep = self.mac(R_1, self.ctexts)
 
-                # T_rep = x ** self.L + ((x ** 2) * mx) + x * y
-                T_rep = (pow(x, self.L, self.irreducible_poly) + (pow(x, 2, self.irreducible_poly) * mx) + (x * y)) % self.irreducible_poly
                 print(self.T)
                 print(T_rep)
-                if T_rep  == self.T: #FIXME: some errors in ==
+
+                if T_rep  == self.T:
                     print("Check passed")
                     return ''.join([str(b) for b in R])
             else:
@@ -207,21 +214,75 @@ class FuzzyExtractor:
 
         print("Checks failed")
         return None
-    
-    def test(self):
-        a = self.gf.elm([
-            1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0,
-            0, 1, 1, 1
-        ])
-        b = self.gf.elm([0, 1, 0])
 
-        print(a+b)
-        print(a * b)
-        print(a ** 5)
+    def rep_parallel(self, w_, num_processes=1):
+        split = np.array_split(range(self.l), num_processes)
+        finished = multiprocessing.Manager().list(
+            [None for _ in range(num_processes)]
+        )
+        processes = []
+        for x in range(num_processes):
+            p = multiprocessing.Process(
+                target=self.rep_process, args=(w_, split[x], finished, x)
+            )
+            processes.append(p)
+            p.start()
+        for p in processes:
+            p.join()
+        if any(finished):
+            print("Rep succeeded")
+            return next(item for item in finished if item is not None)
+        print("Rep failed")
+        return None
+    
+    def rep_process(self, w_, indices, finished, process_id):
+        counter = 0 # Track how many lockers we've checked
+
+        for i in indices:
+            sample_i = np.array([w_[pos] for pos in self.positions[i]])
+
+            dec = self.LPN_dec(self.lpn_matrices[i], sample_i, self.ctexts[i])
+
+            # TODO finish this AND test....
+            # STEP iv
+            if not (len(dec) == 0 or dec[:self.t].any()): # i.e., if dec is not None
+                R = ''
+                for c in dec[self.t:self.t + self.xi]:
+                    R += str(c)
+                
+                R_1 = ''
+                for c in dec[self.t + self.xi:]:
+                    R_1 += str(c)
+
+                bigctxt = ''
+                for c in self.ctexts:
+                    for i in c:
+                        bigctxt += str(i)
+                
+                m = [galois.Poly.Int(int(bigctxt[i:i+self.lbd], base=2)) for _ in range(0, len(bigctxt), self.lbd)]
+                x = galois.Poly.Int(int(R_1[:self.lbd], base=2))
+                y = galois.Poly.Int(int(R_1[self.lbd:], base=2))
+
+                mx = mx_par.mx_parallel(m, x, self.L-4, self.irreducible_poly) 
+
+                T_rep = (pow(x, self.L, self.irreducible_poly) + (pow(x, 2, self.irreducible_poly) * mx) + (x * y)) % self.irreducible_poly
+                
+                print(self.T)
+                print(T_rep)
+
+                if T_rep == self.T:
+                    print("Check passed")
+                    finished[process_id] = ''.join([str(b) for b in R])
+                    return
+
+            counter += 1
+            if counter == 1000:
+                if (not any(finished)):
+                    counter = 0
+                else:
+                    return 
+        return
+
 
 
 # IMG_OPENER 
@@ -242,8 +303,8 @@ def img_opener(path, mask=False):
 def main():
     mask1 = "./test_msk/04560d632_mano.bmp"
     code1 = "./test_code/04560d632_code.bmp"
-    mask2 = "./test_msk/04560d634_mano.bmp"
-    code2 = "./test_code/04560d634_code.bmp"
+    mask2 = "./test_msk/04560d633_mano.bmp"
+    code2 = "./test_code/04560d633_code.bmp"
 
     m1 = img_opener(mask1, mask=True)
     c1 = [ m1 & c for c in img_opener(code1) ] # XOR all 6 codes (one per Gabor filter pair) with mask here
