@@ -33,10 +33,10 @@ class FuzzyExtractor:
 
         self.t = t
         self.ecc_msg_len = t + lbd * 2 + xi
-        # Below are the accumulators for the ciphertext and the positions list
-        # self.ctexts = [[] for _ in range(self.l)]
-        # self.positions = [[] for _ in range(self.l)]
-        self.lpn_matrices = [ np.array([self.bitarr(k) for a in range(ecc_len)]) for _ in range(self.l)]
+        
+        # Below are the LPN matrices
+        # self.lpn_matrices = [ np.array([self.bitarr(k) for a in range(ecc_len)]) for _ in range(self.l) ]
+        self.lpn_matrices = mx_par.generateLPN(self.bitarr, k, ecc_len, l)
         # At l = 10^6, lpn_matrix generation will take several hours (serial code - could be less in parallel, won't be less than an hour though) 
         #   at l=10, it took 0.345 sec
         #   at l=100, 0.627 sec
@@ -48,7 +48,7 @@ class FuzzyExtractor:
 
         self.L = ceil((self.hash.digest_size * 8) / self.lbd) + 4
         self.hash = hashlib.sha3_512().name
-        print(self.L)
+
 
 
 
@@ -104,9 +104,9 @@ class FuzzyExtractor:
             tmp += str(i)
         # Call LDPC code (C) and decode temp
         decoded = check_output(["bash", "ldpc_dec.bash", f"-c {tmp}", f"-e {self.error_rate}"])
-        if (decoded.decode('ASCII').split('\n')[-3].split()[3]) == '0':
+        if (decoded.decode('ASCII').split()[3]) == '0':
             return np.array([]) # Invalid decryption
-        decoded= decoded.decode('ASCII').split('\n')[-2]
+        decoded= decoded.decode('ASCII').split()[-1]
         g_i = np.array([int(b) for b in decoded])
         # Check if hamming weigth of g_i is more than some value (depends on self.error_rate)
         # if sum(temp ^ g_i) > self.dec_check: # TODO!!!! FIGURE OUT HOW SUM WILL WORK WITH LIST OF ARRAYS
@@ -147,6 +147,7 @@ class FuzzyExtractor:
         x = galois.Poly.Int(int(key[:self.lbd], base=2))
         y = galois.Poly.Int(int(key[self.lbd:], base=2))
 
+        # mx = mx_par.mx_serial(m, x, self.L-4, self.irreducible_poly) 
         mx = mx_par.mx_parallel(m, x, self.L-4, self.irreducible_poly) 
 
         T_rep = (pow(x, self.L, self.irreducible_poly) + (pow(x, 2, self.irreducible_poly) * mx) + (x * y)) % self.irreducible_poly
@@ -209,26 +210,25 @@ class FuzzyExtractor:
                 if T_rep  == self.T:
                     print("Check passed")
                     return ''.join([str(b) for b in R])
-            else:
-                print("Bad decryption :", dec[:15])
+            # else:
+            #     print("Bad decryption :", dec[:15])
 
         print("Checks failed")
         return None
 
-    def rep_parallel(self, w_, num_processes=1):
+    def rep_parallel(self, w, num_processes=1):
+        finished = multiprocessing.Array('b', False)
         split = np.array_split(range(self.l), num_processes)
-        finished = multiprocessing.Manager().list(
-            [None for _ in range(num_processes)]
-        )
+        finished = multiprocessing.Manager().list([None for _ in range(num_processes)])
         processes = []
         for x in range(num_processes):
             p = multiprocessing.Process(
-                target=self.rep_process, args=(w_, split[x], finished, x)
+                target=self.rep_process, args=(w, split[x], finished, x)
             )
             processes.append(p)
             p.start()
-        for p in processes:
-            p.join()
+        for p1 in processes:
+            p1.join()
         if any(finished):
             print("Rep succeeded")
             return next(item for item in finished if item is not None)
@@ -259,14 +259,8 @@ class FuzzyExtractor:
                     for i in c:
                         bigctxt += str(i)
                 
-                m = [galois.Poly.Int(int(bigctxt[i:i+self.lbd], base=2)) for _ in range(0, len(bigctxt), self.lbd)]
-                x = galois.Poly.Int(int(R_1[:self.lbd], base=2))
-                y = galois.Poly.Int(int(R_1[self.lbd:], base=2))
+                T_rep = self.mac(R_1, self.ctexts)
 
-                mx = mx_par.mx_parallel(m, x, self.L-4, self.irreducible_poly) 
-
-                T_rep = (pow(x, self.L, self.irreducible_poly) + (pow(x, 2, self.irreducible_poly) * mx) + (x * y)) % self.irreducible_poly
-                
                 print(self.T)
                 print(T_rep)
 
@@ -279,6 +273,7 @@ class FuzzyExtractor:
             if counter == 1000:
                 if (not any(finished)):
                     counter = 0
+                    print(f"Counter: 1000")
                 else:
                     return 
         return
@@ -311,15 +306,9 @@ def main():
     m2 = img_opener(mask2, mask=True)
     c2 = [ m2 & c for c in img_opener(code2) ] # XOR all 6 codes (one per Gabor filter pair) with mask here
 
-    # print(c1)
 
-    # Matrix generation works (but takes too long)
-    # LDPC parts (bash scripts) work (may need to edit to support multithreading, but unlikely)
-    # LPN Enc & Dec work (small things to add in Dec)
-    # Tag calculation works (as efficient as I could get it for now)
-    # Sampling - works
     t1 = time.time()
-    fe = FuzzyExtractor(l=100)
+    fe = FuzzyExtractor(l=10000)
     t2 = time.time()
     print(f"Initialized (generated lpn arrays & GF(2^128)) in {t2 - t1} seconds")
 
@@ -329,13 +318,21 @@ def main():
     print(f"Ran GEN in {t3 - t2} seconds") # For l = 10000 = 10^4 typically takes 370 seconds
     # # print(fe.T)
     b = fe.rep(c2[5]) # For l = 10000 = 10^4 typically takes 370 seconds
-    print(f"Ran REP in {time.time() - t3} seconds")
+    t4 = time.time()
+    print(f"Ran REP in {t4 - t3} seconds")
+    c = fe.rep_parallel(c2[5], num_processes=multiprocessing.cpu_count())
+    # c = fe.rep_parallel(c2[5], num_processes=6)
+    print(f"Ran REP parallel in {time.time() - t4} seconds")
 
     print(a)
     print(b)
+    print(c)
 
 
     print("no problems so far")
 
-main()
+
+if __name__ == '__main__':
+
+    main()
 

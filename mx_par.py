@@ -2,11 +2,25 @@
 import galois
 from multiprocessing import Pool, Process
 from pathos.multiprocessing import ProcessingPool as Pool
-from concurrent.futures import ProcessPoolExecutor, as_completed
+import numpy as np
+
 import time
 
 def increment(i, m, x):
     return (x ** i) * m[i]
+
+# self.lpn_matrices = [ np.array([self.bitarr(k) for a in range(ecc_len)]) for _ in range(self.l) ]
+
+
+def generateLPN(bits, k, ecc_len, l):
+    t1 = time.time()
+    p = Pool()
+    matrices = p.map(lambda a : np.array([bits(k) for _ in range(ecc_len)]), range(l))
+    
+    t2 = time.time()
+    print(f"Generated {len(matrices)} LPN matrices in {t2 - t1} seconds")
+
+    return matrices
 
 
 def mx_parallel(fm, fx, fL, poly):
@@ -24,9 +38,14 @@ def mx_parallel(fm, fx, fL, poly):
 
 
 def mx_serial(fm, fx, fL, poly):
+    t1 = time.time()
+    s = galois.Poly.Int(0)
+    for i in range(fL):
+        s = (s + (pow(fx, i, poly) * fm[i])) % poly
+    # s = s % poly
+    print(f"Serial m with  took {time.time() - t1} seconds")
     
-    
-    return
+    return s
 
 # def m(self, fm, fx, fL):
 #     t1 = time.time()

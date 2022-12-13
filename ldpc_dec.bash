@@ -3,11 +3,11 @@ while getopts 'c:e:' OPTION; do
     case "$OPTION" in
         c) 
             CODE=${OPTARG}
-            echo "Code is ${CODE}"
+            # echo "Code is ${CODE}"
             ;;
         e)
             ERROR=${OPTARG}
-            echo "Error rate is ${ERROR}"
+            # echo "Error rate is ${ERROR}"
             ;;
         # ?)
         #     echo "script usage: $(basename \$0) -m path/to/message.src -s seed_integer -e error_rate_double"

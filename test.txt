@@ -1,26 +1,19 @@
-Bad decryption : [0 0 0 0 0 0 0 0 0 0 0
-
-Initialized (generated lpn arrays & GF(2^128)) in 18.277650117874146 seconds
-Constructing vector m took 0.020772933959960938 seconds for galois
-Parallel m with 6 workers took 12.21357011795044 seconds. 12.18636178970337 for map, 0.02722620964050293 for sum
-Parallel calc: x^127 + x^125 + x^124 + x^123 + x^121 + x^119 + x^118 + x^108 + x^107 + x^101 + x^99 + x^92 + x^91 + x^89 + x^87 + x^85 + x^83 + x^81 + x^80 + x^79 + x^77 + x^76 + x^72 + x^68 + x^67 + x^65 + x^64 + x^62 + x^60 + x^59 + x^58 + x^56 + x^55 + x^53 + x^50 + x^47 + x^41 + x^40 + x^38 + x^36 + x^34 + x^32 + x^30 + x^25 + x^23 + x^22 + x^21 + x^20 + x^17 + x^16 + x^14 + x^12 + x^11 + x^10 + x^7 + x^6 + x^5
-Ran GEN in 31.17900586128235 seconds
-Parallel m with 6 workers took 12.095082998275757 seconds. 12.067970991134644 for map, 0.027122020721435547 for sum
-x^126 + x^125 + x^121 + x^117 + x^116 + x^113 + x^109 + x^104 + x^103 + x^101 + x^98 + x^97 + x^92 + x^88 + x^85 + x^84 + x^82 + x^81 + x^80 + x^78 + x^75 + x^72 + x^71 + x^70 + x^61 + x^60 + x^59 + x^58 + x^55 + x^54 + x^52 + x^50 + x^48 + x^47 + x^46 + x^45 + x^44 + x^43 + x^39 + x^38 + x^31 + x^27 + x^25 + x^24 + x^23 + x^22 + x^20 + x^18 + x^16 + x^15 + x^13 + x^12 + x^8 + x^6 + x^5 + x^4 + x^3 + x + 1
-x^126 + x^125 + x^121 + x^117 + x^116 + x^113 + x^109 + x^104 + x^103 + x^101 + x^98 + x^97 + x^92 + x^88 + x^85 + x^84 + x^82 + x^81 + x^80 + x^78 + x^75 + x^72 + x^71 + x^70 + x^61 + x^60 + x^59 + x^58 + x^55 + x^54 + x^52 + x^50 + x^48 + x^47 + x^46 + x^45 + x^44 + x^43 + x^39 + x^38 + x^31 + x^27 + x^25 + x^24 + x^23 + x^22 + x^20 + x^18 + x^16 + x^15 + x^13 + x^12 + x^8 + x^6 + x^5 + x^4 + x^3 + x + 1
-Check passed
-Ran REP in 13.14101791381836 seconds
-10000010101101101110100010010001000010111010101000001011010101000100010000111010011100100010101000001010100001001001010101010010
-10000010101101101110100010010001000010111010101000001011010101000100010000111010011100100010101000001010100001001001010101010010
-no problems so far
-
-Initialized (generated lpn arrays & GF(2^128)) in 157.11140990257263 seconds
-Constructing vector m took 0.34052491188049316 seconds for galois
-Parallel m with 6 workers took 124.42080926895142 seconds. 124.15735220909119 for map, 0.2634758949279785 for sum
-Parallel calc: x^127 + x^122 + x^120 + x^119 + x^116 + x^115 + x^114 + x^110 + x^104 + x^102 + x^99 + x^98 + x^95 + x^93 + x^91 + x^89 + x^87 + x^86 + x^85 + x^84 + x^82 + x^81 + x^79 + x^76 + x^74 + x^73 + x^72 + x^70 + x^65 + x^64 + x^63 + x^60 + x^59 + x^58 + x^57 + x^54 + x^53 + x^52 + x^50 + x^41 + x^38 + x^37 + x^36 + x^35 + x^33 + x^32 + x^31 + x^28 + x^27 + x^23 + x^21 + x^20 + x^19 + x^18 + x^17 + x^16 + x^15 + x^13 + x^12 + x^9 + x^7 + x^6 + x^3 + x + 1
-Ran GEN in 369.7869019508362 seconds
+Generated 10000 LPN matrices in 35.937138080596924 seconds
+Initialized (generated lpn arrays & GF(2^128)) in 38.39601492881775 seconds
+Parallel m with 6 workers took 0.034979820251464844 seconds. 0.03473687171936035 for map, 0.0002491474151611328 for sum
+Calculated MAC in 7.639005899429321 seconds
+Ran GEN in 22.36345410346985 seconds
 Checks failed
-Ran REP in 410.2589690685272 seconds
-10001010101000010110001101010001011101011011011001101000000011101001100110100010010100111110011001011011101111111110101011111010
+Ran REP in 409.21188378334045 seconds
+Counter: 1000
+Counter: 1000
+Counter: 1000
+Counter: 1000
+Counter: 1000
+Counter: 1000
+Rep failed
+Ran REP parallel in 220.66437315940857 seconds
+11011001111001011110001110101010111000110001100111010010000010101110100111101001111011000100010010110100010000100110100101101101
+None
 None
 no problems so far
