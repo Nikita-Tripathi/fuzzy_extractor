@@ -11,7 +11,7 @@ while getopts 'c:e:p:' OPTION; do
             ;;
         p)
             PROC=${OPTARG}
-            echo "Process number is ${PROC}"
+            # echo "Process number is ${PROC}"
             ;;    
         # ?)
         #     echo "script usage: $(basename \$0) -m path/to/message.src -s seed_integer -e error_rate_double"
@@ -27,18 +27,19 @@ if [ -f "$FILE" ]; then
     ./make-gen parity.pchk gen.gen dense
 fi
 
-FILENAME="temp${RANDOM}.src"
+# FILENAME="temp${RANDOM}.src"
 FILE_OUT="e${PROC}.ext"
 
-echo ${CODE} >> ${FILENAME}
+# echo ${CODE} >> ${FILENAME}
 
 # Assuming input CODE is a path to a .rec file
 # Decode the noisy message and store it to d.dec
-./decode parity.pchk ${FILENAME} d.dec bsc "${ERROR}" prprp 250 2>&1
+./decode -t parity.pchk ${CODE} d.dec bsc "${ERROR}" prprp 250 2>&1
 
 # Extract encoded message with errors and store this in r.rec
 ./extract gen.gen d.dec ${FILE_OUT}
 
-cat ${FILE_OUT}
+# cat ${FILE_OUT}
 
-rm ${FILENAME}
+# rm ${FILENAME}
+echo "Process number is ${PROC}"

@@ -32,9 +32,9 @@ fi
 # Encode the message and send it to transmit
 # Assuming SEED is an integer and ERROR is a double
 # Populate encoded message with errors and send to stdout
-./encode parity.pchk gen.gen ${MESSAGE} - \
-| ./transmit - - "${SEED}" bsc "${ERROR}" \
-| cat - 
+./encode parity.pchk gen.gen ${MESSAGE} e.enc 
+./transmit e.enc r.rec "${SEED}" bsc "${ERROR}"
+cat r.rec 
 
 # Delete temp file
 # rm ${MESSAGE}

@@ -73,7 +73,7 @@ class FuzzyExtractor:
         ctxt = m ^ d
         return ctxt
     
-    # def LPN_enc_batch(self, A) TODO implement this
+    # def LPN_enc_batch(self, A)
     # * precompute the noisy msg X self.l in GEN
     # * call the batch enc function with all the LPN matrices & the subsamples
     def LPN_batch_enc(self, keys, msgs):
@@ -93,7 +93,7 @@ class FuzzyExtractor:
         ctxt = [m[i] ^ d[i] for i in range(self.l)]
         return ctxt
 
-    def LPN_dec(self, A, key, ctxt):
+    def LPN_dec(self, A, key, ctxt, process):
         # multiply LPN matrix by the key
         d = np.matmul(A, key) % 2
         # Add (mod 2) d and ctxt (assuming ctxt is a numpy array)
@@ -103,10 +103,61 @@ class FuzzyExtractor:
         for i in temp:
             tmp += str(i)
         # Call LDPC code (C) and decode temp
-        decoded = check_output(["bash", "ldpc_dec.bash", f"-c {tmp}", f"-e {self.error_rate}"])
+        decoded = check_output(["bash", "ldpc_dec_batch.bash", f"-c {tmp}", f"-e {self.error_rate}", "-p", str(process)])
+        # print(type(process), decoded)
         if (decoded.decode('ASCII').split()[3]) == '0':
             return np.array([]) # Invalid decryption
+        # with 
         decoded= decoded.decode('ASCII').split()[-1]
+        g_i = np.array([int(b) for b in decoded])
+        # Check if hamming weigth of g_i is more than some value (depends on self.error_rate)
+        # if sum(temp ^ g_i) > self.dec_check: # TODO!!!! FIGURE OUT HOW SUM WILL WORK WITH LIST OF ARRAYS
+        #     return np.array([]) # This is our "error" output
+        return g_i
+
+    def LPN_dec_batch(self, As, keys, ctxts, process):
+        # Decypts a batch of ciphertexts in one go (in one call)
+        # multiply LPN matrix by the key
+        # d = np.matmul(A, keys) % 2
+        d = [np.matmul(As[i], keys[i]) % 2 for i in range(len(ctxts))]
+
+        # Add (mod 2) d and ctxt (assuming ctxt is a numpy array)
+        # temp = [d[i] ^ ctxts[i] for i in range(len(ctxts))]
+
+        tmp = ''
+        for i in range(len(ctxts)):
+            for j in (d[i] ^ ctxts[i]):
+                tmp += str(j)
+            tmp += '\n'
+        print(f'Testing LPN_dec_batch. Process id: {process}\n temp: {len(tmp)}')
+        # encode temp into a bitstring
+        input_file_name = f'r{process}.rec'
+        with open(input_file_name, 'w') as f:
+            f.write(tmp)
+        # Call LDPC code (C) and decode temp
+        decoded = check_output(["bash", "ldpc_dec_batch.bash", f"-c {input_file_name}", f"-e {self.error_rate}", "-p", str(process)])
+        decoded = decoded.decode("ASCII").split("\n")
+        details, test = [i.split() for i in decoded[1:-3]], decoded[-3]
+        # print(f'Testing LPN_dec_batch. Process id: {process}\n bash script output:',details)
+        if (test.split()[3]) == '0':
+            print(f'Testing LPN_dec_batch. Process id: {process}. All invalid...')
+            return np.array([]) # Invalid decryption
+        
+        print(f'Testing LPN_dec_batch. Process id: {process}\nFound valid decoding!')
+        valid_msg_index = -1
+        for i in details:
+            # Layout of i: [index_of_msg, num_of_iterations, valid/invalid (0/1), change%]; 
+            if i[2] == '1':
+                valid_msg_index = int(i[0])
+                break
+        
+
+        output_file_name = f'e{process}.ext'
+        with open(output_file_name, 'r') as f:
+            out = f.readlines()
+
+        decoded = out[valid_msg_index].strip()
+        
         g_i = np.array([int(b) for b in decoded])
         # Check if hamming weigth of g_i is more than some value (depends on self.error_rate)
         # if sum(temp ^ g_i) > self.dec_check: # TODO!!!! FIGURE OUT HOW SUM WILL WORK WITH LIST OF ARRAYS
@@ -147,8 +198,8 @@ class FuzzyExtractor:
         x = galois.Poly.Int(int(key[:self.lbd], base=2))
         y = galois.Poly.Int(int(key[self.lbd:], base=2))
 
-        # mx = mx_par.mx_serial(m, x, self.L-4, self.irreducible_poly) 
-        mx = mx_par.mx_parallel(m, x, self.L-4, self.irreducible_poly) 
+        mx = mx_par.mx_serial(m, x, self.L-4, self.irreducible_poly) 
+        # mx = mx_par.mx_parallel(m, x, self.L-4, self.irreducible_poly) 
 
         T_rep = (pow(x, self.L, self.irreducible_poly) + (pow(x, 2, self.irreducible_poly) * mx) + (x * y)) % self.irreducible_poly
         
@@ -237,45 +288,50 @@ class FuzzyExtractor:
     
     def rep_process(self, w_, indices, finished, process_id):
         counter = 0 # Track how many lockers we've checked
-
+        samples = []
+        matrices = []
+        ctxts = []
         for i in indices:
             sample_i = np.array([w_[pos] for pos in self.positions[i]])
+            samples.append(sample_i)
+            matrices.append(self.lpn_matrices[i])
+            ctxts.append(self.ctexts[i])
 
-            dec = self.LPN_dec(self.lpn_matrices[i], sample_i, self.ctexts[i])
+        dec = self.LPN_dec_batch(matrices, samples, ctxts, process_id)
 
-            # TODO finish this AND test....
-            # STEP iv
-            if not (len(dec) == 0 or dec[:self.t].any()): # i.e., if dec is not None
-                R = ''
-                for c in dec[self.t:self.t + self.xi]:
-                    R += str(c)
-                
-                R_1 = ''
-                for c in dec[self.t + self.xi:]:
-                    R_1 += str(c)
+        # print(dec)
+        # dec=[]
+        # TODO finish this AND test....
+        # STEP iv
+        if not (len(dec) == 0 or dec[:self.t].any()): # i.e., if dec is not None
+            R = ''
+            for c in dec[self.t:self.t + self.xi]:
+                R += str(c)
+            
+            R_1 = ''
+            for c in dec[self.t + self.xi:]:
+                R_1 += str(c)
 
-                bigctxt = ''
-                for c in self.ctexts:
-                    for i in c:
-                        bigctxt += str(i)
-                
-                T_rep = self.mac(R_1, self.ctexts)
+            
+            print(R, R_1)
 
-                print(self.T)
-                print(T_rep)
+            T_rep = self.mac(R_1, self.ctexts)
 
-                if T_rep == self.T:
-                    print("Check passed")
-                    finished[process_id] = ''.join([str(b) for b in R])
-                    return
+            print(self.T)
+            print(T_rep)
 
-            counter += 1
-            if counter == 1000:
-                if (not any(finished)):
-                    counter = 0
-                    print(f"Counter: 1000")
-                else:
-                    return 
+            if T_rep == self.T:
+                print("Check passed")
+                finished[process_id] = R
+                return
+
+            # counter += 1
+            # if counter == 1000:
+            #     if (not any(finished)):
+            #         counter = 0
+            #         print(f"Counter: 1000")
+            #     else:
+            #         return 
         return
 
 
@@ -298,8 +354,8 @@ def img_opener(path, mask=False):
 def main():
     mask1 = "./test_msk/04560d632_mano.bmp"
     code1 = "./test_code/04560d632_code.bmp"
-    mask2 = "./test_msk/04560d633_mano.bmp"
-    code2 = "./test_code/04560d633_code.bmp"
+    mask2 = "./test_msk/04560d635_mano.bmp"
+    code2 = "./test_code/04560d635_code.bmp"
 
     m1 = img_opener(mask1, mask=True)
     c1 = [ m1 & c for c in img_opener(code1) ] # XOR all 6 codes (one per Gabor filter pair) with mask here
@@ -317,15 +373,16 @@ def main():
     t3 = time.time()
     print(f"Ran GEN in {t3 - t2} seconds") # For l = 10000 = 10^4 typically takes 370 seconds
     # # print(fe.T)
-    b = fe.rep(c2[5]) # For l = 10000 = 10^4 typically takes 370 seconds
-    t4 = time.time()
-    print(f"Ran REP in {t4 - t3} seconds")
-    c = fe.rep_parallel(c2[5], num_processes=multiprocessing.cpu_count())
+    # b = fe.rep(c2[5]) # For l = 10000 = 10^4 typically takes 370 seconds
+    # t4 = time.time()
+    # print(f"Ran REP in {t4 - t3} seconds")
+    c = fe.rep_parallel(c2[5], num_processes=4)
+    # c = fe.rep_parallel(c2[5], num_processes=multiprocessing.cpu_count())
     # c = fe.rep_parallel(c2[5], num_processes=6)
-    print(f"Ran REP parallel in {time.time() - t4} seconds")
+    print(f"Ran REP parallel in {time.time() - t3} seconds")
 
     print(a)
-    print(b)
+    # print(b)
     print(c)
 
 
