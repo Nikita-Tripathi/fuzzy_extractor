@@ -13,3 +13,8 @@ rand-src
 transmit
 verify
 LDPC/
+d.dec
+e.ext
+s.src
+.gitignore
+__pycache__/mx_par.cpython-310.pyc
