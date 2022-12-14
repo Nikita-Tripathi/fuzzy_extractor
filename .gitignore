@@ -16,5 +16,5 @@ LDPC/
 d.dec
 e.ext
 s.src
-.gitignore
+e.enc
 __pycache__/mx_par.cpython-310.pyc
