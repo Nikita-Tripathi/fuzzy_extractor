@@ -376,8 +376,8 @@ def main():
     # b = fe.rep(c2[5]) # For l = 10000 = 10^4 typically takes 370 seconds
     # t4 = time.time()
     # print(f"Ran REP in {t4 - t3} seconds")
-    c = fe.rep_parallel(c2[5], num_processes=4)
-    # c = fe.rep_parallel(c2[5], num_processes=multiprocessing.cpu_count())
+    # c = fe.rep_parallel(c2[5], num_processes=4)
+    c = fe.rep_parallel(c2[5], num_processes=multiprocessing.cpu_count())
     # c = fe.rep_parallel(c2[5], num_processes=6)
     print(f"Ran REP parallel in {time.time() - t3} seconds")
 
