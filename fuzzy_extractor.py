@@ -37,6 +37,10 @@ class FuzzyExtractor:
         # Below are the LPN matrices
         # self.lpn_matrices = [ np.array([self.bitarr(k) for a in range(ecc_len)]) for _ in range(self.l) ]
         self.lpn_matrices = mx_par.generateLPN(self.bitarr, k, ecc_len, l)
+        # np.save("LPN_Arrays/test.npy", self.lpn_matrices[0])
+
+        # print(f'Size of one LPN matrix: {sys.getsizeof(self.lpn_matrices[1])}')
+        # print(f'Size of all LPN matrices: {sys.getsizeof(self.lpn_matrices)}')
         # At l = 10^6, lpn_matrix generation will take several hours (serial code - could be less in parallel, won't be less than an hour though) 
         #   at l=10, it took 0.345 sec
         #   at l=100, 0.627 sec
@@ -128,7 +132,7 @@ class FuzzyExtractor:
         for i in range(len(ctxts)):
             for j in (d[i] ^ ctxts[i]):
                 tmp += str(j)
-            tmp += '\n'
+
         print(f'Testing LPN_dec_batch. Process id: {process}\n temp: {len(tmp)}')
         # encode temp into a bitstring
         input_file_name = f'r{process}.rec'
@@ -291,12 +295,13 @@ class FuzzyExtractor:
         samples = []
         matrices = []
         ctxts = []
+        t1 = time.time()
         for i in indices:
             sample_i = np.array([w_[pos] for pos in self.positions[i]])
             samples.append(sample_i)
             matrices.append(self.lpn_matrices[i])
             ctxts.append(self.ctexts[i])
-
+        print(f"Rep process {process_id}: Took {time.time() - t1} seconds to gather samples, matrices, and ctexts")
         dec = self.LPN_dec_batch(matrices, samples, ctxts, process_id)
 
         # print(dec)
@@ -354,8 +359,8 @@ def img_opener(path, mask=False):
 def main():
     mask1 = "./test_msk/04560d632_mano.bmp"
     code1 = "./test_code/04560d632_code.bmp"
-    mask2 = "./test_msk/04560d635_mano.bmp"
-    code2 = "./test_code/04560d635_code.bmp"
+    mask2 = "./test_msk/04560d634_mano.bmp"
+    code2 = "./test_code/04560d634_code.bmp"
 
     m1 = img_opener(mask1, mask=True)
     c1 = [ m1 & c for c in img_opener(code1) ] # XOR all 6 codes (one per Gabor filter pair) with mask here
@@ -364,7 +369,7 @@ def main():
 
 
     t1 = time.time()
-    fe = FuzzyExtractor(l=10000)
+    fe = FuzzyExtractor(l=100)
     t2 = time.time()
     print(f"Initialized (generated lpn arrays & GF(2^128)) in {t2 - t1} seconds")
 
