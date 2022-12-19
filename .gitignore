@@ -12,6 +12,17 @@ print-pchk
 rand-src
 transmit
 verify
+LDPC/alist-to-pchk
+LDPC/decode
+LDPC/encode
+LDPC/extract
+LDPC/make-*
+LDPC/pchk-to-alist
+LDPC/print-gen
+LDPC/print-pchk
+LDPC/rand-src
+LDPC/transmit
+LDPC/verify
 LDPC/
 *.dec
 *.ext
