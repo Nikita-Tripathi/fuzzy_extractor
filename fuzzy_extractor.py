@@ -39,21 +39,12 @@ class FuzzyExtractor:
         self.lpn_matrices = mx_par.generateLPN(self.bitarr, k, ecc_len, l)
         # np.save("LPN_Arrays/test.npy", self.lpn_matrices[0])
 
-        # print(f'Size of one LPN matrix: {sys.getsizeof(self.lpn_matrices[1])}')
-        # print(f'Size of all LPN matrices: {sys.getsizeof(self.lpn_matrices)}')
-        # At l = 10^6, lpn_matrix generation will take several hours (serial code - could be less in parallel, won't be less than an hour though) 
-        #   at l=10, it took 0.345 sec
-        #   at l=100, 0.627 sec
-        #   at l=1000, 5.369 - 5.398 sec
-        #   Could be more efficient to pre-compute these on university servers in parallel (5-10 sets of 10^6 matrices) and pick them randomly
         # Irreducible polynomial for GF(2^128)
         self.irreducible_poly = galois.primitive_poly(2, 128)
-        self.hash = hashlib.sha3_512()
 
+        self.hash = hashlib.sha3_512()
         self.L = ceil((self.hash.digest_size * 8) / self.lbd) + 4
         self.hash = hashlib.sha3_512().name
-
-
 
 
 
@@ -369,7 +360,7 @@ def main():
 
 
     t1 = time.time()
-    fe = FuzzyExtractor(l=100)
+    fe = FuzzyExtractor(l=1000)
     t2 = time.time()
     print(f"Initialized (generated lpn arrays & GF(2^128)) in {t2 - t1} seconds")
 

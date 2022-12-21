@@ -30,8 +30,6 @@ fi
 # FILENAME="temp${RANDOM}.src"
 FILE_OUT="e${PROC}.ext"
 
-# echo ${CODE} >> ${FILENAME}
-
 # Assuming input CODE is a path to a .rec file
 # Decode the noisy message and store it to d.dec
 ./decode -t parity.pchk ${CODE} d.dec bsc "${ERROR}" prprp 100 2>&1
@@ -39,7 +37,5 @@ FILE_OUT="e${PROC}.ext"
 # Extract encoded message with errors and store this in r.rec
 ./extract gen.gen d.dec ${FILE_OUT}
 
-# cat ${FILE_OUT}
 
-# rm ${FILENAME}
 echo "Process number is ${PROC}"
