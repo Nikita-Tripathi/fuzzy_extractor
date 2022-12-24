@@ -48,45 +48,50 @@ class FuzzyExtractor:
 
 
 
-
     def bitarr(self, i):
         r = randbits(i)
         return [int(d) for d in bin(r)[2:].zfill(i)]
     
-    def LPN_enc(self, A, key, msg):
-        # multiply LPN matrix by the key
-        d = np.matmul(A, key) % 2
-        # Call LDPC code (C) and do:
-        #   * Generate an error correcting code (ECC) of the msg
-        #   * Add self.error_rate errors (using transmit function)
-        #   * Return the "corrupted" code of msg + d (addition mod 2)
-        noisy_msg = check_output(["bash", "ldpc_enc.bash", f"-s {randbits(32)}", f"-m {msg}", f"-e {self.error_rate}"])
-        noisy_msg= noisy_msg.decode('ASCII').split('\n')[-2]
-        # Encode noisy ecc 
-        m = np.array([int(b) for b in noisy_msg])
-        # Step (v): Compute ciphertext
-        ctxt = m ^ d
-        return ctxt
     
+
     # def LPN_enc_batch(self, A)
     # * precompute the noisy msg X self.l in GEN
     # * call the batch enc function with all the LPN matrices & the subsamples
     def LPN_batch_enc(self, keys, msgs):
         # Multiply LPN matrices by the LPN keys (subsamples of iris code)
         d = [np.matmul(self.lpn_matrices[i], keys[i]) % 2 for i in range(self.l)]
+        
         # Prep the messages to encode (put each on a new line)
-        # msg = '\n'.join(msgs)
         with open('src.src', 'w') as f:
-            f.writelines(msgs)
-        # Encode messages and parse the output appropriately
-        noisy_msg = check_output(["bash", "ldpc_enc_batch.bash", f"-s {randbits(32)}", f"-m src.src", f"-e {self.error_rate}"])
+            f.writelines(msgs[0])
+        
+        # Encode message
+        check_output(["./encode", "parity.pchk", "gen.gen", "src.src", "e.enc"])
+        
+        # Setup for adding errors to l encodings 
+        code = []
+        with open('e.enc', 'r') as f:
+            code = f.read().strip()
+            code = [code+'\n'] * self.l
+        
+        with open('e.enc', 'w') as f:
+            print(len(code), type(code), code)
+            f.writelines(code)
 
-        noisy_msg = noisy_msg.decode('ASCII').split('\n')[:-1]
+        # Adding errors
+        check_output(["./transmit", "e.enc", "r.rec", f"{randbits(32)}", "bsc", f"{self.error_rate}"])
+
+        # Reading noisy codes
+        with open('r.rec', 'r') as f:
+            noisy_msg = f.readlines()
+
         # Transform the str output to a binary vector
-        m = [np.array([int(b) for b in nm]) for nm in noisy_msg]
+        m = [np.array([int(b) for b in nm.strip()]) for nm in noisy_msg]
+        
         # Compute l ciphetexts
         ctxt = [m[i] ^ d[i] for i in range(self.l)]
         return ctxt
+
 
     def LPN_dec(self, A, key, ctxt, process):
         # multiply LPN matrix by the key
@@ -159,17 +164,6 @@ class FuzzyExtractor:
         #     return np.array([]) # This is our "error" output
         return g_i
     
-    def m(self, fm, fx, fL):
-        t1 = time.time()
-        # accumulator for sum
-        acc = self.gf.elm([0])
-        # accumulator for x^i
-        x = fx ** 0
-        for i in range(1,fL):
-            x = x * fx
-            acc = acc + (x * fm[i])
-        print(f"Serial m took {time.time() - t1} seconds")
-        return acc
     
 
     def mac(self, key, ciphertexts):
@@ -360,7 +354,7 @@ def main():
 
 
     t1 = time.time()
-    fe = FuzzyExtractor(l=1000)
+    fe = FuzzyExtractor(l=10)
     t2 = time.time()
     print(f"Initialized (generated lpn arrays & GF(2^128)) in {t2 - t1} seconds")
 
@@ -368,17 +362,10 @@ def main():
     a = fe.gen(c1[5], m1)
     t3 = time.time()
     print(f"Ran GEN in {t3 - t2} seconds") # For l = 10000 = 10^4 typically takes 370 seconds
-    # # print(fe.T)
-    # b = fe.rep(c2[5]) # For l = 10000 = 10^4 typically takes 370 seconds
-    # t4 = time.time()
-    # print(f"Ran REP in {t4 - t3} seconds")
-    # c = fe.rep_parallel(c2[5], num_processes=4)
     c = fe.rep_parallel(c2[5], num_processes=multiprocessing.cpu_count())
-    # c = fe.rep_parallel(c2[5], num_processes=6)
     print(f"Ran REP parallel in {time.time() - t3} seconds")
 
     print(a)
-    # print(b)
     print(c)
 
 

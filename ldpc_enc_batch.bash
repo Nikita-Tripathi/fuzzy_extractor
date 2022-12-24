@@ -34,7 +34,6 @@ fi
 # Populate encoded message with errors and send to stdout
 ./encode parity.pchk gen.gen ${MESSAGE} e.enc 
 ./transmit e.enc r.rec "${SEED}" bsc "${ERROR}"
-cat r.rec 
 
 # Delete temp file
 # rm ${MESSAGE}
