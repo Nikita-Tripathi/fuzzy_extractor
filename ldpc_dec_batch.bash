@@ -32,7 +32,7 @@ FILE_OUT="e${PROC}.ext"
 
 # Assuming input CODE is a path to a .rec file
 # Decode the noisy message and store it to d.dec
-./decode -t parity.pchk ${CODE} d.dec bsc "${ERROR}" prprp 100 2>&1
+./decode -t parity.pchk ${CODE} d.dec bsc "${ERROR}" prprp 75 2>&1
 
 # Extract encoded message with errors and store this in r.rec
 ./extract gen.gen d.dec ${FILE_OUT}

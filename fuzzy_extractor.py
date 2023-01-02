@@ -75,7 +75,6 @@ class FuzzyExtractor:
             code = [code+'\n'] * self.l
         
         with open('e.enc', 'w') as f:
-            print(len(code), type(code), code)
             f.writelines(code)
 
         # Adding errors
@@ -289,7 +288,7 @@ class FuzzyExtractor:
         print(f"Rep process {process_id}: Took {time.time() - t1} seconds to gather samples, matrices, and ctexts")
         dec = self.LPN_dec_batch(matrices, samples, ctxts, process_id)
 
-        # print(dec)
+        print(dec[:15])
         # dec=[]
         # TODO finish this AND test....
         # STEP iv
@@ -354,7 +353,7 @@ def main():
 
 
     t1 = time.time()
-    fe = FuzzyExtractor(l=10)
+    fe = FuzzyExtractor(l=40000)
     t2 = time.time()
     print(f"Initialized (generated lpn arrays & GF(2^128)) in {t2 - t1} seconds")
 
