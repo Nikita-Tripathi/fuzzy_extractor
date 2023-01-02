@@ -30,3 +30,6 @@ LDPC/
 *.enc
 *.rec
 __pycache__/mx_par.cpython-310.pyc
+d.dec
+e.enc
+r.rec
