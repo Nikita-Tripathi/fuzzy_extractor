@@ -35,9 +35,7 @@ class FuzzyExtractor:
         self.ecc_msg_len = t + lbd * 2 + xi
         
         # Below are the LPN matrices
-        # self.lpn_matrices = [ np.array([self.bitarr(k) for a in range(ecc_len)]) for _ in range(self.l) ]
-        self.lpn_matrices = mx_par.generateLPN(self.bitarr, k, ecc_len, l)
-        # np.save("LPN_Arrays/test.npy", self.lpn_matrices[0])
+        # self.lpn_matrices = mx_par.generateLPN(self.bitarr, k, ecc_len, l)
 
         # Irreducible polynomial for GF(2^128)
         self.irreducible_poly = galois.primitive_poly(2, 128)
@@ -47,19 +45,20 @@ class FuzzyExtractor:
         self.hash = hashlib.sha3_512().name
 
 
-
     def bitarr(self, i):
         r = randbits(i)
         return [int(d) for d in bin(r)[2:].zfill(i)]
     
-    
+    def read_matrix(self, index):
+        return np.load(f"LPN_Matrices/{index}.npy")
 
     # def LPN_enc_batch(self, A)
     # * precompute the noisy msg X self.l in GEN
     # * call the batch enc function with all the LPN matrices & the subsamples
     def LPN_batch_enc(self, keys, msgs):
         # Multiply LPN matrices by the LPN keys (subsamples of iris code)
-        d = [np.matmul(self.lpn_matrices[i], keys[i]) % 2 for i in range(self.l)]
+        d = [np.matmul(self.read_matrix(i), keys[i]) % 2 for i in range(self.l)]
+        # d = [np.matmul(self.lpn_matrices[i], keys[i]) % 2 for i in range(self.l)]
         
         # Prep the messages to encode (put each on a new line)
         with open('src.src', 'w') as f:
@@ -92,33 +91,12 @@ class FuzzyExtractor:
         return ctxt
 
 
-    def LPN_dec(self, A, key, ctxt, process):
-        # multiply LPN matrix by the key
-        d = np.matmul(A, key) % 2
-        # Add (mod 2) d and ctxt (assuming ctxt is a numpy array)
-        temp = d ^ ctxt
-        # encode temp into a bitstring
-        tmp = ''
-        for i in temp:
-            tmp += str(i)
-        # Call LDPC code (C) and decode temp
-        decoded = check_output(["bash", "ldpc_dec_batch.bash", f"-c {tmp}", f"-e {self.error_rate}", "-p", str(process)])
-        # print(type(process), decoded)
-        if (decoded.decode('ASCII').split()[3]) == '0':
-            return np.array([]) # Invalid decryption
-        # with 
-        decoded= decoded.decode('ASCII').split()[-1]
-        g_i = np.array([int(b) for b in decoded])
-        # Check if hamming weigth of g_i is more than some value (depends on self.error_rate)
-        # if sum(temp ^ g_i) > self.dec_check: # TODO!!!! FIGURE OUT HOW SUM WILL WORK WITH LIST OF ARRAYS
-        #     return np.array([]) # This is our "error" output
-        return g_i
-
     def LPN_dec_batch(self, As, keys, ctxts, process):
         # Decypts a batch of ciphertexts in one go (in one call)
         # multiply LPN matrix by the key
         # d = np.matmul(A, keys) % 2
-        d = [np.matmul(As[i], keys[i]) % 2 for i in range(len(ctxts))]
+        d = [np.matmul(self.read_matrix(As[i]), keys[i]) % 2 for i in range(len(ctxts))]
+        # d = [np.matmul(self.lpn_matrices[As[i]], keys[i]) % 2 for i in range(len(ctxts))]
 
         # Add (mod 2) d and ctxt (assuming ctxt is a numpy array)
         # temp = [d[i] ^ ctxts[i] for i in range(len(ctxts))]
@@ -128,7 +106,7 @@ class FuzzyExtractor:
             for j in (d[i] ^ ctxts[i]):
                 tmp += str(j)
 
-        print(f'Testing LPN_dec_batch. Process id: {process}\n temp: {len(tmp)}')
+        # print(f'Testing LPN_dec_batch. Process id: {process}\n temp: {len(tmp)}')
         # encode temp into a bitstring
         input_file_name = f'r{process}.rec'
         with open(input_file_name, 'w') as f:
@@ -223,38 +201,7 @@ class FuzzyExtractor:
         # step 7: Output key R, self.ctexts, and self.T
         return R
         
-    # w_ is W' in the paper, ciphertext and T can be found in self.ctexts and self.T respectively
-    def rep(self, w_):
-        for i in range(self.l):
-            # Get a sample of w' at positions
-            sample_i = np.array([w_[pos] for pos in self.positions[i]])
-
-            dec = self.LPN_dec(self.lpn_matrices[i], sample_i, self.ctexts[i])
-            # STEP iv
-            if not (len(dec) == 0 or dec[:self.t].any()): # i.e., if dec is not None
-                R = ''
-                for c in dec[self.t:self.t + self.xi]:
-                    R += str(c)
-                
-                R_1 = ''
-                for c in dec[self.t + self.xi:]:
-                    R_1 += str(c)
-                print("R_1:", R_1)
-
-                T_rep = self.mac(R_1, self.ctexts)
-
-                print(self.T)
-                print(T_rep)
-
-                if T_rep  == self.T:
-                    print("Check passed")
-                    return ''.join([str(b) for b in R])
-            # else:
-            #     print("Bad decryption :", dec[:15])
-
-        print("Checks failed")
-        return None
-
+    # w is W' in the paper, ciphertext and T can be found in self.ctexts and self.T respectively
     def rep_parallel(self, w, num_processes=1):
         finished = multiprocessing.Array('b', False)
         split = np.array_split(range(self.l), num_processes)
@@ -283,9 +230,9 @@ class FuzzyExtractor:
         for i in indices:
             sample_i = np.array([w_[pos] for pos in self.positions[i]])
             samples.append(sample_i)
-            matrices.append(self.lpn_matrices[i])
+            matrices.append(i)
             ctxts.append(self.ctexts[i])
-        print(f"Rep process {process_id}: Took {time.time() - t1} seconds to gather samples, matrices, and ctexts")
+        # print(f"Rep process {process_id}: Took {time.time() - t1} seconds to gather samples, matrices, and ctexts")
         dec = self.LPN_dec_batch(matrices, samples, ctxts, process_id)
 
         print(dec[:15])
@@ -353,7 +300,7 @@ def main():
 
 
     t1 = time.time()
-    fe = FuzzyExtractor(l=40000)
+    fe = FuzzyExtractor(l=1000)
     t2 = time.time()
     print(f"Initialized (generated lpn arrays & GF(2^128)) in {t2 - t1} seconds")
 
