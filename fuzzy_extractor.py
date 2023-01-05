@@ -7,6 +7,7 @@ import galois
 from PIL import Image
 import multiprocessing
 import hashlib
+from pathos.multiprocessing import ProcessingPool as Pool
 
 import sys, time, random
 import mx_par
@@ -43,6 +44,7 @@ class FuzzyExtractor:
         self.hash = hashlib.sha3_512()
         self.L = ceil((self.hash.digest_size * 8) / self.lbd) + 4
         self.hash = hashlib.sha3_512().name
+        print("Done initializing")
 
 
     def bitarr(self, i):
@@ -57,8 +59,16 @@ class FuzzyExtractor:
     # * call the batch enc function with all the LPN matrices & the subsamples
     def LPN_batch_enc(self, keys, msgs):
         # Multiply LPN matrices by the LPN keys (subsamples of iris code)
-        d = [np.matmul(self.read_matrix(i), keys[i]) % 2 for i in range(self.l)]
-        # d = [np.matmul(self.lpn_matrices[i], keys[i]) % 2 for i in range(self.l)]
+        # d = [np.matmul(self.read_matrix(i), keys[i]) % 2 for i in range(self.l)]
+        p = Pool()
+        t = time.time()
+        d = p.map(lambda i: np.matmul(self.read_matrix(i), keys[i]) % 2, range(self.l))
+        # d = []
+        # for i in range(self.l):
+        #     mat = np.matmul(self.read_matrix(i), keys[i]) % 2
+        #     d.append(mat)
+        # # d = [np.matmul(self.lpn_matrices[i], keys[i]) % 2 for i in range(self.l)]
+        print(f"Computed {len(d)} matrices in {time.time() - t} seconds")
         
         # Prep the messages to encode (put each on a new line)
         with open('src.src', 'w') as f:
@@ -88,6 +98,9 @@ class FuzzyExtractor:
         
         # Compute l ciphetexts
         ctxt = [m[i] ^ d[i] for i in range(self.l)]
+
+        d = []
+
         return ctxt
 
 
@@ -146,11 +159,8 @@ class FuzzyExtractor:
     def mac(self, key, ciphertexts):
         t = time.time()
         h = hashlib.new(self.hash)
-        bigctxt = ''
-        for c in ciphertexts:
-            for i in c:
-                bigctxt += str(i)
-        # print(f"R_1: {key}\nCiphertext: {bigctxt}")
+        bigctxt = str(ciphertexts)
+
         # Generate a digest of entire ciphertexts
         bigctxt = bigctxt.encode()
         h.update(bigctxt)
@@ -158,7 +168,7 @@ class FuzzyExtractor:
         bigctxt = bin(int(bigctxt, base=16))[2:].zfill(512)
 
         # Encode digest into vector m
-        m = [galois.Poly.Int(int(bigctxt[i:i+self.lbd], base=2)) for _ in range(0, len(bigctxt), self.lbd)]
+        m = [galois.Poly.Int(int(bigctxt[i:i+self.lbd], base=2)) for i in range(0, len(bigctxt), self.lbd)]
 
         # split key into x and y
         x = galois.Poly.Int(int(key[:self.lbd], base=2))
