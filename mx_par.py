@@ -36,7 +36,5 @@ def mx_serial(fm, fx, fL, poly):
     s = galois.Poly.Int(0)
     for i in range(fL):
         s = (s + (pow(fx, i, poly) * fm[i])) % poly
-    # s = s % poly
-    print(f"Serial m with  took {time.time() - t1} seconds")
     
     return s
