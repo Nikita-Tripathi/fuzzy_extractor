@@ -7,7 +7,6 @@ import galois
 from PIL import Image
 import multiprocessing
 import hashlib
-from pathos.multiprocessing import ProcessingPool as Pool
 
 import sys, time, random
 import mx_par
@@ -130,10 +129,10 @@ class FuzzyExtractor:
         details, test = [i.split() for i in decoded[1:-3]], decoded[-3]
         # print(f'Testing LPN_dec_batch. Process id: {process}\n bash script output:',details)
         if (test.split()[3]) == '0':
-            print(f'Testing LPN_dec_batch. Process id: {process}. All invalid...')
+            # print(f'Testing LPN_dec_batch. Process id: {process}. All invalid...')
             return np.array([]) # Invalid decryption
         
-        print(f'Testing LPN_dec_batch. Process id: {process}\nFound valid decoding!')
+        print(f'Testing LPN_dec_batch. Process id: {process}. Found valid decoding!')
         valid_msg_index = -1
         for i in details:
             # Layout of i: [index_of_msg, num_of_iterations, valid/invalid (0/1), change%]; 
@@ -245,8 +244,7 @@ class FuzzyExtractor:
         # print(f"Rep process {process_id}: Took {time.time() - t1} seconds to gather samples, matrices, and ctexts")
         dec = self.LPN_dec_batch(matrices, samples, ctxts, process_id)
 
-        print(dec[:15])
-        # dec=[]
+        if dec != []: print(dec[:15])
         # TODO finish this AND test....
         # STEP iv
         if not (len(dec) == 0 or dec[:self.t].any()): # i.e., if dec is not None
@@ -300,22 +298,14 @@ def img_opener(path, mask=False):
 def main():
     mask1 = "./test_msk/04560d631_mano.bmp"
     code1 = "./test_code/04560d631_code.bmp"
-    mask2 = "./test_msk/04560d632_mano.bmp"
-    code2 = "./test_code/04560d632_code.bmp"
-    mask3 = "./test_msk/04560d633_mano.bmp"
-    code3 = "./test_code/04560d633_code.bmp"
-    mask4 = "./test_msk/04560d634_mano.bmp"
-    code4 = "./test_code/04560d634_code.bmp"
 
+    # toTest = ['04560d877_code.bmp', '04560d858_code.bmp', '04560d828_code.bmp', '04560d855_code.bmp', '04560d731_code.bmp', '04560d892_code.bmp', '04560d698_code.bmp', '04560d721_code.bmp', '04560d888_code.bmp', '04560d643_code.bmp', '04560d727_code.bmp', '04560d712_code.bmp', '04560d843_code.bmp', '04560d886_code.bmp', '04560d702_code.bmp', '04560d671_code.bmp', '04560d649_code.bmp', '04560d670_code.bmp', '04560d848_code.bmp', '04560d715_code.bmp', '04560d837_code.bmp', '04560d890_code.bmp', '04560d679_code.bmp', '04560d882_code.bmp', '04560d699_code.bmp', '04560d860_code.bmp', '04560d714_code.bmp', '04560d844_code.bmp', '04560d875_code.bmp', '04560d654_code.bmp', '04560d696_code.bmp', '04560d857_code.bmp', '04560d705_code.bmp', '04560d887_code.bmp', '04560d664_code.bmp', '04560d690_code.bmp', '04560d694_code.bmp', '04560d847_code.bmp', '04560d885_code.bmp', '04560d648_code.bmp', '04560d645_code.bmp', '04560d659_code.bmp', '04560d653_code.bmp', '04560d638_code.bmp', '04560d661_code.bmp', '04560d681_code.bmp', '04560d686_code.bmp', '04560d729_code.bmp', '04560d853_code.bmp', '04560d637_code.bmp', '04560d719_code.bmp', '04560d676_code.bmp', '04560d883_code.bmp', '04560d831_code.bmp', '04560d835_code.bmp', '04560d674_code.bmp', '04560d651_code.bmp', '04560d709_code.bmp', '04560d689_code.bmp', '04560d845_code.bmp', '04560d830_code.bmp', '04560d856_code.bmp', '04560d677_code.bmp', '04560d673_code.bmp', '04560d642_code.bmp', '04560d695_code.bmp', '04560d834_code.bmp', '04560d728_code.bmp', '04560d732_code.bmp', '04560d725_code.bmp', '04560d644_code.bmp', '04560d710_code.bmp', '04560d703_code.bmp', '04560d652_code.bmp', '04560d682_code.bmp', '04560d851_code.bmp', '04560d870_code.bmp', '04560d683_code.bmp', '04560d862_code.bmp', '04560d711_code.bmp', '04560d716_code.bmp', '04560d697_code.bmp', '04560d660_code.bmp', '04560d658_code.bmp', '04560d867_code.bmp', '04560d640_code.bmp', '04560d667_code.bmp', '04560d639_code.bmp', '04560d832_code.bmp', '04560d833_code.bmp', '04560d708_code.bmp', '04560d861_code.bmp', '04560d657_code.bmp', '04560d826_code.bmp', '04560d641_code.bmp', '04560d717_code.bmp', '04560d863_code.bmp', '04560d730_code.bmp', '04560d663_code.bmp', '04560d706_code.bmp', '04560d866_code.bmp', '04560d894_code.bmp', '04560d700_code.bmp', '04560d685_code.bmp', '04560d840_code.bmp', '04560d827_code.bmp', '04560d665_code.bmp', '04560d655_code.bmp', '04560d880_code.bmp', '04560d691_code.bmp', '04560d647_code.bmp', '04560d879_code.bmp', '04560d666_code.bmp', '04560d707_code.bmp', '04560d872_code.bmp', '04560d889_code.bmp', '04560d701_code.bmp', '04560d854_code.bmp', '04560d668_code.bmp', '04560d680_code.bmp', '04560d852_code.bmp', '04560d723_code.bmp', '04560d859_code.bmp', '04560d724_code.bmp', '04560d635_code.bmp', '04560d864_code.bmp', '04560d838_code.bmp', '04560d720_code.bmp', '04560d824_code.bmp', '04560d636_code.bmp', '04560d836_code.bmp', '04560d874_code.bmp', '04560d656_code.bmp', '04560d846_code.bmp', '04560d849_code.bmp', '04560d895_code.bmp', '04560d722_code.bmp', '04560d871_code.bmp', '04560d891_code.bmp', '04560d876_code.bmp', '04560d878_code.bmp', '04560d868_code.bmp', '04560d884_code.bmp', '04560d692_code.bmp', '04560d688_code.bmp', '04560d829_code.bmp', '04560d687_code.bmp', '04560d646_code.bmp', '04560d825_code.bmp', '04560d678_code.bmp', '04560d693_code.bmp', '04560d842_code.bmp', '04560d669_code.bmp', '04560d865_code.bmp', '04560d675_code.bmp', '04560d839_code.bmp', '04560d684_code.bmp', '04560d672_code.bmp', '04560d893_code.bmp', '04560d873_code.bmp', '04560d662_code.bmp', '04560d713_code.bmp', '04560d726_code.bmp', '04560d881_code.bmp', '04560d850_code.bmp', '04560d841_code.bmp', '04560d718_code.bmp', '04560d650_code.bmp', '04560d869_code.bmp', '04560d704_code.bmp']
+
+    toTest = ['04560d877', '04560d858', '04560d828', '04560d855', '04560d731', '04560d892', '04560d698', '04560d721', '04560d888', '04560d643', '04560d727', '04560d712', '04560d843', '04560d886', '04560d702', '04560d671', '04560d649', '04560d670', '04560d848', '04560d715', '04560d837', '04560d890', '04560d679', '04560d882', '04560d699', '04560d860', '04560d714', '04560d844', '04560d875', '04560d654', '04560d696', '04560d857', '04560d705', '04560d887', '04560d664', '04560d690', '04560d694', '04560d847', '04560d885', '04560d648', '04560d645', '04560d659', '04560d653', '04560d638', '04560d661', '04560d681', '04560d686', '04560d729', '04560d853', '04560d637', '04560d719', '04560d676', '04560d883', '04560d831', '04560d835', '04560d674', '04560d651', '04560d709', '04560d689', '04560d845', '04560d830', '04560d856', '04560d677', '04560d673', '04560d642', '04560d695', '04560d834', '04560d728', '04560d732', '04560d725', '04560d644', '04560d710']
 
     m1 = img_opener(mask1, mask=True)
     c1 = [ m1 & c for c in img_opener(code1) ] # XOR all 6 codes (one per Gabor filter pair) with mask here
-    m2 = img_opener(mask2, mask=True)
-    c2 = [ m2 & c for c in img_opener(code2) ] # XOR all 6 codes (one per Gabor filter pair) with mask here
-    m3 = img_opener(mask3, mask=True)
-    c3 = [ m3 & c for c in img_opener(code3) ]
-    m4 = img_opener(mask4, mask=True)
-    c4 = [ m4 & c for c in img_opener(code4) ]
+
 
 
     t1 = time.time()
@@ -327,20 +317,26 @@ def main():
     a = fe.gen(c1[5], m1)
     t3 = time.time()
     print(f"Ran GEN in {t3 - t2} seconds") # For l = 10000 = 10^4 typically takes 370 seconds
-    b = fe.rep_parallel(c2[5], num_processes=multiprocessing.cpu_count())
-    t4 = time.time()
-    print(f"Ran REP parallel in {t4 - t3} seconds")
-    c = fe.rep_parallel(c3[5], num_processes=multiprocessing.cpu_count())
-    t5 = time.time()
-    print(f"Ran REP parallel in {t5-t4} seconds")
-    d = fe.rep_parallel(c4[5], num_processes=multiprocessing.cpu_count())
-    print(f'Ran REP parallel in {time.time() - t5} seconds')
+
+    results = []
+
+    for t in toTest:
+        maskt = f"./test_msk/{t}_mano.bmp"
+        codet = f"./test_code/{t}_code.bmp"
+
+        mt = img_opener(maskt, mask=True)
+        ct = [ mt & c for c in img_opener(codet) ] # XOR all 6 codes (one per Gabor filter pair) with mask here
+
+        t = time.time()
+        b = fe.rep_parallel(ct[5], num_processes=multiprocessing.cpu_count())
+        results.append(b)
+        t1 = time.time()
+        print(f"Ran REP parallel in {t1 - t} seconds")
+
 
 
     print(a)
-    print(b)
-    print(c)
-    print(d)
+    print(results)
 
 
     print("no problems so far")
