@@ -60,13 +60,13 @@ class FuzzyExtractor:
     def LPN_batch_enc(self, keys, msgs):
         # Multiply LPN matrices by the LPN keys (subsamples of iris code)
         # d = [np.matmul(self.read_matrix(i), keys[i]) % 2 for i in range(self.l)]
-        p = Pool()
+        #p = Pool()
         t = time.time()
-        d = p.map(lambda i: np.matmul(self.read_matrix(i), keys[i]) % 2, range(self.l))
-        # d = []
-        # for i in range(self.l):
-        #     mat = np.matmul(self.read_matrix(i), keys[i]) % 2
-        #     d.append(mat)
+        #d = p.map(lambda i: np.matmul(self.read_matrix(i), keys[i]) % 2, range(self.l))
+        d = []
+        for i in range(self.l):
+            mat = np.matmul(self.read_matrix(i), keys[i]) % 2
+            d.append(mat)
         # # d = [np.matmul(self.lpn_matrices[i], keys[i]) % 2 for i in range(self.l)]
         print(f"Computed {len(d)} matrices in {time.time() - t} seconds")
         
@@ -298,19 +298,28 @@ def img_opener(path, mask=False):
 
 
 def main():
-    mask1 = "./test_msk/04560d632_mano.bmp"
-    code1 = "./test_code/04560d632_code.bmp"
-    mask2 = "./test_msk/04560d634_mano.bmp"
-    code2 = "./test_code/04560d634_code.bmp"
+    mask1 = "./test_msk/04560d631_mano.bmp"
+    code1 = "./test_code/04560d631_code.bmp"
+    mask2 = "./test_msk/04560d632_mano.bmp"
+    code2 = "./test_code/04560d632_code.bmp"
+    mask3 = "./test_msk/04560d633_mano.bmp"
+    code3 = "./test_code/04560d633_code.bmp"
+    mask4 = "./test_msk/04560d634_mano.bmp"
+    code4 = "./test_code/04560d634_code.bmp"
+
 
     m1 = img_opener(mask1, mask=True)
     c1 = [ m1 & c for c in img_opener(code1) ] # XOR all 6 codes (one per Gabor filter pair) with mask here
     m2 = img_opener(mask2, mask=True)
     c2 = [ m2 & c for c in img_opener(code2) ] # XOR all 6 codes (one per Gabor filter pair) with mask here
+    m3 = img_opener(mask3, mask=True)
+    c3 = [ m3 & c for c in img_opener(code3) ]
+    m4 = img_opener(mask4, mask=True)
+    c4 = [ m4 & c for c in img_opener(code4) ]
 
 
     t1 = time.time()
-    fe = FuzzyExtractor(l=1000)
+    fe = FuzzyExtractor(l=1000000)
     t2 = time.time()
     print(f"Initialized (generated lpn arrays & GF(2^128)) in {t2 - t1} seconds")
 
@@ -318,11 +327,20 @@ def main():
     a = fe.gen(c1[5], m1)
     t3 = time.time()
     print(f"Ran GEN in {t3 - t2} seconds") # For l = 10000 = 10^4 typically takes 370 seconds
-    c = fe.rep_parallel(c2[5], num_processes=multiprocessing.cpu_count())
-    print(f"Ran REP parallel in {time.time() - t3} seconds")
+    b = fe.rep_parallel(c2[5], num_processes=multiprocessing.cpu_count())
+    t4 = time.time()
+    print(f"Ran REP parallel in {t4 - t3} seconds")
+    c = fe.rep_parallel(c3[5], num_processes=multiprocessing.cpu_count())
+    t5 = time.time()
+    print(f"Ran REP parallel in {t5-t4} seconds")
+    d = fe.rep_parallel(c4[5], num_processes=multiprocessing.cpu_count())
+    print(f'Ran REP parallel in {time.time() - t5} seconds')
+
 
     print(a)
+    print(b)
     print(c)
+    print(d)
 
 
     print("no problems so far")
