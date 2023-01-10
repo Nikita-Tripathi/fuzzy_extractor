@@ -1,10 +1,6 @@
 #!/bin/bash
-while getopts 'm:s:e:' OPTION; do
+while getopts 's:e:' OPTION; do
     case "$OPTION" in
-        m) 
-            MESSAGE=${OPTARG}
-            # echo "Message is ${MESSAGE}"
-            ;;
         s)
             SEED=${OPTARG}
             # echo "Seed is ${SEED}"
@@ -32,7 +28,6 @@ fi
 # Encode the message and send it to transmit
 # Assuming SEED is an integer and ERROR is a double
 # Populate encoded message with errors and send to stdout
-./encode parity.pchk gen.gen ${MESSAGE} e.enc 
 ./transmit e.enc r.rec "${SEED}" bsc "${ERROR}"
 
 # Delete temp file

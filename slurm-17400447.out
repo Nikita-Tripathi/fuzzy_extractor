@@ -1,0 +1,154 @@
+Encoded 1 blocks, source block size 396, encoded block size 1224
+Transmitted 1224000000 bits
+Done initializing
+Initialized (generated lpn arrays & GF(2^128)) in 2.900916337966919 seconds
+Computed 1000000 matrices in 6341.002213716507 seconds
+Calculated MAC in 44.77708101272583 seconds
+Ran GEN in 7211.636568307877 seconds
+Rep failed
+Ran REP parallel in 799.1871681213379 seconds
+Rep failed
+Ran REP parallel in 783.8213675022125 seconds
+Rep failed
+Ran REP parallel in 744.9931042194366 seconds
+Rep failed
+Ran REP parallel in 784.0913162231445 seconds
+Rep failed
+Ran REP parallel in 769.456883430481 seconds
+Rep failed
+Ran REP parallel in 800.8146481513977 seconds
+Rep failed
+Ran REP parallel in 758.7410657405853 seconds
+Rep failed
+Ran REP parallel in 794.4781241416931 seconds
+Rep failed
+Ran REP parallel in 760.3928711414337 seconds
+Rep failed
+Ran REP parallel in 770.624452829361 seconds
+Rep failed
+Ran REP parallel in 727.3078987598419 seconds
+Rep failed
+Ran REP parallel in 726.6058928966522 seconds
+Rep failed
+Ran REP parallel in 729.8201253414154 seconds
+Rep failed
+Ran REP parallel in 738.8503577709198 seconds
+Rep failed
+Ran REP parallel in 720.0743975639343 seconds
+Rep failed
+Ran REP parallel in 733.7051768302917 seconds
+Rep failed
+Ran REP parallel in 732.0919756889343 seconds
+Rep failed
+Ran REP parallel in 789.9620139598846 seconds
+Rep failed
+Ran REP parallel in 754.3677134513855 seconds
+Rep failed
+Ran REP parallel in 763.8631672859192 seconds
+Rep failed
+Ran REP parallel in 721.7143816947937 seconds
+Rep failed
+Ran REP parallel in 727.8830735683441 seconds
+Rep failed
+Ran REP parallel in 742.7140321731567 seconds
+Rep failed
+Ran REP parallel in 746.3014571666718 seconds
+Rep failed
+Ran REP parallel in 761.8712673187256 seconds
+Rep failed
+Ran REP parallel in 740.0754330158234 seconds
+Rep failed
+Ran REP parallel in 731.8456392288208 seconds
+Rep failed
+Ran REP parallel in 731.4355318546295 seconds
+Rep failed
+Ran REP parallel in 715.7846493721008 seconds
+Rep failed
+Ran REP parallel in 732.6163196563721 seconds
+Rep failed
+Ran REP parallel in 726.5379948616028 seconds
+Rep failed
+Ran REP parallel in 730.2853331565857 seconds
+Rep failed
+Ran REP parallel in 726.2064225673676 seconds
+Rep failed
+Ran REP parallel in 716.3780786991119 seconds
+Rep failed
+Ran REP parallel in 741.1033055782318 seconds
+Rep failed
+Ran REP parallel in 732.0593857765198 seconds
+Rep failed
+Ran REP parallel in 780.074075460434 seconds
+Rep failed
+Ran REP parallel in 777.8118031024933 seconds
+Rep failed
+Ran REP parallel in 762.2582674026489 seconds
+Rep failed
+Ran REP parallel in 760.459529876709 seconds
+Rep failed
+Ran REP parallel in 755.5333626270294 seconds
+Rep failed
+Ran REP parallel in 753.9021594524384 seconds
+Rep failed
+Ran REP parallel in 751.2406508922577 seconds
+Rep failed
+Ran REP parallel in 752.5303139686584 seconds
+Rep failed
+Ran REP parallel in 812.921716928482 seconds
+Rep failed
+Ran REP parallel in 850.5926706790924 seconds
+Rep failed
+Ran REP parallel in 832.7275171279907 seconds
+Rep failed
+Ran REP parallel in 796.4394354820251 seconds
+Rep failed
+Ran REP parallel in 811.8633358478546 seconds
+Rep failed
+Ran REP parallel in 747.5689377784729 seconds
+Rep failed
+Ran REP parallel in 756.9486634731293 seconds
+Rep failed
+Ran REP parallel in 751.0447092056274 seconds
+Rep failed
+Ran REP parallel in 768.9005410671234 seconds
+Rep failed
+Ran REP parallel in 736.0020236968994 seconds
+Rep failed
+Ran REP parallel in 750.7466630935669 seconds
+Rep failed
+Ran REP parallel in 741.7419378757477 seconds
+Rep failed
+Ran REP parallel in 740.0268228054047 seconds
+Rep failed
+Ran REP parallel in 753.5754971504211 seconds
+Rep failed
+Ran REP parallel in 748.6575701236725 seconds
+Rep failed
+Ran REP parallel in 748.4064667224884 seconds
+Rep failed
+Ran REP parallel in 750.762186050415 seconds
+Rep failed
+Ran REP parallel in 742.6491107940674 seconds
+Rep failed
+Ran REP parallel in 738.7012832164764 seconds
+Rep failed
+Ran REP parallel in 755.1293575763702 seconds
+Rep failed
+Ran REP parallel in 735.2724575996399 seconds
+Rep failed
+Ran REP parallel in 745.5356242656708 seconds
+Rep failed
+Ran REP parallel in 752.6292204856873 seconds
+Rep failed
+Ran REP parallel in 755.0111651420593 seconds
+Rep failed
+Ran REP parallel in 759.0139935016632 seconds
+Rep failed
+Ran REP parallel in 745.428159236908 seconds
+Rep failed
+Ran REP parallel in 729.7893302440643 seconds
+Rep failed
+Ran REP parallel in 750.5638325214386 seconds
+11000001111000001010101000000111001101111001000011101011010110010111010011010101011110010010011010000110101101110100110101010010
+[None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None]
+no problems so far
