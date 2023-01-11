@@ -114,8 +114,9 @@ class FuzzyExtractor:
         tmp = ''
         for i in range(len(ctxts)):
             #TODO set j = d[i]^ctxt[i]
-            for j in (d[i] ^ ctxts[i]):
-                tmp += str(j)
+            # for j in (d[i] ^ ctxts[i]):
+            j = d[i] ^ ctxts[i]
+            tmp += str(j)
 
         # print(f'Testing LPN_dec_batch. Process id: {process}\n temp: {len(tmp)}')
         # encode temp into a bitstring
@@ -211,6 +212,8 @@ class FuzzyExtractor:
         
     # w is W' in the paper, ciphertext and T can be found in self.ctexts and self.T respectively
     def rep_parallel(self, w, num_processes=1):
+        # Pre-compute hash of ctxt TODO
+
         finished = multiprocessing.Array('b', False)
         a = np.array_split(range(self.l), 1000)
         b = np.array_split(range(1000), num_processes)
@@ -269,10 +272,7 @@ class FuzzyExtractor:
                     return
 
             # counter += 1
-            if (not any(finished)):
-                # print("")
-                o = None
-            else:
+            if any(finished):
                 print("One of the other threads returned")
                 return 
         
