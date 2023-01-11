@@ -212,12 +212,13 @@ class FuzzyExtractor:
     # w is W' in the paper, ciphertext and T can be found in self.ctexts and self.T respectively
     def rep_parallel(self, w, num_processes=1):
         finished = multiprocessing.Array('b', False)
-        split = np.array_split(range(self.l), num_processes)
+        a = np.array_split(range(self.l), 1000)
+        b = np.array_split(range(1000), num_processes)
         finished = multiprocessing.Manager().list([None for _ in range(num_processes)])
         processes = []
         for x in range(num_processes):
             p = multiprocessing.Process(
-                target=self.rep_process, args=(w, split[x], finished, x)
+                target=self.rep_process, args=(w, [a[i] for i in b[x]], finished, x)
             )
             processes.append(p)
             p.start()
@@ -229,52 +230,52 @@ class FuzzyExtractor:
         print("Rep failed")
         return None
     
-    def rep_process(self, w_, indices, finished, process_id):
+    def rep_process(self, w_, arr_of_indices, finished, process_id):
         counter = 0 # Track how many lockers we've checked
-        samples = []
-        matrices = []
-        ctxts = []
-        t1 = time.time()
-        for i in indices:
-            sample_i = np.array([w_[pos] for pos in self.positions[i]])
-            samples.append(sample_i)
-            matrices.append(i)
-            ctxts.append(self.ctexts[i])
-        # print(f"Rep process {process_id}: Took {time.time() - t1} seconds to gather samples, matrices, and ctexts")
-        dec = self.LPN_dec_batch(matrices, samples, ctxts, process_id)
-
-        if len(dec) > 0: print(dec[:15])
-        # TODO finish this AND test....
-        # STEP iv
-        if not (len(dec) == 0 or dec[:self.t].any()): # i.e., if dec is not None
-            R = ''
-            for c in dec[self.t:self.t + self.xi]:
-                R += str(c)
+        for indices in arr_of_indices:
+            samples = []
+            matrices = []
+            ctxts = []
+            for i in indices:
+                sample_i = np.array([w_[pos] for pos in self.positions[i]])
+                samples.append(sample_i)
+                matrices.append(i)
+                ctxts.append(self.ctexts[i])
             
-            R_1 = ''
-            for c in dec[self.t + self.xi:]:
-                R_1 += str(c)
+            dec = self.LPN_dec_batch(matrices, samples, ctxts, process_id)
 
-            
-            print(R, R_1)
+            if len(dec) > 0: print(dec[:15])
 
-            T_rep = self.mac(R_1, self.ctexts)
+            # STEP iv
+            if not (len(dec) == 0 or dec[:self.t].any()): # i.e., if dec is not None
+                R = ''
+                for c in dec[self.t:self.t + self.xi]:
+                    R += str(c)
+                
+                R_1 = ''
+                for c in dec[self.t + self.xi:]:
+                    R_1 += str(c)
 
-            print(self.T)
-            print(T_rep)
+                # print(R, R_1)
 
-            if T_rep == self.T:
-                print("Check passed")
-                finished[process_id] = R
-                return
+                T_rep = self.mac(R_1, self.ctexts)
+
+                # print(self.T)
+                # print(T_rep)
+
+                if T_rep == self.T:
+                    print("Check passed")
+                    finished[process_id] = R
+                    return
 
             # counter += 1
-            # if counter == 1000:
-            #     if (not any(finished)):
-            #         counter = 0
-            #         print(f"Counter: 1000")
-            #     else:
-            #         return 
+            if (not any(finished)):
+                # print("")
+                o = None
+            else:
+                print("One of the other threads returned")
+                return 
+        
         return
 
 
