@@ -45,6 +45,10 @@ class FuzzyExtractor:
         self.hash = hashlib.sha3_512().name
         print("Done initializing")
 
+        self.gen_timer = 0
+        self.rep_timer = 0
+
+
 
     def bitarr(self, i):
         r = randbits(i)
@@ -85,20 +89,10 @@ class FuzzyExtractor:
         m = [np.array([int(b) for b in nm.strip()]) for nm in noisy_msg]
         
         # Multiply LPN matrices by the LPN keys (subsamples of iris code)
-        # t = time.time()
-        # d = []
-        # for i in range(self.l):
-        #     mat = np.matmul(self.read_matrix(i), keys[i]) % 2
-        #     d.append(mat)
-
-        # print(f"Computed {len(d)} matrices in {time.time() - t} seconds")
-
         t = time.time()
-        d_ = mx_par.gen_helper(self.read_matrix, self.l, keys)
+        d = mx_par.gen_helper(self.read_matrix, self.l, keys)
 
-        print(f"Computed {len(d_)} matrices in {time.time() - t} seconds")
-
-
+        print(f"Computed {len(d)} matrices in {time.time() - t} seconds")
 
         # Compute l ciphetexts
         ctxt = [m[i] ^ d[i] for i in range(self.l)]
@@ -116,15 +110,12 @@ class FuzzyExtractor:
         # d = [np.matmul(self.lpn_matrices[As[i]], keys[i]) % 2 for i in range(len(ctxts))]
 
         # Add (mod 2) d and ctxt (assuming ctxt is a numpy array)
-        # temp = [d[i] ^ ctxts[i] for i in range(len(ctxts))]
-
         tmp = ''
         for i in range(len(ctxts)):
-            #TODO set j = d[i]^ctxt[i]
-            for j in (d[i] ^ ctxts[i]):
+            for j in ((d[i] ^ ctxts[i]) % 2):
                 tmp += str(j)
 
-
+        # print(f'Testing LPN_dec_batch. Process id: {process}\n temp: {len(tmp)}')
         # encode temp into a bitstring
         input_file_name = f'r{process}.rec'
         with open(input_file_name, 'w') as f:
@@ -220,8 +211,8 @@ class FuzzyExtractor:
         # Pre-compute hash of ctxt TODO
 
         finished = multiprocessing.Array('b', False)
-        a = np.array_split(range(self.l), 100)
-        b = np.array_split(range(100), num_processes)
+        a = np.array_split(range(self.l), 1000)
+        b = np.array_split(range(1000), num_processes)
         finished = multiprocessing.Manager().list([None for _ in range(num_processes)])
         processes = []
         for x in range(num_processes):
@@ -239,12 +230,11 @@ class FuzzyExtractor:
         return None
     
     def rep_process(self, w_, arr_of_indices, finished, process_id):
-        counter = 0 # Track how many lockers we've checked
         for indices in arr_of_indices:
             if any(finished):
                 print("One of the other threads returned")
-                return
-            
+                return 
+
             samples = []
             matrices = []
             ctxts = []
@@ -301,7 +291,7 @@ def main():
 
     # toTest = ['04560d877', '04560d858', '04560d828', '04560d855', '04560d731', '04560d892', '04560d698', '04560d721', '04560d888', '04560d643', '04560d727', '04560d712', '04560d843', '04560d886', '04560d702', '04560d671', '04560d649', '04560d670', '04560d848', '04560d715', '04560d837', '04560d890', '04560d679', '04560d882', '04560d699', '04560d860', '04560d714', '04560d844', '04560d875', '04560d654', '04560d696', '04560d857', '04560d705', '04560d887', '04560d664', '04560d690', '04560d694', '04560d847', '04560d885', '04560d648', '04560d645', '04560d659', '04560d653', '04560d638', '04560d661', '04560d681', '04560d686', '04560d729', '04560d853', '04560d637', '04560d719', '04560d676', '04560d883', '04560d831', '04560d835', '04560d674', '04560d651', '04560d709', '04560d689', '04560d845', '04560d830', '04560d856', '04560d677', '04560d673', '04560d642', '04560d695', '04560d834', '04560d728', '04560d732', '04560d725', '04560d644', '04560d710']
     # toTest = ['04569d733', '04569d758', '04569d616', '04569d520', '04569d625', '04569d630', '04569d613', '04569d517', '04569d767', '04569d595', '04569d521', '04569d729', '04569d620', '04569d604', '04569d591', '04569d642', '04569d750', '04569d766', '04569d593', '04569d744', '04569d605', '04569d612', '04569d754', '04569d602', '04569d768', '04569d749', '04569d618', '04569d527', '04569d714', '04569d525', '04569d731', '04569d632', '04569d757', '04569d644', '04569d648', '04569d528', '04569d752', '04569d524', '04569d769', '04569d603', '04569d519', '04569d608', '04569d532', '04569d730', '04569d763', '04569d719', '04569d614', '04569d738', '04569d512', '04569d634', '04569d606']
-    toTest = ['04569d753']
+    toTest = ['04569d733']
 
     m1 = img_opener(mask1, mask=True)
     c1 = [ m1 & c for c in img_opener(code1) ] # XOR all 6 codes (one per Gabor filter pair) with mask here
@@ -309,7 +299,7 @@ def main():
 
 
     t1 = time.time()
-    fe = FuzzyExtractor(l=1000)
+    fe = FuzzyExtractor(l=1000000)
     t2 = time.time()
     print(f"Initialized (generated lpn arrays & GF(2^128)) in {t2 - t1} seconds")
 
