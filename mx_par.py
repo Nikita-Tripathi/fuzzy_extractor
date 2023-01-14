@@ -1,6 +1,7 @@
 # Imports
 import galois
 from pathos.multiprocessing import ProcessingPool as Pool
+from multiprocessing import Pool
 import numpy as np
 
 import time
@@ -32,9 +33,29 @@ def mx_parallel(fm, fx, fL, poly):
 
 
 def mx_serial(fm, fx, fL, poly):
-    t1 = time.time()
     s = galois.Poly.Int(0)
     for i in range(fL):
         s = (s + (pow(fx, i, poly) * fm[i])) % poly
     
     return s
+
+def f(i):
+    '''
+    Gen helper's helper
+    '''
+    a, b = i
+    return np.matmul(np.load(f"LPN_Matrices/{a}.npy"), b) % 2
+
+def gen_helper(read_func, l, keys):
+    '''
+    Takes the matrix read fuction, # of lockers, and the iris subsamples
+    Returns l products of matrix and subsample (binary vectors)
+    '''
+    p = Pool()
+
+    d = p.map(f, zip(range(l), keys))
+
+    p.close()
+    p.join()
+
+    return d

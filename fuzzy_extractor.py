@@ -85,13 +85,20 @@ class FuzzyExtractor:
         m = [np.array([int(b) for b in nm.strip()]) for nm in noisy_msg]
         
         # Multiply LPN matrices by the LPN keys (subsamples of iris code)
-        t = time.time()
-        d = []
-        for i in range(self.l):
-            mat = np.matmul(self.read_matrix(i), keys[i]) % 2
-            d.append(mat)
+        # t = time.time()
+        # d = []
+        # for i in range(self.l):
+        #     mat = np.matmul(self.read_matrix(i), keys[i]) % 2
+        #     d.append(mat)
 
-        print(f"Computed {len(d)} matrices in {time.time() - t} seconds")
+        # print(f"Computed {len(d)} matrices in {time.time() - t} seconds")
+
+        t = time.time()
+        d_ = mx_par.gen_helper(self.read_matrix, self.l, keys)
+
+        print(f"Computed {len(d_)} matrices in {time.time() - t} seconds")
+
+
 
         # Compute l ciphetexts
         ctxt = [m[i] ^ d[i] for i in range(self.l)]
@@ -213,8 +220,8 @@ class FuzzyExtractor:
         # Pre-compute hash of ctxt TODO
 
         finished = multiprocessing.Array('b', False)
-        a = np.array_split(range(self.l), 1000)
-        b = np.array_split(range(1000), num_processes)
+        a = np.array_split(range(self.l), 100)
+        b = np.array_split(range(100), num_processes)
         finished = multiprocessing.Manager().list([None for _ in range(num_processes)])
         processes = []
         for x in range(num_processes):
@@ -302,7 +309,7 @@ def main():
 
 
     t1 = time.time()
-    fe = FuzzyExtractor(l=1000000)
+    fe = FuzzyExtractor(l=1000)
     t2 = time.time()
     print(f"Initialized (generated lpn arrays & GF(2^128)) in {t2 - t1} seconds")
 
