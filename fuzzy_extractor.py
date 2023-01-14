@@ -114,11 +114,10 @@ class FuzzyExtractor:
         tmp = ''
         for i in range(len(ctxts)):
             #TODO set j = d[i]^ctxt[i]
-            # for j in (d[i] ^ ctxts[i]):
-            j = d[i] ^ ctxts[i]
-            tmp += str(j)
+            for j in (d[i] ^ ctxts[i]):
+                tmp += str(j)
 
-        # print(f'Testing LPN_dec_batch. Process id: {process}\n temp: {len(tmp)}')
+
         # encode temp into a bitstring
         input_file_name = f'r{process}.rec'
         with open(input_file_name, 'w') as f:
@@ -174,7 +173,6 @@ class FuzzyExtractor:
         y = galois.Poly.Int(int(key[self.lbd:], base=2))
 
         mx = mx_par.mx_serial(m, x, self.L-4, self.irreducible_poly) 
-        # mx = mx_par.mx_parallel(m, x, self.L-4, self.irreducible_poly) 
 
         T_rep = (pow(x, self.L, self.irreducible_poly) + (pow(x, 2, self.irreducible_poly) * mx) + (x * y)) % self.irreducible_poly
         
@@ -236,6 +234,10 @@ class FuzzyExtractor:
     def rep_process(self, w_, arr_of_indices, finished, process_id):
         counter = 0 # Track how many lockers we've checked
         for indices in arr_of_indices:
+            if any(finished):
+                print("One of the other threads returned")
+                return
+            
             samples = []
             matrices = []
             ctxts = []
@@ -259,22 +261,13 @@ class FuzzyExtractor:
                 for c in dec[self.t + self.xi:]:
                     R_1 += str(c)
 
-                # print(R, R_1)
-
                 T_rep = self.mac(R_1, self.ctexts)
-
-                # print(self.T)
-                # print(T_rep)
 
                 if T_rep == self.T:
                     print("Check passed")
                     finished[process_id] = R
                     return
 
-            # counter += 1
-            if any(finished):
-                print("One of the other threads returned")
-                return 
         
         return
 
@@ -300,7 +293,8 @@ def main():
     code1 = "./test_code/04569d753_code.bmp"
 
     # toTest = ['04560d877', '04560d858', '04560d828', '04560d855', '04560d731', '04560d892', '04560d698', '04560d721', '04560d888', '04560d643', '04560d727', '04560d712', '04560d843', '04560d886', '04560d702', '04560d671', '04560d649', '04560d670', '04560d848', '04560d715', '04560d837', '04560d890', '04560d679', '04560d882', '04560d699', '04560d860', '04560d714', '04560d844', '04560d875', '04560d654', '04560d696', '04560d857', '04560d705', '04560d887', '04560d664', '04560d690', '04560d694', '04560d847', '04560d885', '04560d648', '04560d645', '04560d659', '04560d653', '04560d638', '04560d661', '04560d681', '04560d686', '04560d729', '04560d853', '04560d637', '04560d719', '04560d676', '04560d883', '04560d831', '04560d835', '04560d674', '04560d651', '04560d709', '04560d689', '04560d845', '04560d830', '04560d856', '04560d677', '04560d673', '04560d642', '04560d695', '04560d834', '04560d728', '04560d732', '04560d725', '04560d644', '04560d710']
-    toTest = ['04569d733', '04569d758', '04569d616', '04569d520', '04569d625', '04569d630', '04569d613', '04569d517', '04569d767', '04569d595', '04569d521', '04569d729', '04569d620', '04569d604', '04569d591', '04569d642', '04569d750', '04569d766', '04569d593', '04569d744', '04569d605', '04569d612', '04569d754', '04569d602', '04569d768', '04569d749', '04569d618', '04569d527', '04569d714', '04569d525', '04569d731', '04569d632', '04569d757', '04569d644', '04569d648', '04569d528', '04569d752', '04569d524', '04569d769', '04569d603', '04569d519', '04569d608', '04569d532', '04569d730', '04569d763', '04569d719', '04569d614', '04569d738', '04569d512', '04569d634', '04569d606']
+    # toTest = ['04569d733', '04569d758', '04569d616', '04569d520', '04569d625', '04569d630', '04569d613', '04569d517', '04569d767', '04569d595', '04569d521', '04569d729', '04569d620', '04569d604', '04569d591', '04569d642', '04569d750', '04569d766', '04569d593', '04569d744', '04569d605', '04569d612', '04569d754', '04569d602', '04569d768', '04569d749', '04569d618', '04569d527', '04569d714', '04569d525', '04569d731', '04569d632', '04569d757', '04569d644', '04569d648', '04569d528', '04569d752', '04569d524', '04569d769', '04569d603', '04569d519', '04569d608', '04569d532', '04569d730', '04569d763', '04569d719', '04569d614', '04569d738', '04569d512', '04569d634', '04569d606']
+    toTest = ['04569d753']
 
     m1 = img_opener(mask1, mask=True)
     c1 = [ m1 & c for c in img_opener(code1) ] # XOR all 6 codes (one per Gabor filter pair) with mask here
@@ -326,11 +320,11 @@ def main():
         mt = img_opener(maskt, mask=True)
         ct = [ mt & c for c in img_opener(codet) ] # XOR all 6 codes (one per Gabor filter pair) with mask here
 
-        t = time.time()
+        t_ = time.time()
         b = fe.rep_parallel(ct[5], num_processes=multiprocessing.cpu_count())
         results.append(b)
         t1 = time.time()
-        print(f"Ran REP parallel in {t1 - t} seconds")
+        print(f"Ran REP parallel in {t1 - t_} seconds")
 
 
 

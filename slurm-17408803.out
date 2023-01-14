@@ -1,0 +1,1074 @@
+Encoded 1 blocks, source block size 396, encoded block size 1224
+Transmitted 1224000000 bits
+Done initializing
+Initialized (generated lpn arrays & GF(2^128)) in 2.996100664138794 seconds
+Computed 1000000 matrices in 5586.275294542313 seconds
+Calculated MAC in 45.84416317939758 seconds
+Ran GEN in 6758.63099861145 seconds
+Bad character in binary file (not '0' or '1')
+Bad character in binary file (not '0' or '1')
+Rep failed
+Ran REP parallel in 751.9451110363007 seconds
+Bad character in binary file (not '0' or '1')
+Bad character in binary file (not '0' or '1')
+Rep failed
+Ran REP parallel in 722.2140340805054 seconds
+Warning: Short block (754 long) at end of input file ignored
+Bad character in binary file (not '0' or '1')
+Testing LPN_dec_batch. Process id: 4. Found valid decoding!
+[0 0 0 0 1 1 0 0 1 0 1 0 1 1 1]
+Testing LPN_dec_batch. Process id: 18. Found valid decoding!
+[0 0 0 0 0 1 0 1 1 1 1 1 0 1 1]
+Rep failed
+Ran REP parallel in 720.929694890976 seconds
+Bad character in binary file (not '0' or '1')
+Process Process-196:
+Traceback (most recent call last):
+  File "/global/software/python/3.10.4/lib/python3.10/multiprocessing/process.py", line 315, in _bootstrap
+    self.run()
+  File "/global/software/python/3.10.4/lib/python3.10/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/nikita.tripathi/fuzzy_extractor/fuzzy_extractor.py", line 243, in rep_process
+    dec = self.LPN_dec_batch(matrices, samples, ctxts, process_id)
+  File "/home/nikita.tripathi/fuzzy_extractor/fuzzy_extractor.py", line 146, in LPN_dec_batch
+    decoded = out[valid_msg_index].strip()
+IndexError: list index out of range
+Testing LPN_dec_batch. Process id: 47. Found valid decoding!
+Bad character in binary file (not '0' or '1')
+Testing LPN_dec_batch. Process id: 42. Found valid decoding!
+[0 0 0 1 0 1 0 1 0 0 1 0 0 1 1]
+Testing LPN_dec_batch. Process id: 7. Found valid decoding!
+[1 1 0 0 0 1 0 0 1 1 0 0 1 0 1]
+Testing LPN_dec_batch. Process id: 9. Found valid decoding!
+[1 0 0 1 1 1 0 1 1 0 0 1 1 1 0]
+Testing LPN_dec_batch. Process id: 24. Found valid decoding!
+[1 0 0 0 0 0 0 1 0 0 1 1 0 0 0]
+Testing LPN_dec_batch. Process id: 2. Found valid decoding!
+[0 1 0 1 1 1 1 1 1 0 1 1 1 0 1]
+Testing LPN_dec_batch. Process id: 28. Found valid decoding!
+[0 1 1 0 0 1 0 0 0 0 0 0 0 1 1]
+Testing LPN_dec_batch. Process id: 30. Found valid decoding!
+[0 1 1 0 1 1 1 0 1 0 1 0 0 0 1]
+Testing LPN_dec_batch. Process id: 12. Found valid decoding!
+[0 0 1 1 1 0 0 1 0 0 0 0 1 0 1]
+Testing LPN_dec_batch. Process id: 31. Found valid decoding!
+[0 1 1 1 1 1 0 0 0 0 0 1 0 0 0]
+Testing LPN_dec_batch. Process id: 6. Found valid decoding!
+[0 1 0 0 0 1 1 0 0 0 1 0 0 1 0]
+Testing LPN_dec_batch. Process id: 36. Found valid decoding!
+[0 0 1 0 0 0 0 1 1 1 0 1 1 1 1]
+Testing LPN_dec_batch. Process id: 23. Found valid decoding!
+[1 0 1 0 0 1 1 1 0 0 1 0 0 1 0]
+Testing LPN_dec_batch. Process id: 29. Found valid decoding!
+[0 1 0 0 1 0 0 0 1 0 1 0 1 1 0]
+Testing LPN_dec_batch. Process id: 33. Found valid decoding!
+[0 0 1 0 1 0 0 1 0 0 1 0 1 1 0]
+Testing LPN_dec_batch. Process id: 19. Found valid decoding!
+[1 1 0 1 0 1 0 0 1 0 1 1 0 0 1]
+Testing LPN_dec_batch. Process id: 22. Found valid decoding!
+[1 0 1 0 0 0 0 0 0 0 1 0 1 1 1]
+Testing LPN_dec_batch. Process id: 11. Found valid decoding!
+[1 0 0 1 0 1 0 0 0 1 0 0 1 0 0]
+Testing LPN_dec_batch. Process id: 43. Found valid decoding!
+[1 0 1 0 0 0 0 0 0 0 1 1 1 0 0]
+Testing LPN_dec_batch. Process id: 1. Found valid decoding!
+[1 0 0 0 0 0 1 1 1 1 1 0 1 1 1]
+Testing LPN_dec_batch. Process id: 8. Found valid decoding!
+[0 0 0 1 1 1 0 1 0 0 0 0 0 0 1]
+Testing LPN_dec_batch. Process id: 44. Found valid decoding!
+[0 0 0 0 0 0 0 0 1 0 1 1 0 0 1]
+Testing LPN_dec_batch. Process id: 37. Found valid decoding!
+[0 0 0 0 0 0 0 0 0 0 0 0 0 0 1]
+00111110100011110100101010011011100110011011101001011000100111101111011010000000000110101010110000011101011100010010001011110011 0011100111001110011100011000011011101111100100110001011111000001101000001001001000010100101010101111101100100001100010101101100011000010110110100000100010011001010011001110100000101110110111001111011011011000101000100100101101011001110110000011011011110100
+Calculated MAC in 45.322468280792236 seconds
+x^123 + x^122 + x^121 + x^120 + x^119 + x^116 + x^114 + x^113 + x^112 + x^109 + x^108 + x^107 + x^106 + x^105 + x^104 + x^103 + x^100 + x^99 + x^98 + x^97 + x^95 + x^94 + x^93 + x^92 + x^88 + x^87 + x^83 + x^81 + x^79 + x^77 + x^76 + x^75 + x^73 + x^71 + x^69 + x^61 + x^54 + x^52 + x^51 + x^48 + x^46 + x^45 + x^41 + x^40 + x^38 + x^36 + x^35 + x^32 + x^30 + x^28 + x^26 + x^25 + x^24 + x^19 + x^16 + x^15 + x^14 + x^12 + x^11 + x^9 + x^7 + x^5 + x^2
+x^123 + x^122 + x^121 + x^120 + x^119 + x^116 + x^114 + x^113 + x^112 + x^109 + x^108 + x^107 + x^106 + x^105 + x^104 + x^103 + x^100 + x^99 + x^98 + x^97 + x^95 + x^94 + x^93 + x^92 + x^88 + x^87 + x^83 + x^81 + x^79 + x^77 + x^76 + x^75 + x^73 + x^71 + x^69 + x^61 + x^54 + x^52 + x^51 + x^48 + x^46 + x^45 + x^41 + x^40 + x^38 + x^36 + x^35 + x^32 + x^30 + x^28 + x^26 + x^25 + x^24 + x^19 + x^16 + x^15 + x^14 + x^12 + x^11 + x^9 + x^7 + x^5 + x^2
+Check passed
+Rep succeeded
+Ran REP parallel in 760.5240097045898 seconds
+Bad character in binary file (not '0' or '1')
+Bad character in binary file (not '0' or '1')
+Testing LPN_dec_batch. Process id: 41. Found valid decoding!
+[0 0 0 1 0 0 1 0 1 1 0 0 0 0 0]
+Testing LPN_dec_batch. Process id: 43. Found valid decoding!
+[1 1 1 1 0 0 0 0 1 0 1 0 0 0 1]
+Testing LPN_dec_batch. Process id: 40. Found valid decoding!
+[0 0 1 0 0 0 1 0 0 0 1 0 1 1 0]
+Testing LPN_dec_batch. Process id: 42. Found valid decoding!
+[0 0 1 0 0 0 0 0 1 0 0 0 1 0 0]
+Testing LPN_dec_batch. Process id: 45. Found valid decoding!
+[1 0 0 1 0 0 0 1 0 1 0 1 1 1 0]
+Testing LPN_dec_batch. Process id: 44. Found valid decoding!
+[0 1 1 1 1 1 1 1 1 0 1 1 1 0 1]
+Testing LPN_dec_batch. Process id: 1. Found valid decoding!
+[1 0 0 0 0 1 0 1 1 1 0 0 1 0 1]
+Testing LPN_dec_batch. Process id: 3. Found valid decoding!
+[1 1 0 0 1 0 0 1 1 0 0 1 1 0 0]
+Testing LPN_dec_batch. Process id: 39. Found valid decoding!
+[1 0 1 1 0 0 1 1 0 1 1 0 0 1 1]
+Testing LPN_dec_batch. Process id: 2. Found valid decoding!
+[0 1 0 0 1 0 1 1 0 0 0 0 0 0 0]
+Testing LPN_dec_batch. Process id: 4. Found valid decoding!
+[0 0 1 1 0 1 1 1 1 1 0 1 1 1 0]
+Testing LPN_dec_batch. Process id: 37. Found valid decoding!
+[1 1 1 0 1 1 1 0 1 0 0 0 1 0 1]
+Testing LPN_dec_batch. Process id: 18. Found valid decoding!
+[1 1 0 0 1 1 1 0 1 0 0 1 0 0 1]
+Testing LPN_dec_batch. Process id: 13. Found valid decoding!
+[1 0 1 1 1 1 0 0 0 1 1 0 0 1 0]
+Testing LPN_dec_batch. Process id: 28. Found valid decoding!
+[1 1 1 1 0 1 1 1 0 1 0 1 1 0 0]
+Testing LPN_dec_batch. Process id: 32. Found valid decoding!
+[1 0 1 0 1 1 1 0 1 1 1 0 1 1 1]
+Testing LPN_dec_batch. Process id: 11. Found valid decoding!
+[1 1 0 0 0 0 1 1 1 1 1 0 1 1 0]
+Testing LPN_dec_batch. Process id: 7. Found valid decoding!
+[0 0 0 1 0 1 1 0 1 0 0 1 1 1 1]
+Testing LPN_dec_batch. Process id: 33. Found valid decoding!
+[0 1 1 0 1 0 0 0 0 1 0 1 0 1 1]
+Testing LPN_dec_batch. Process id: 36. Found valid decoding!
+[0 0 0 0 0 0 0 0 1 0 1 1 0 0 0]
+Testing LPN_dec_batch. Process id: 26. Found valid decoding!
+[1 1 0 1 0 1 1 0 0 1 1 1 0 1 0]
+Testing LPN_dec_batch. Process id: 20. Found valid decoding!
+[1 0 1 1 0 1 0 0 1 0 1 0 1 0 0]
+Testing LPN_dec_batch. Process id: 10. Found valid decoding!
+[0 0 1 1 0 0 1 1 1 0 1 1 0 1 1]
+Testing LPN_dec_batch. Process id: 15. Found valid decoding!
+[1 0 1 0 1 1 1 0 0 1 0 0 0 1 1]
+Testing LPN_dec_batch. Process id: 38. Found valid decoding!
+[0 0 0 1 1 1 1 1 0 0 1 1 0 0 1]
+Testing LPN_dec_batch. Process id: 34. Found valid decoding!
+[0 0 1 1 0 1 0 1 1 1 0 0 0 1 1]
+Testing LPN_dec_batch. Process id: 14. Found valid decoding!
+[1 1 1 0 1 1 0 1 0 1 1 0 1 1 0]
+Testing LPN_dec_batch. Process id: 16. Found valid decoding!
+[1 0 1 1 1 1 1 0 1 1 1 1 0 0 0]
+Testing LPN_dec_batch. Process id: 23. Found valid decoding!
+[0 1 0 0 1 1 0 1 1 1 0 0 1 0 0]
+Testing LPN_dec_batch. Process id: 8. Found valid decoding!
+[1 0 0 0 1 1 1 1 0 1 1 1 1 0 1]
+Testing LPN_dec_batch. Process id: 25. Found valid decoding!
+[0 0 0 0 0 0 0 0 0 0 0 0 0 0 1]
+00111110100011110100101010011011100110011011101001011000100111101111011010000000000110101010110000011101011100010010001011110011 0011100111001110011100011000011011101111100100110001011111000001101000001001001000010100101010101111101100100001100010101101100011000010110110100000100010011001010011001110100000101110110111001111011011011000101000100100101101011001110110000011011011110100
+Calculated MAC in 45.630699634552 seconds
+x^123 + x^122 + x^121 + x^120 + x^119 + x^116 + x^114 + x^113 + x^112 + x^109 + x^108 + x^107 + x^106 + x^105 + x^104 + x^103 + x^100 + x^99 + x^98 + x^97 + x^95 + x^94 + x^93 + x^92 + x^88 + x^87 + x^83 + x^81 + x^79 + x^77 + x^76 + x^75 + x^73 + x^71 + x^69 + x^61 + x^54 + x^52 + x^51 + x^48 + x^46 + x^45 + x^41 + x^40 + x^38 + x^36 + x^35 + x^32 + x^30 + x^28 + x^26 + x^25 + x^24 + x^19 + x^16 + x^15 + x^14 + x^12 + x^11 + x^9 + x^7 + x^5 + x^2
+x^123 + x^122 + x^121 + x^120 + x^119 + x^116 + x^114 + x^113 + x^112 + x^109 + x^108 + x^107 + x^106 + x^105 + x^104 + x^103 + x^100 + x^99 + x^98 + x^97 + x^95 + x^94 + x^93 + x^92 + x^88 + x^87 + x^83 + x^81 + x^79 + x^77 + x^76 + x^75 + x^73 + x^71 + x^69 + x^61 + x^54 + x^52 + x^51 + x^48 + x^46 + x^45 + x^41 + x^40 + x^38 + x^36 + x^35 + x^32 + x^30 + x^28 + x^26 + x^25 + x^24 + x^19 + x^16 + x^15 + x^14 + x^12 + x^11 + x^9 + x^7 + x^5 + x^2
+Check passed
+Testing LPN_dec_batch. Process id: 35. Found valid decoding!
+[0 1 0 1 0 0 1 1 0 0 1 1 0 1 0]
+Testing LPN_dec_batch. Process id: 5. Found valid decoding!
+[1 1 0 1 1 1 0 0 1 1 1 0 0 0 0]
+Rep succeeded
+Ran REP parallel in 770.2583122253418 seconds
+Bad character in binary file (not '0' or '1')
+Bad character in binary file (not '0' or '1')
+Rep failed
+Ran REP parallel in 768.0330908298492 seconds
+Bad character in binary file (not '0' or '1')
+Bad character in binary file (not '0' or '1')
+Testing LPN_dec_batch. Process id: 19. Found valid decoding!
+[1 0 0 0 1 1 1 0 0 1 0 0 1 0 1]
+Rep failed
+Ran REP parallel in 716.6586837768555 seconds
+Bad character in binary file (not '0' or '1')
+Process Process-392:
+Traceback (most recent call last):
+  File "/global/software/python/3.10.4/lib/python3.10/multiprocessing/process.py", line 315, in _bootstrap
+    self.run()
+  File "/global/software/python/3.10.4/lib/python3.10/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/nikita.tripathi/fuzzy_extractor/fuzzy_extractor.py", line 243, in rep_process
+    dec = self.LPN_dec_batch(matrices, samples, ctxts, process_id)
+  File "/home/nikita.tripathi/fuzzy_extractor/fuzzy_extractor.py", line 146, in LPN_dec_batch
+    decoded = out[valid_msg_index].strip()
+IndexError: list index out of range
+Testing LPN_dec_batch. Process id: 47. Found valid decoding!
+Bad character in binary file (not '0' or '1')
+Process Process-391:
+Traceback (most recent call last):
+  File "/global/software/python/3.10.4/lib/python3.10/multiprocessing/process.py", line 315, in _bootstrap
+    self.run()
+  File "/global/software/python/3.10.4/lib/python3.10/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/nikita.tripathi/fuzzy_extractor/fuzzy_extractor.py", line 243, in rep_process
+    dec = self.LPN_dec_batch(matrices, samples, ctxts, process_id)
+  File "/home/nikita.tripathi/fuzzy_extractor/fuzzy_extractor.py", line 146, in LPN_dec_batch
+    decoded = out[valid_msg_index].strip()
+IndexError: list index out of range
+Testing LPN_dec_batch. Process id: 46. Found valid decoding!
+Testing LPN_dec_batch. Process id: 44. Found valid decoding!
+[1 0 1 1 0 1 0 0 0 1 1 0 1 1 1]
+Testing LPN_dec_batch. Process id: 43. Found valid decoding!
+[1 0 0 1 1 0 1 1 1 0 1 0 0 1 0]
+Testing LPN_dec_batch. Process id: 39. Found valid decoding!
+[0 1 0 1 0 1 1 0 1 0 1 1 1 1 0]
+Testing LPN_dec_batch. Process id: 41. Found valid decoding!
+[0 1 1 0 1 1 0 0 0 0 1 1 0 0 1]
+Testing LPN_dec_batch. Process id: 42. Found valid decoding!
+[0 0 1 0 1 1 0 0 0 0 0 0 1 1 1]
+Testing LPN_dec_batch. Process id: 33. Found valid decoding!
+[0 1 0 1 0 1 1 0 0 1 0 0 1 0 1]
+Testing LPN_dec_batch. Process id: 12. Found valid decoding!
+[0 1 0 1 0 0 0 0 0 0 0 1 1 1 1]
+Testing LPN_dec_batch. Process id: 3. Found valid decoding!
+[1 1 0 0 1 1 0 0 0 1 0 0 1 1 0]
+Testing LPN_dec_batch. Process id: 34. Found valid decoding!
+[1 0 0 1 1 0 1 1 1 1 1 1 1 1 0]
+Testing LPN_dec_batch. Process id: 31. Found valid decoding!
+[1 0 1 1 0 1 0 1 0 0 0 1 1 0 1]
+Testing LPN_dec_batch. Process id: 17. Found valid decoding!
+[1 1 1 1 1 0 0 0 0 0 1 1 1 0 0]
+Testing LPN_dec_batch. Process id: 26. Found valid decoding!
+[0 0 1 1 1 1 0 0 1 0 0 0 0 0 1]
+Testing LPN_dec_batch. Process id: 4. Found valid decoding!
+[0 0 1 1 0 1 1 1 0 1 0 1 0 1 1]
+Testing LPN_dec_batch. Process id: 13. Found valid decoding!
+[1 1 0 0 0 1 0 1 0 1 0 1 0 0 0]
+Testing LPN_dec_batch. Process id: 10. Found valid decoding!
+[0 0 0 0 0 0 0 1 1 1 0 0 0 0 0]
+Testing LPN_dec_batch. Process id: 8. Found valid decoding!
+[1 0 1 1 0 0 1 0 1 1 1 0 1 0 1]
+Testing LPN_dec_batch. Process id: 19. Found valid decoding!
+[1 0 1 0 0 1 0 1 1 1 0 1 0 1 0]
+Testing LPN_dec_batch. Process id: 29. Found valid decoding!
+[1 0 1 1 1 1 0 0 1 0 0 1 1 0 0]
+Testing LPN_dec_batch. Process id: 6. Found valid decoding!
+[1 0 0 0 1 1 0 1 0 0 1 0 1 0 0]
+Testing LPN_dec_batch. Process id: 32. Found valid decoding!
+[0 0 1 1 1 0 1 1 0 1 1 1 1 0 0]
+Testing LPN_dec_batch. Process id: 37. Found valid decoding!
+[1 0 1 0 1 0 0 0 0 0 0 0 0 0 0]
+Testing LPN_dec_batch. Process id: 22. Found valid decoding!
+[1 1 1 1 0 0 1 1 1 0 1 1 1 0 1]
+Testing LPN_dec_batch. Process id: 38. Found valid decoding!
+[1 0 1 0 0 1 1 0 0 0 1 0 1 1 0]
+Testing LPN_dec_batch. Process id: 25. Found valid decoding!
+[0 0 0 0 0 0 0 0 0 0 0 0 0 0 1]
+00111110100011110100101010011011100110011011101001011000100111101111011010000000000110101010110000011101011100010010001011110011 0011100111001110011100011000011011101111100100110001011111000001101000001001001000010100101010101111101100100001100010101101100011000010110110100000100010011001010011001110100000101110110111001111011011011000101000100100101101011001110110000011011011110100
+Calculated MAC in 45.48549771308899 seconds
+x^123 + x^122 + x^121 + x^120 + x^119 + x^116 + x^114 + x^113 + x^112 + x^109 + x^108 + x^107 + x^106 + x^105 + x^104 + x^103 + x^100 + x^99 + x^98 + x^97 + x^95 + x^94 + x^93 + x^92 + x^88 + x^87 + x^83 + x^81 + x^79 + x^77 + x^76 + x^75 + x^73 + x^71 + x^69 + x^61 + x^54 + x^52 + x^51 + x^48 + x^46 + x^45 + x^41 + x^40 + x^38 + x^36 + x^35 + x^32 + x^30 + x^28 + x^26 + x^25 + x^24 + x^19 + x^16 + x^15 + x^14 + x^12 + x^11 + x^9 + x^7 + x^5 + x^2
+x^123 + x^122 + x^121 + x^120 + x^119 + x^116 + x^114 + x^113 + x^112 + x^109 + x^108 + x^107 + x^106 + x^105 + x^104 + x^103 + x^100 + x^99 + x^98 + x^97 + x^95 + x^94 + x^93 + x^92 + x^88 + x^87 + x^83 + x^81 + x^79 + x^77 + x^76 + x^75 + x^73 + x^71 + x^69 + x^61 + x^54 + x^52 + x^51 + x^48 + x^46 + x^45 + x^41 + x^40 + x^38 + x^36 + x^35 + x^32 + x^30 + x^28 + x^26 + x^25 + x^24 + x^19 + x^16 + x^15 + x^14 + x^12 + x^11 + x^9 + x^7 + x^5 + x^2
+Check passed
+Testing LPN_dec_batch. Process id: 20. Found valid decoding!
+[0 1 1 1 0 1 0 1 0 1 1 1 1 0 1]
+Testing LPN_dec_batch. Process id: 40. Found valid decoding!
+[0 1 0 0 0 1 0 1 0 1 1 0 1 0 0]
+Testing LPN_dec_batch. Process id: 28. Found valid decoding!
+[1 0 0 1 0 0 0 0 1 1 1 1 1 0 1]
+Testing LPN_dec_batch. Process id: 18. Found valid decoding!
+[0 1 1 0 0 1 0 0 0 1 1 0 1 0 1]
+Testing LPN_dec_batch. Process id: 21. Found valid decoding!
+[0 1 0 0 0 1 0 0 1 1 1 1 1 0 1]
+Testing LPN_dec_batch. Process id: 15. Found valid decoding!
+[1 0 0 1 1 1 0 0 0 1 0 1 1 0 0]
+Testing LPN_dec_batch. Process id: 27. Found valid decoding!
+[0 0 0 0 0 0 0 0 0 0 0 0 0 0 1]
+00111110100011110100101010011011100110011011101001011000100111101111011010000000000110101010110000011101011100010010001011110011 0011100111001110011100011000011011101111100100110001011111000001101000001001001000010100101010101111101100100001100010101101100011000010110110100000100010011001010011001110100000101110110111001111011011011000101000100100101101011001110110000011011011110100
+Calculated MAC in 45.41472148895264 seconds
+x^123 + x^122 + x^121 + x^120 + x^119 + x^116 + x^114 + x^113 + x^112 + x^109 + x^108 + x^107 + x^106 + x^105 + x^104 + x^103 + x^100 + x^99 + x^98 + x^97 + x^95 + x^94 + x^93 + x^92 + x^88 + x^87 + x^83 + x^81 + x^79 + x^77 + x^76 + x^75 + x^73 + x^71 + x^69 + x^61 + x^54 + x^52 + x^51 + x^48 + x^46 + x^45 + x^41 + x^40 + x^38 + x^36 + x^35 + x^32 + x^30 + x^28 + x^26 + x^25 + x^24 + x^19 + x^16 + x^15 + x^14 + x^12 + x^11 + x^9 + x^7 + x^5 + x^2
+x^123 + x^122 + x^121 + x^120 + x^119 + x^116 + x^114 + x^113 + x^112 + x^109 + x^108 + x^107 + x^106 + x^105 + x^104 + x^103 + x^100 + x^99 + x^98 + x^97 + x^95 + x^94 + x^93 + x^92 + x^88 + x^87 + x^83 + x^81 + x^79 + x^77 + x^76 + x^75 + x^73 + x^71 + x^69 + x^61 + x^54 + x^52 + x^51 + x^48 + x^46 + x^45 + x^41 + x^40 + x^38 + x^36 + x^35 + x^32 + x^30 + x^28 + x^26 + x^25 + x^24 + x^19 + x^16 + x^15 + x^14 + x^12 + x^11 + x^9 + x^7 + x^5 + x^2
+Check passed
+Rep succeeded
+Ran REP parallel in 752.0264880657196 seconds
+Bad character in binary file (not '0' or '1')
+Rep failed
+Ran REP parallel in 707.8896939754486 seconds
+Bad character in binary file (not '0' or '1')
+Testing LPN_dec_batch. Process id: 32. Found valid decoding!
+[0 0 0 0 0 0 0 1 0 1 0 0 0 1 1]
+Testing LPN_dec_batch. Process id: 21. Found valid decoding!
+[1 0 1 1 0 0 0 0 1 0 1 0 1 0 0]
+Rep failed
+Ran REP parallel in 715.9860887527466 seconds
+Bad character in binary file (not '0' or '1')
+Process Process-538:
+Traceback (most recent call last):
+  File "/global/software/python/3.10.4/lib/python3.10/multiprocessing/process.py", line 315, in _bootstrap
+    self.run()
+  File "/global/software/python/3.10.4/lib/python3.10/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/nikita.tripathi/fuzzy_extractor/fuzzy_extractor.py", line 243, in rep_process
+    dec = self.LPN_dec_batch(matrices, samples, ctxts, process_id)
+  File "/home/nikita.tripathi/fuzzy_extractor/fuzzy_extractor.py", line 146, in LPN_dec_batch
+    decoded = out[valid_msg_index].strip()
+IndexError: list index out of range
+Testing LPN_dec_batch. Process id: 46. Found valid decoding!
+Testing LPN_dec_batch. Process id: 37. Found valid decoding!
+[0 1 1 0 1 1 0 0 1 1 1 1 0 1 1]
+Testing LPN_dec_batch. Process id: 42. Found valid decoding!
+[0 0 0 0 1 1 1 1 1 0 0 0 1 1 1]
+Testing LPN_dec_batch. Process id: 4. Found valid decoding!
+[0 0 0 1 1 1 0 1 1 1 0 1 0 0 1]
+Testing LPN_dec_batch. Process id: 7. Found valid decoding!
+[0 0 0 1 1 0 1 0 1 1 0 0 0 0 1]
+Testing LPN_dec_batch. Process id: 13. Found valid decoding!
+[0 1 0 1 1 0 1 1 0 1 1 1 0 0 0]
+Testing LPN_dec_batch. Process id: 8. Found valid decoding!
+[1 0 0 0 1 0 0 0 0 0 0 1 1 0 1]
+Rep failed
+Ran REP parallel in 769.4474415779114 seconds
+Testing LPN_dec_batch. Process id: 47. Found valid decoding!
+[1 1 0 1 1 1 0 1 1 1 0 1 0 1 0]
+Bad character in binary file (not '0' or '1')
+Testing LPN_dec_batch. Process id: 40. Found valid decoding!
+[0 1 0 0 0 1 0 0 0 1 0 0 1 0 1]
+Testing LPN_dec_batch. Process id: 43. Found valid decoding!
+[1 1 0 1 1 0 1 0 0 0 0 0 0 0 1]
+Testing LPN_dec_batch. Process id: 10. Found valid decoding!
+[1 1 0 1 0 1 1 0 0 1 0 0 0 1 0]
+Testing LPN_dec_batch. Process id: 38. Found valid decoding!
+[0 1 0 1 0 1 1 1 0 1 1 0 1 0 0]
+Testing LPN_dec_batch. Process id: 37. Found valid decoding!
+[1 1 0 0 0 1 1 0 1 1 0 1 1 0 0]
+Testing LPN_dec_batch. Process id: 0. Found valid decoding!
+[1 1 0 1 0 0 1 1 1 1 0 0 1 1 0]
+Testing LPN_dec_batch. Process id: 21. Found valid decoding!
+[0 0 0 1 1 1 1 1 0 0 0 0 1 0 0]
+Testing LPN_dec_batch. Process id: 42. Found valid decoding!
+[1 0 1 1 1 0 1 1 1 1 1 0 1 0 1]
+Testing LPN_dec_batch. Process id: 39. Found valid decoding!
+[0 1 0 1 1 0 1 1 1 0 1 0 1 1 1]
+Testing LPN_dec_batch. Process id: 5. Found valid decoding!
+[1 0 1 1 1 0 1 0 0 1 1 0 1 1 1]
+Testing LPN_dec_batch. Process id: 8. Found valid decoding!
+[1 1 1 0 0 0 0 1 0 0 0 1 0 0 1]
+Testing LPN_dec_batch. Process id: 9. Found valid decoding!
+[0 0 0 0 1 0 1 0 1 1 0 0 0 0 0]
+Testing LPN_dec_batch. Process id: 24. Found valid decoding!
+[0 0 0 1 1 1 0 1 0 0 1 0 1 0 1]
+Testing LPN_dec_batch. Process id: 18. Found valid decoding!
+[1 1 1 0 1 0 1 0 0 1 0 0 1 0 0]
+Testing LPN_dec_batch. Process id: 26. Found valid decoding!
+[1 1 0 1 1 1 1 1 0 0 1 1 0 0 1]
+Testing LPN_dec_batch. Process id: 35. Found valid decoding!
+[1 1 1 0 0 0 1 0 1 1 0 1 1 0 0]
+Testing LPN_dec_batch. Process id: 16. Found valid decoding!
+[0 0 0 0 0 0 0 0 0 0 0 0 0 0 1]
+00111110100011110100101010011011100110011011101001011000100111101111011010000000000110101010110000011101011100010010001011110011 0011100111001110011100011000011011101111100100110001011111000001101000001001001000010100101010101111101100100001100010101101100011000010110110100000100010011001010011001110100000101110110111001111011011011000101000100100101101011001110110000011011011110100
+Calculated MAC in 45.56367063522339 seconds
+x^123 + x^122 + x^121 + x^120 + x^119 + x^116 + x^114 + x^113 + x^112 + x^109 + x^108 + x^107 + x^106 + x^105 + x^104 + x^103 + x^100 + x^99 + x^98 + x^97 + x^95 + x^94 + x^93 + x^92 + x^88 + x^87 + x^83 + x^81 + x^79 + x^77 + x^76 + x^75 + x^73 + x^71 + x^69 + x^61 + x^54 + x^52 + x^51 + x^48 + x^46 + x^45 + x^41 + x^40 + x^38 + x^36 + x^35 + x^32 + x^30 + x^28 + x^26 + x^25 + x^24 + x^19 + x^16 + x^15 + x^14 + x^12 + x^11 + x^9 + x^7 + x^5 + x^2
+x^123 + x^122 + x^121 + x^120 + x^119 + x^116 + x^114 + x^113 + x^112 + x^109 + x^108 + x^107 + x^106 + x^105 + x^104 + x^103 + x^100 + x^99 + x^98 + x^97 + x^95 + x^94 + x^93 + x^92 + x^88 + x^87 + x^83 + x^81 + x^79 + x^77 + x^76 + x^75 + x^73 + x^71 + x^69 + x^61 + x^54 + x^52 + x^51 + x^48 + x^46 + x^45 + x^41 + x^40 + x^38 + x^36 + x^35 + x^32 + x^30 + x^28 + x^26 + x^25 + x^24 + x^19 + x^16 + x^15 + x^14 + x^12 + x^11 + x^9 + x^7 + x^5 + x^2
+Check passed
+Testing LPN_dec_batch. Process id: 14. Found valid decoding!
+[1 1 1 0 1 0 1 1 1 1 0 1 1 1 0]
+Testing LPN_dec_batch. Process id: 33. Found valid decoding!
+[0 1 1 1 0 0 0 0 1 0 1 0 1 1 0]
+Testing LPN_dec_batch. Process id: 29. Found valid decoding!
+[1 0 0 1 1 1 0 1 0 1 1 1 0 1 0]
+Testing LPN_dec_batch. Process id: 13. Found valid decoding!
+[0 0 1 1 1 0 1 0 0 0 1 0 1 1 0]
+Testing LPN_dec_batch. Process id: 31. Found valid decoding!
+[0 1 1 0 0 0 1 0 1 1 1 1 1 0 1]
+Testing LPN_dec_batch. Process id: 15. Found valid decoding!
+[1 1 0 1 0 0 1 0 0 0 1 1 0 1 0]
+Testing LPN_dec_batch. Process id: 30. Found valid decoding!
+[0 1 0 0 1 0 0 0 1 0 1 1 0 0 0]
+Testing LPN_dec_batch. Process id: 28. Found valid decoding!
+[0 1 0 0 1 1 1 1 0 1 0 1 0 0 0]
+Testing LPN_dec_batch. Process id: 3. Found valid decoding!
+[0 0 0 0 0 0 0 0 0 0 0 0 0 0 1]
+00111110100011110100101010011011100110011011101001011000100111101111011010000000000110101010110000011101011100010010001011110011 0011100111001110011100011000011011101111100100110001011111000001101000001001001000010100101010101111101100100001100010101101100011000010110110100000100010011001010011001110100000101110110111001111011011011000101000100100101101011001110110000011011011110100
+Calculated MAC in 45.46392273902893 seconds
+x^123 + x^122 + x^121 + x^120 + x^119 + x^116 + x^114 + x^113 + x^112 + x^109 + x^108 + x^107 + x^106 + x^105 + x^104 + x^103 + x^100 + x^99 + x^98 + x^97 + x^95 + x^94 + x^93 + x^92 + x^88 + x^87 + x^83 + x^81 + x^79 + x^77 + x^76 + x^75 + x^73 + x^71 + x^69 + x^61 + x^54 + x^52 + x^51 + x^48 + x^46 + x^45 + x^41 + x^40 + x^38 + x^36 + x^35 + x^32 + x^30 + x^28 + x^26 + x^25 + x^24 + x^19 + x^16 + x^15 + x^14 + x^12 + x^11 + x^9 + x^7 + x^5 + x^2
+x^123 + x^122 + x^121 + x^120 + x^119 + x^116 + x^114 + x^113 + x^112 + x^109 + x^108 + x^107 + x^106 + x^105 + x^104 + x^103 + x^100 + x^99 + x^98 + x^97 + x^95 + x^94 + x^93 + x^92 + x^88 + x^87 + x^83 + x^81 + x^79 + x^77 + x^76 + x^75 + x^73 + x^71 + x^69 + x^61 + x^54 + x^52 + x^51 + x^48 + x^46 + x^45 + x^41 + x^40 + x^38 + x^36 + x^35 + x^32 + x^30 + x^28 + x^26 + x^25 + x^24 + x^19 + x^16 + x^15 + x^14 + x^12 + x^11 + x^9 + x^7 + x^5 + x^2
+Check passed
+Rep succeeded
+Ran REP parallel in 752.096194267273 seconds
+Bad character in binary file (not '0' or '1')
+Testing LPN_dec_batch. Process id: 45. Found valid decoding!
+[1 0 1 0 1 0 0 1 0 0 0 1 1 0 1]
+Rep failed
+Ran REP parallel in 712.257007598877 seconds
+Bad character in binary file (not '0' or '1')
+Bad character in binary file (not '0' or '1')
+Rep failed
+Ran REP parallel in 721.4212620258331 seconds
+Bad character in binary file (not '0' or '1')
+Rep failed
+Ran REP parallel in 758.2522444725037 seconds
+Bad character in binary file (not '0' or '1')
+Testing LPN_dec_batch. Process id: 40. Found valid decoding!
+[1 0 0 1 0 0 0 0 0 0 1 0 0 0 1]
+Rep failed
+Ran REP parallel in 734.0869469642639 seconds
+Testing LPN_dec_batch. Process id: 47. Found valid decoding!
+[0 0 1 0 0 1 1 0 1 0 1 0 1 0 1]
+Bad character in binary file (not '0' or '1')
+Process Process-832:
+Traceback (most recent call last):
+  File "/global/software/python/3.10.4/lib/python3.10/multiprocessing/process.py", line 315, in _bootstrap
+    self.run()
+  File "/global/software/python/3.10.4/lib/python3.10/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/nikita.tripathi/fuzzy_extractor/fuzzy_extractor.py", line 243, in rep_process
+    dec = self.LPN_dec_batch(matrices, samples, ctxts, process_id)
+  File "/home/nikita.tripathi/fuzzy_extractor/fuzzy_extractor.py", line 146, in LPN_dec_batch
+    decoded = out[valid_msg_index].strip()
+IndexError: list index out of range
+Testing LPN_dec_batch. Process id: 46. Found valid decoding!
+Testing LPN_dec_batch. Process id: 1. Found valid decoding!
+[0 0 1 0 1 1 1 1 0 1 1 1 0 1 1]
+Testing LPN_dec_batch. Process id: 0. Found valid decoding!
+[1 1 0 1 1 0 1 1 0 0 1 0 1 0 0]
+Testing LPN_dec_batch. Process id: 42. Found valid decoding!
+[1 1 1 1 0 1 1 1 0 1 1 1 1 1 0]
+Testing LPN_dec_batch. Process id: 4. Found valid decoding!
+[0 0 0 0 1 1 0 0 1 1 0 1 1 1 0]
+Testing LPN_dec_batch. Process id: 3. Found valid decoding!
+[0 0 1 1 1 1 0 1 0 0 0 1 0 1 1]
+Testing LPN_dec_batch. Process id: 35. Found valid decoding!
+[0 1 0 1 1 1 0 1 1 1 1 0 0 0 1]
+Testing LPN_dec_batch. Process id: 39. Found valid decoding!
+[1 1 0 1 0 1 0 1 1 1 0 1 0 0 1]
+Testing LPN_dec_batch. Process id: 45. Found valid decoding!
+[1 1 0 0 1 1 0 0 1 0 1 1 0 0 1]
+Testing LPN_dec_batch. Process id: 38. Found valid decoding!
+[0 1 0 0 0 0 0 1 1 1 0 1 1 0 0]
+Testing LPN_dec_batch. Process id: 5. Found valid decoding!
+[0 0 0 0 0 1 0 0 0 1 1 0 0 1 1]
+Testing LPN_dec_batch. Process id: 8. Found valid decoding!
+[1 0 0 0 0 1 0 1 1 0 1 0 0 0 1]
+Testing LPN_dec_batch. Process id: 10. Found valid decoding!
+[0 1 1 0 0 1 0 1 0 1 1 0 0 1 0]
+Testing LPN_dec_batch. Process id: 9. Found valid decoding!
+[1 0 0 0 0 0 1 1 0 0 1 0 1 1 0]
+Testing LPN_dec_batch. Process id: 19. Found valid decoding!
+[1 0 0 1 1 0 1 1 1 0 1 1 1 0 1]
+Testing LPN_dec_batch. Process id: 33. Found valid decoding!
+[0 0 0 0 1 1 0 0 0 1 0 1 1 0 0]
+Testing LPN_dec_batch. Process id: 18. Found valid decoding!
+[0 1 0 1 0 0 0 0 0 1 0 0 1 1 0]
+Testing LPN_dec_batch. Process id: 17. Found valid decoding!
+[0 1 0 1 0 1 0 0 1 0 0 0 1 1 1]
+Testing LPN_dec_batch. Process id: 13. Found valid decoding!
+[1 0 1 1 1 0 0 1 1 1 0 1 1 1 1]
+Testing LPN_dec_batch. Process id: 43. Found valid decoding!
+[0 1 0 1 0 1 0 1 0 0 1 0 1 0 0]
+Testing LPN_dec_batch. Process id: 27. Found valid decoding!
+[1 1 0 1 0 1 1 1 0 1 1 0 1 0 0]
+Testing LPN_dec_batch. Process id: 24. Found valid decoding!
+[0 1 1 1 1 0 0 0 1 0 0 0 1 0 0]
+Testing LPN_dec_batch. Process id: 32. Found valid decoding!
+[1 0 0 0 1 1 0 0 0 1 1 1 0 0 1]
+Testing LPN_dec_batch. Process id: 21. Found valid decoding!
+[1 0 1 1 1 1 0 1 0 0 1 1 1 0 1]
+Testing LPN_dec_batch. Process id: 28. Found valid decoding!
+[1 0 0 1 0 0 0 1 1 1 0 0 0 1 0]
+Testing LPN_dec_batch. Process id: 41. Found valid decoding!
+[0 1 1 1 1 1 1 0 1 0 0 0 1 1 0]
+Testing LPN_dec_batch. Process id: 29. Found valid decoding!
+[1 0 1 1 1 0 0 0 1 1 1 1 1 1 0]
+Testing LPN_dec_batch. Process id: 12. Found valid decoding!
+[1 1 0 0 0 1 1 0 1 1 1 1 0 0 1]
+Testing LPN_dec_batch. Process id: 31. Found valid decoding!
+[1 0 1 0 0 0 1 0 1 1 0 1 1 1 1]
+Testing LPN_dec_batch. Process id: 44. Found valid decoding!
+[1 1 0 0 1 1 0 0 1 0 1 1 0 0 1]
+Testing LPN_dec_batch. Process id: 40. Found valid decoding!
+[0 0 0 0 0 0 1 0 1 1 1 1 1 1 1]
+Testing LPN_dec_batch. Process id: 34. Found valid decoding!
+[0 1 0 0 0 0 0 1 1 1 0 1 1 0 0]
+Testing LPN_dec_batch. Process id: 26. Found valid decoding!
+[0 0 0 1 0 0 0 1 0 0 0 0 0 1 1]
+Testing LPN_dec_batch. Process id: 37. Found valid decoding!
+[1 1 0 0 0 0 0 0 1 1 0 1 1 0 0]
+Testing LPN_dec_batch. Process id: 23. Found valid decoding!
+[0 1 0 1 0 1 1 0 0 1 0 1 0 1 0]
+Testing LPN_dec_batch. Process id: 6. Found valid decoding!
+[1 0 1 0 0 1 0 1 0 1 0 1 0 1 1]
+Testing LPN_dec_batch. Process id: 30. Found valid decoding!
+[1 1 1 1 1 0 1 0 1 1 0 0 1 0 0]
+Testing LPN_dec_batch. Process id: 15. Found valid decoding!
+[0 0 0 0 0 1 0 0 0 0 1 0 1 0 1]
+Testing LPN_dec_batch. Process id: 2. Found valid decoding!
+[1 1 0 1 1 1 0 0 0 0 1 0 0 1 0]
+Testing LPN_dec_batch. Process id: 25. Found valid decoding!
+[1 0 1 0 1 0 1 0 0 1 0 0 0 1 1]
+Testing LPN_dec_batch. Process id: 11. Found valid decoding!
+[1 1 0 1 0 1 0 0 1 1 1 0 0 0 1]
+Testing LPN_dec_batch. Process id: 36. Found valid decoding!
+[1 0 0 1 0 1 1 1 1 0 1 0 0 0 0]
+Testing LPN_dec_batch. Process id: 7. Found valid decoding!
+[0 1 1 1 1 1 1 0 1 0 1 0 0 0 0]
+Testing LPN_dec_batch. Process id: 22. Found valid decoding!
+[0 0 0 0 0 0 0 0 0 0 0 0 0 0 1]
+00111110100011110100101010011011100110011011101001011000100111101111011010000000000110101010110000011101011100010010001011110011 0011100111001110011100011000011011101111100100110001011111000001101000001001001000010100101010101111101100100001100010101101100011000010110110100000100010011001010011001110100000101110110111001111011011011000101000100100101101011001110110000011011011110100
+Calculated MAC in 45.44879698753357 seconds
+x^123 + x^122 + x^121 + x^120 + x^119 + x^116 + x^114 + x^113 + x^112 + x^109 + x^108 + x^107 + x^106 + x^105 + x^104 + x^103 + x^100 + x^99 + x^98 + x^97 + x^95 + x^94 + x^93 + x^92 + x^88 + x^87 + x^83 + x^81 + x^79 + x^77 + x^76 + x^75 + x^73 + x^71 + x^69 + x^61 + x^54 + x^52 + x^51 + x^48 + x^46 + x^45 + x^41 + x^40 + x^38 + x^36 + x^35 + x^32 + x^30 + x^28 + x^26 + x^25 + x^24 + x^19 + x^16 + x^15 + x^14 + x^12 + x^11 + x^9 + x^7 + x^5 + x^2
+x^123 + x^122 + x^121 + x^120 + x^119 + x^116 + x^114 + x^113 + x^112 + x^109 + x^108 + x^107 + x^106 + x^105 + x^104 + x^103 + x^100 + x^99 + x^98 + x^97 + x^95 + x^94 + x^93 + x^92 + x^88 + x^87 + x^83 + x^81 + x^79 + x^77 + x^76 + x^75 + x^73 + x^71 + x^69 + x^61 + x^54 + x^52 + x^51 + x^48 + x^46 + x^45 + x^41 + x^40 + x^38 + x^36 + x^35 + x^32 + x^30 + x^28 + x^26 + x^25 + x^24 + x^19 + x^16 + x^15 + x^14 + x^12 + x^11 + x^9 + x^7 + x^5 + x^2
+Check passed
+Testing LPN_dec_batch. Process id: 16. Found valid decoding!
+[0 0 0 1 1 1 0 0 0 1 1 0 0 0 1]
+Testing LPN_dec_batch. Process id: 14. Found valid decoding!
+[0 0 1 1 1 0 1 1 0 1 0 1 1 1 1]
+Testing LPN_dec_batch. Process id: 20. Found valid decoding!
+[0 0 0 1 0 1 0 0 1 1 1 1 1 1 0]
+Rep succeeded
+Ran REP parallel in 718.718231678009 seconds
+Bad character in binary file (not '0' or '1')
+Process Process-882:
+Traceback (most recent call last):
+  File "/global/software/python/3.10.4/lib/python3.10/multiprocessing/process.py", line 315, in _bootstrap
+    self.run()
+  File "/global/software/python/3.10.4/lib/python3.10/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/nikita.tripathi/fuzzy_extractor/fuzzy_extractor.py", line 243, in rep_process
+    dec = self.LPN_dec_batch(matrices, samples, ctxts, process_id)
+  File "/home/nikita.tripathi/fuzzy_extractor/fuzzy_extractor.py", line 146, in LPN_dec_batch
+    decoded = out[valid_msg_index].strip()
+IndexError: list index out of range
+Testing LPN_dec_batch. Process id: 47. Found valid decoding!
+Bad character in binary file (not '0' or '1')
+Process Process-881:
+Traceback (most recent call last):
+  File "/global/software/python/3.10.4/lib/python3.10/multiprocessing/process.py", line 315, in _bootstrap
+    self.run()
+  File "/global/software/python/3.10.4/lib/python3.10/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/nikita.tripathi/fuzzy_extractor/fuzzy_extractor.py", line 243, in rep_process
+    dec = self.LPN_dec_batch(matrices, samples, ctxts, process_id)
+  File "/home/nikita.tripathi/fuzzy_extractor/fuzzy_extractor.py", line 146, in LPN_dec_batch
+    decoded = out[valid_msg_index].strip()
+IndexError: list index out of range
+Testing LPN_dec_batch. Process id: 46. Found valid decoding!
+Testing LPN_dec_batch. Process id: 41. Found valid decoding!
+[0 0 0 0 1 0 1 0 0 0 1 0 1 1 0]
+Testing LPN_dec_batch. Process id: 13. Found valid decoding!
+[0 1 1 1 1 0 0 0 1 1 1 1 1 1 1]
+Testing LPN_dec_batch. Process id: 8. Found valid decoding!
+[0 0 1 1 0 0 1 0 1 1 0 0 0 1 1]
+Testing LPN_dec_batch. Process id: 40. Found valid decoding!
+[1 1 0 1 0 1 1 1 1 0 0 1 0 0 0]
+Testing LPN_dec_batch. Process id: 33. Found valid decoding!
+[0 1 0 1 1 0 0 0 0 0 1 1 1 1 0]
+Testing LPN_dec_batch. Process id: 9. Found valid decoding!
+[1 1 1 0 0 1 1 0 0 0 0 1 1 1 1]
+Testing LPN_dec_batch. Process id: 21. Found valid decoding!
+[0 0 1 0 0 0 1 1 0 0 1 0 0 1 1]
+Testing LPN_dec_batch. Process id: 14. Found valid decoding!
+[1 0 0 0 0 0 0 0 1 1 1 0 1 1 0]
+Testing LPN_dec_batch. Process id: 5. Found valid decoding!
+[0 1 1 0 1 0 1 1 0 0 0 0 0 1 1]
+Testing LPN_dec_batch. Process id: 12. Found valid decoding!
+[1 1 0 1 1 0 0 1 1 0 0 0 1 0 1]
+Testing LPN_dec_batch. Process id: 42. Found valid decoding!
+[0 1 1 0 0 0 1 1 1 0 1 0 1 1 0]
+Testing LPN_dec_batch. Process id: 34. Found valid decoding!
+[0 0 1 1 0 0 0 0 0 1 1 1 1 1 0]
+Testing LPN_dec_batch. Process id: 20. Found valid decoding!
+[1 1 1 1 0 0 0 0 1 0 1 1 1 0 1]
+Testing LPN_dec_batch. Process id: 10. Found valid decoding!
+[1 0 1 1 1 1 1 1 0 0 0 1 1 1 0]
+Testing LPN_dec_batch. Process id: 16. Found valid decoding!
+[1 0 0 0 1 1 0 0 0 0 1 1 1 1 1]
+Testing LPN_dec_batch. Process id: 39. Found valid decoding!
+[0 0 0 0 0 0 0 0 0 0 0 0 0 0 1]
+00111110100011110100101010011011100110011011101001011000100111101111011010000000000110101010110000011101011100010010001011110011 0011100111001110011100011000011011101111100100110001011111000001101000001001001000010100101010101111101100100001100010101101100011000010110110100000100010011001010011001110100000101110110111001111011011011000101000100100101101011001110110000011011011110100
+Calculated MAC in 45.72672176361084 seconds
+x^123 + x^122 + x^121 + x^120 + x^119 + x^116 + x^114 + x^113 + x^112 + x^109 + x^108 + x^107 + x^106 + x^105 + x^104 + x^103 + x^100 + x^99 + x^98 + x^97 + x^95 + x^94 + x^93 + x^92 + x^88 + x^87 + x^83 + x^81 + x^79 + x^77 + x^76 + x^75 + x^73 + x^71 + x^69 + x^61 + x^54 + x^52 + x^51 + x^48 + x^46 + x^45 + x^41 + x^40 + x^38 + x^36 + x^35 + x^32 + x^30 + x^28 + x^26 + x^25 + x^24 + x^19 + x^16 + x^15 + x^14 + x^12 + x^11 + x^9 + x^7 + x^5 + x^2
+x^123 + x^122 + x^121 + x^120 + x^119 + x^116 + x^114 + x^113 + x^112 + x^109 + x^108 + x^107 + x^106 + x^105 + x^104 + x^103 + x^100 + x^99 + x^98 + x^97 + x^95 + x^94 + x^93 + x^92 + x^88 + x^87 + x^83 + x^81 + x^79 + x^77 + x^76 + x^75 + x^73 + x^71 + x^69 + x^61 + x^54 + x^52 + x^51 + x^48 + x^46 + x^45 + x^41 + x^40 + x^38 + x^36 + x^35 + x^32 + x^30 + x^28 + x^26 + x^25 + x^24 + x^19 + x^16 + x^15 + x^14 + x^12 + x^11 + x^9 + x^7 + x^5 + x^2
+Check passed
+Rep succeeded
+Ran REP parallel in 719.411233663559 seconds
+Bad character in binary file (not '0' or '1')
+Rep failed
+Ran REP parallel in 749.0467145442963 seconds
+Bad character in binary file (not '0' or '1')
+Bad character in binary file (not '0' or '1')
+Testing LPN_dec_batch. Process id: 43. Found valid decoding!
+[1 0 0 1 1 1 1 0 0 0 0 1 1 1 0]
+Testing LPN_dec_batch. Process id: 38. Found valid decoding!
+[0 0 1 0 0 0 1 1 0 1 1 1 0 1 1]
+Testing LPN_dec_batch. Process id: 35. Found valid decoding!
+[1 0 0 0 0 1 1 1 1 1 0 0 1 1 1]
+Testing LPN_dec_batch. Process id: 1. Found valid decoding!
+[1 0 0 1 1 0 1 1 0 1 0 0 0 1 0]
+Testing LPN_dec_batch. Process id: 11. Found valid decoding!
+[1 0 1 0 1 0 1 1 1 1 0 0 0 1 1]
+Testing LPN_dec_batch. Process id: 15. Found valid decoding!
+[0 1 0 0 1 1 0 0 0 1 0 0 0 1 0]
+Testing LPN_dec_batch. Process id: 37. Found valid decoding!
+[0 0 1 1 0 1 1 1 1 1 0 0 0 0 1]
+Testing LPN_dec_batch. Process id: 42. Found valid decoding!
+[1 1 0 1 1 1 1 1 0 1 1 0 1 1 0]
+Testing LPN_dec_batch. Process id: 21. Found valid decoding!
+[0 1 0 1 0 1 0 0 0 1 1 1 1 0 1]
+Testing LPN_dec_batch. Process id: 23. Found valid decoding!
+[0 0 0 0 0 1 1 1 0 0 1 1 0 0 0]
+Testing LPN_dec_batch. Process id: 26. Found valid decoding!
+[1 0 1 0 1 0 1 0 1 0 0 1 0 1 1]
+Rep failed
+Ran REP parallel in 716.1753015518188 seconds
+Bad character in binary file (not '0' or '1')
+Rep failed
+Ran REP parallel in 762.6271827220917 seconds
+Bad character in binary file (not '0' or '1')
+Rep failed
+Ran REP parallel in 822.513632774353 seconds
+Bad character in binary file (not '0' or '1')
+Process Process-1127:
+Traceback (most recent call last):
+  File "/global/software/python/3.10.4/lib/python3.10/multiprocessing/process.py", line 315, in _bootstrap
+    self.run()
+  File "/global/software/python/3.10.4/lib/python3.10/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/nikita.tripathi/fuzzy_extractor/fuzzy_extractor.py", line 243, in rep_process
+    dec = self.LPN_dec_batch(matrices, samples, ctxts, process_id)
+  File "/home/nikita.tripathi/fuzzy_extractor/fuzzy_extractor.py", line 146, in LPN_dec_batch
+    decoded = out[valid_msg_index].strip()
+IndexError: list index out of range
+Testing LPN_dec_batch. Process id: 47. Found valid decoding!
+Bad character in binary file (not '0' or '1')
+Process Process-1126:
+Traceback (most recent call last):
+  File "/global/software/python/3.10.4/lib/python3.10/multiprocessing/process.py", line 315, in _bootstrap
+    self.run()
+  File "/global/software/python/3.10.4/lib/python3.10/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/nikita.tripathi/fuzzy_extractor/fuzzy_extractor.py", line 243, in rep_process
+    dec = self.LPN_dec_batch(matrices, samples, ctxts, process_id)
+  File "/home/nikita.tripathi/fuzzy_extractor/fuzzy_extractor.py", line 146, in LPN_dec_batch
+    decoded = out[valid_msg_index].strip()
+IndexError: list index out of range
+Testing LPN_dec_batch. Process id: 46. Found valid decoding!
+Testing LPN_dec_batch. Process id: 44. Found valid decoding!
+[0 1 1 1 1 1 1 1 1 1 0 1 1 1 0]
+Testing LPN_dec_batch. Process id: 1. Found valid decoding!
+[1 1 1 0 0 1 0 0 1 1 0 0 1 0 0]
+Testing LPN_dec_batch. Process id: 42. Found valid decoding!
+[1 1 1 0 0 0 0 1 1 0 0 1 1 1 1]
+Testing LPN_dec_batch. Process id: 3. Found valid decoding!
+[1 0 1 1 0 0 0 1 0 1 1 1 1 0 1]
+Testing LPN_dec_batch. Process id: 40. Found valid decoding!
+[1 1 1 1 0 1 0 1 0 0 1 0 1 0 0]
+Testing LPN_dec_batch. Process id: 25. Found valid decoding!
+[0 1 0 0 0 1 1 0 1 1 1 1 0 1 0]
+Testing LPN_dec_batch. Process id: 0. Found valid decoding!
+[1 0 1 0 0 1 1 1 1 0 0 1 0 1 0]
+Testing LPN_dec_batch. Process id: 32. Found valid decoding!
+[1 1 0 0 0 1 0 1 0 1 1 1 1 1 1]
+Testing LPN_dec_batch. Process id: 31. Found valid decoding!
+[0 1 0 1 1 1 0 1 0 1 1 0 1 1 1]
+Testing LPN_dec_batch. Process id: 19. Found valid decoding!
+[0 0 1 0 1 1 1 1 1 1 0 1 0 1 1]
+Testing LPN_dec_batch. Process id: 39. Found valid decoding!
+[0 1 0 0 1 0 1 0 1 0 1 1 1 1 1]
+Testing LPN_dec_batch. Process id: 37. Found valid decoding!
+[0 0 0 0 0 1 0 0 1 0 1 0 1 0 0]
+Testing LPN_dec_batch. Process id: 43. Found valid decoding!
+[0 0 0 1 1 1 0 1 0 0 1 1 0 1 0]
+Testing LPN_dec_batch. Process id: 11. Found valid decoding!
+[1 0 1 1 0 1 1 1 0 1 1 0 1 0 1]
+Testing LPN_dec_batch. Process id: 21. Found valid decoding!
+[1 0 0 1 0 1 0 0 1 0 1 1 1 1 0]
+Testing LPN_dec_batch. Process id: 9. Found valid decoding!
+[0 0 1 1 0 0 0 1 1 1 1 1 1 1 0]
+Testing LPN_dec_batch. Process id: 15. Found valid decoding!
+[0 1 1 1 1 1 1 0 0 1 1 1 1 1 1]
+Testing LPN_dec_batch. Process id: 2. Found valid decoding!
+[1 1 0 1 0 1 0 0 0 1 1 0 1 1 0]
+Testing LPN_dec_batch. Process id: 20. Found valid decoding!
+[1 1 1 1 1 0 1 0 0 1 0 1 1 1 1]
+Testing LPN_dec_batch. Process id: 27. Found valid decoding!
+[0 0 0 0 0 0 1 1 0 0 1 0 0 0 0]
+Testing LPN_dec_batch. Process id: 35. Found valid decoding!
+[1 1 0 0 0 1 1 0 0 1 1 1 1 1 1]
+Testing LPN_dec_batch. Process id: 5. Found valid decoding!
+[0 1 0 1 0 0 0 1 1 0 0 0 1 0 1]
+Testing LPN_dec_batch. Process id: 34. Found valid decoding!
+[1 1 1 0 1 1 1 0 0 1 1 1 1 1 1]
+Testing LPN_dec_batch. Process id: 38. Found valid decoding!
+[1 1 1 1 1 0 0 0 0 1 0 0 1 0 1]
+Testing LPN_dec_batch. Process id: 23. Found valid decoding!
+[0 0 1 1 0 0 1 0 1 0 0 1 1 1 1]
+Testing LPN_dec_batch. Process id: 24. Found valid decoding!
+[0 0 1 0 0 1 1 0 0 1 1 1 1 0 1]
+Testing LPN_dec_batch. Process id: 7. Found valid decoding!
+[1 1 0 1 0 0 1 1 1 0 1 1 0 1 1]
+Testing LPN_dec_batch. Process id: 12. Found valid decoding!
+[0 0 0 1 0 0 0 0 1 1 1 1 0 1 1]
+Testing LPN_dec_batch. Process id: 10. Found valid decoding!
+[0 1 1 1 1 0 0 0 1 0 0 0 1 0 0]
+Testing LPN_dec_batch. Process id: 4. Found valid decoding!
+[0 0 0 0 1 1 1 0 0 0 0 1 0 0 0]
+Testing LPN_dec_batch. Process id: 22. Found valid decoding!
+[0 1 1 0 0 1 1 0 1 1 0 0 0 1 1]
+Testing LPN_dec_batch. Process id: 8. Found valid decoding!
+[1 1 1 1 0 0 1 0 1 1 0 1 1 0 1]
+Testing LPN_dec_batch. Process id: 26. Found valid decoding!
+[1 1 0 1 1 0 1 1 1 1 1 0 1 0 0]
+Testing LPN_dec_batch. Process id: 6. Found valid decoding!
+[1 0 1 0 0 1 0 0 1 0 1 1 1 1 1]
+Testing LPN_dec_batch. Process id: 17. Found valid decoding!
+[1 0 1 1 0 1 0 1 1 1 1 0 0 1 0]
+Testing LPN_dec_batch. Process id: 14. Found valid decoding!
+[1 1 0 1 0 0 0 0 1 1 0 0 0 0 1]
+Testing LPN_dec_batch. Process id: 13. Found valid decoding!
+[0 1 1 0 1 0 0 1 0 0 1 0 1 1 1]
+Testing LPN_dec_batch. Process id: 30. Found valid decoding!
+[0 1 1 1 1 1 1 1 0 0 0 0 1 0 0]
+Testing LPN_dec_batch. Process id: 18. Found valid decoding!
+[0 0 0 1 0 0 0 0 0 0 1 1 0 0 0]
+Testing LPN_dec_batch. Process id: 33. Found valid decoding!
+[0 1 0 1 0 0 0 1 0 1 1 0 0 1 1]
+Testing LPN_dec_batch. Process id: 16. Found valid decoding!
+[1 1 1 0 1 0 1 1 1 0 0 0 0 1 0]
+Testing LPN_dec_batch. Process id: 28. Found valid decoding!
+[1 1 1 0 0 1 0 0 1 1 0 1 0 0 1]
+Testing LPN_dec_batch. Process id: 45. Found valid decoding!
+[1 1 1 0 0 1 1 0 1 1 1 1 1 1 0]
+Testing LPN_dec_batch. Process id: 41. Found valid decoding!
+[1 1 0 1 0 1 1 0 1 0 0 1 0 0 1]
+Testing LPN_dec_batch. Process id: 36. Found valid decoding!
+[0 0 0 0 0 0 0 0 0 0 0 0 0 0 1]
+00111110100011110100101010011011100110011011101001011000100111101111011010000000000110101010110000011101011100010010001011110011 0011100111001110011100011000011011101111100100110001011111000001101000001001001000010100101010101111101100100001100010101101100011000010110110100000100010011001010011001110100000101110110111001111011011011000101000100100101101011001110110000011011011110100
+Calculated MAC in 46.367576599121094 seconds
+x^123 + x^122 + x^121 + x^120 + x^119 + x^116 + x^114 + x^113 + x^112 + x^109 + x^108 + x^107 + x^106 + x^105 + x^104 + x^103 + x^100 + x^99 + x^98 + x^97 + x^95 + x^94 + x^93 + x^92 + x^88 + x^87 + x^83 + x^81 + x^79 + x^77 + x^76 + x^75 + x^73 + x^71 + x^69 + x^61 + x^54 + x^52 + x^51 + x^48 + x^46 + x^45 + x^41 + x^40 + x^38 + x^36 + x^35 + x^32 + x^30 + x^28 + x^26 + x^25 + x^24 + x^19 + x^16 + x^15 + x^14 + x^12 + x^11 + x^9 + x^7 + x^5 + x^2
+x^123 + x^122 + x^121 + x^120 + x^119 + x^116 + x^114 + x^113 + x^112 + x^109 + x^108 + x^107 + x^106 + x^105 + x^104 + x^103 + x^100 + x^99 + x^98 + x^97 + x^95 + x^94 + x^93 + x^92 + x^88 + x^87 + x^83 + x^81 + x^79 + x^77 + x^76 + x^75 + x^73 + x^71 + x^69 + x^61 + x^54 + x^52 + x^51 + x^48 + x^46 + x^45 + x^41 + x^40 + x^38 + x^36 + x^35 + x^32 + x^30 + x^28 + x^26 + x^25 + x^24 + x^19 + x^16 + x^15 + x^14 + x^12 + x^11 + x^9 + x^7 + x^5 + x^2
+Check passed
+Rep succeeded
+Ran REP parallel in 791.388427734375 seconds
+Bad character in binary file (not '0' or '1')
+Rep failed
+Ran REP parallel in 825.1000754833221 seconds
+Bad character in binary file (not '0' or '1')
+Testing LPN_dec_batch. Process id: 27. Found valid decoding!
+[1 1 1 1 1 1 0 1 1 1 1 1 0 1 0]
+Testing LPN_dec_batch. Process id: 31. Found valid decoding!
+[1 0 0 1 1 0 0 1 0 1 1 0 1 1 1]
+Rep failed
+Ran REP parallel in 748.4742646217346 seconds
+Bad character in binary file (not '0' or '1')
+Rep failed
+Ran REP parallel in 740.8704304695129 seconds
+Bad character in binary file (not '0' or '1')
+Rep failed
+Ran REP parallel in 742.3077051639557 seconds
+Bad character in binary file (not '0' or '1')
+Testing LPN_dec_batch. Process id: 40. Found valid decoding!
+[0 1 0 0 1 1 0 0 0 1 0 1 0 1 0]
+Testing LPN_dec_batch. Process id: 18. Found valid decoding!
+[1 0 1 0 0 1 0 1 1 0 0 1 0 1 0]
+Testing LPN_dec_batch. Process id: 15. Found valid decoding!
+[0 1 1 1 1 1 0 1 0 1 0 1 0 1 0]
+Testing LPN_dec_batch. Process id: 13. Found valid decoding!
+[0 0 1 0 0 0 0 0 0 1 1 1 1 1 0]
+Rep failed
+Ran REP parallel in 743.0822699069977 seconds
+Bad character in binary file (not '0' or '1')
+Testing LPN_dec_batch. Process id: 44. Found valid decoding!
+[0 0 1 0 1 1 0 1 0 1 1 0 0 1 1]
+Testing LPN_dec_batch. Process id: 14. Found valid decoding!
+[1 0 0 1 1 1 0 0 0 0 1 1 1 1 0]
+Testing LPN_dec_batch. Process id: 22. Found valid decoding!
+[1 1 0 0 0 0 0 1 1 0 0 0 0 0 1]
+Testing LPN_dec_batch. Process id: 9. Found valid decoding!
+[1 1 1 0 0 0 1 1 1 0 1 0 0 0 0]
+Testing LPN_dec_batch. Process id: 39. Found valid decoding!
+[1 0 1 0 0 0 1 1 1 1 0 0 0 0 1]
+Testing LPN_dec_batch. Process id: 46. Found valid decoding!
+[1 0 1 1 1 1 1 1 0 0 0 1 1 1 1]
+Testing LPN_dec_batch. Process id: 16. Found valid decoding!
+[0 0 0 1 0 1 1 1 1 1 0 0 1 0 0]
+Testing LPN_dec_batch. Process id: 11. Found valid decoding!
+[0 1 0 1 1 1 1 0 0 0 1 1 0 0 0]
+Testing LPN_dec_batch. Process id: 28. Found valid decoding!
+[1 1 1 1 1 1 1 1 0 0 0 1 0 1 0]
+Testing LPN_dec_batch. Process id: 35. Found valid decoding!
+[0 1 1 0 0 0 1 1 1 0 1 0 0 0 0]
+Testing LPN_dec_batch. Process id: 12. Found valid decoding!
+[0 1 0 0 1 0 0 1 1 0 1 0 1 0 1]
+Testing LPN_dec_batch. Process id: 20. Found valid decoding!
+[0 1 0 1 0 0 0 1 0 0 0 1 0 0 1]
+Testing LPN_dec_batch. Process id: 31. Found valid decoding!
+[1 0 1 0 1 1 0 1 0 0 1 0 0 1 0]
+Testing LPN_dec_batch. Process id: 8. Found valid decoding!
+[1 0 1 1 1 1 1 0 0 0 1 0 1 0 0]
+Testing LPN_dec_batch. Process id: 15. Found valid decoding!
+[1 1 0 0 1 1 0 1 1 1 0 0 0 1 0]
+Testing LPN_dec_batch. Process id: 27. Found valid decoding!
+[0 1 1 1 1 0 0 1 1 0 1 0 0 0 0]
+Rep failed
+Ran REP parallel in 739.1730587482452 seconds
+Bad character in binary file (not '0' or '1')
+Rep failed
+Ran REP parallel in 734.3182516098022 seconds
+Bad character in binary file (not '0' or '1')
+Rep failed
+Ran REP parallel in 743.5724151134491 seconds
+Bad character in binary file (not '0' or '1')
+Testing LPN_dec_batch. Process id: 43. Found valid decoding!
+[0 1 1 1 0 0 1 1 0 1 1 1 1 1 0]
+Rep failed
+Ran REP parallel in 771.1289343833923 seconds
+Bad character in binary file (not '0' or '1')
+Testing LPN_dec_batch. Process id: 24. Found valid decoding!
+[0 1 1 0 0 1 1 0 1 0 0 1 1 1 0]
+Rep failed
+Ran REP parallel in 746.7923464775085 seconds
+Bad character in binary file (not '0' or '1')
+Testing LPN_dec_batch. Process id: 44. Found valid decoding!
+[0 1 0 0 1 0 0 1 1 1 0 0 0 0 1]
+Testing LPN_dec_batch. Process id: 42. Found valid decoding!
+[1 0 1 0 1 1 1 1 1 0 1 0 0 0 0]
+Testing LPN_dec_batch. Process id: 29. Found valid decoding!
+[1 1 0 0 1 0 0 0 0 1 1 1 1 1 1]
+Rep failed
+Ran REP parallel in 742.1075656414032 seconds
+Bad character in binary file (not '0' or '1')
+Rep failed
+Ran REP parallel in 762.6018705368042 seconds
+Bad character in binary file (not '0' or '1')
+Rep failed
+Ran REP parallel in 762.2191832065582 seconds
+Bad character in binary file (not '0' or '1')
+Rep failed
+Ran REP parallel in 796.2691144943237 seconds
+Bad character in binary file (not '0' or '1')
+Testing LPN_dec_batch. Process id: 3. Found valid decoding!
+[0 1 1 0 0 1 1 0 0 0 1 0 0 0 1]
+Testing LPN_dec_batch. Process id: 4. Found valid decoding!
+[0 0 0 0 1 0 1 0 1 0 0 0 1 1 0]
+Testing LPN_dec_batch. Process id: 11. Found valid decoding!
+[1 0 1 1 1 1 1 0 0 1 0 0 0 0 1]
+Testing LPN_dec_batch. Process id: 18. Found valid decoding!
+[0 0 0 0 0 0 0 1 1 1 1 1 1 1 0]
+Testing LPN_dec_batch. Process id: 43. Found valid decoding!
+[1 1 1 1 1 0 1 0 1 0 1 1 0 0 0]
+Rep failed
+Ran REP parallel in 784.056608915329 seconds
+Bad character in binary file (not '0' or '1')
+Bad character in binary file (not '0' or '1')
+Testing LPN_dec_batch. Process id: 17. Found valid decoding!
+[0 1 0 1 1 0 1 0 0 1 1 1 0 0 1]
+Rep failed
+Ran REP parallel in 816.8613555431366 seconds
+Bad character in binary file (not '0' or '1')
+Rep failed
+Ran REP parallel in 761.9902939796448 seconds
+Bad character in binary file (not '0' or '1')
+Rep failed
+Ran REP parallel in 749.9341740608215 seconds
+Bad character in binary file (not '0' or '1')
+Bad character in binary file (not '0' or '1')
+Rep failed
+Ran REP parallel in 739.4167597293854 seconds
+Bad character in binary file (not '0' or '1')
+Rep failed
+Ran REP parallel in 748.8570578098297 seconds
+Bad character in binary file (not '0' or '1')
+Testing LPN_dec_batch. Process id: 40. Found valid decoding!
+[1 0 1 1 1 1 0 0 0 0 1 0 1 0 0]
+Testing LPN_dec_batch. Process id: 1. Found valid decoding!
+[1 1 0 0 1 0 1 1 1 1 0 0 0 1 1]
+Testing LPN_dec_batch. Process id: 32. Found valid decoding!
+[1 0 0 1 1 0 1 1 0 1 0 0 0 1 0]
+Testing LPN_dec_batch. Process id: 7. Found valid decoding!
+[1 0 0 1 1 1 1 0 1 1 1 0 0 1 0]
+Testing LPN_dec_batch. Process id: 16. Found valid decoding!
+[1 1 1 1 0 0 0 1 0 1 0 1 1 0 0]
+Testing LPN_dec_batch. Process id: 18. Found valid decoding!
+[0 1 1 1 0 1 1 0 1 0 1 1 1 0 1]
+Testing LPN_dec_batch. Process id: 6. Found valid decoding!
+[0 1 1 0 0 0 1 0 0 1 0 0 1 1 0]
+Testing LPN_dec_batch. Process id: 45. Found valid decoding!
+[0 1 1 1 1 0 1 1 1 0 0 0 1 0 0]
+Testing LPN_dec_batch. Process id: 27. Found valid decoding!
+[1 0 1 1 1 0 1 0 0 0 1 0 0 1 0]
+Testing LPN_dec_batch. Process id: 9. Found valid decoding!
+[1 0 0 1 1 1 0 0 1 0 0 0 0 1 0]
+Rep failed
+Ran REP parallel in 726.5791451931 seconds
+Bad character in binary file (not '0' or '1')
+Bad character in binary file (not '0' or '1')
+Testing LPN_dec_batch. Process id: 27. Found valid decoding!
+[0 1 0 1 1 1 0 0 1 0 1 0 0 1 1]
+Testing LPN_dec_batch. Process id: 0. Found valid decoding!
+[0 0 1 1 0 0 0 0 0 0 1 1 1 1 1]
+Testing LPN_dec_batch. Process id: 40. Found valid decoding!
+[0 1 0 0 1 0 1 1 0 1 0 1 0 1 0]
+Testing LPN_dec_batch. Process id: 44. Found valid decoding!
+[0 1 0 1 1 1 0 1 1 1 1 0 1 0 0]
+Testing LPN_dec_batch. Process id: 23. Found valid decoding!
+[0 1 1 0 1 0 0 1 1 0 1 0 0 1 1]
+Rep failed
+Ran REP parallel in 730.5426023006439 seconds
+Bad character in binary file (not '0' or '1')
+Bad character in binary file (not '0' or '1')
+Rep failed
+Ran REP parallel in 724.6201901435852 seconds
+Bad character in binary file (not '0' or '1')
+Bad character in binary file (not '0' or '1')
+Rep failed
+Ran REP parallel in 733.0224804878235 seconds
+Testing LPN_dec_batch. Process id: 47. Found valid decoding!
+[0 1 0 1 1 1 1 0 1 0 1 1 0 1 1]
+Bad character in binary file (not '0' or '1')
+Testing LPN_dec_batch. Process id: 46. Found valid decoding!
+[0 1 0 0 0 0 0 1 1 1 1 1 0 0 0]
+Testing LPN_dec_batch. Process id: 42. Found valid decoding!
+[1 0 1 1 1 0 0 1 1 0 0 0 1 0 1]
+Testing LPN_dec_batch. Process id: 6. Found valid decoding!
+[0 0 1 1 1 1 0 1 0 1 1 0 1 0 0]
+Testing LPN_dec_batch. Process id: 40. Found valid decoding!
+[0 0 0 0 1 1 0 1 0 0 0 1 0 1 1]
+Testing LPN_dec_batch. Process id: 12. Found valid decoding!
+[1 1 0 0 1 1 0 0 0 1 1 1 0 0 0]
+Testing LPN_dec_batch. Process id: 39. Found valid decoding!
+[1 1 1 1 0 0 1 0 0 0 0 0 0 1 0]
+Testing LPN_dec_batch. Process id: 34. Found valid decoding!
+[1 0 1 1 1 1 0 1 1 0 0 0 0 0 0]
+Testing LPN_dec_batch. Process id: 7. Found valid decoding!
+[0 0 0 0 1 1 1 0 0 1 0 1 0 1 0]
+Testing LPN_dec_batch. Process id: 30. Found valid decoding!
+[0 1 1 1 0 1 1 1 1 0 1 1 0 1 1]
+Testing LPN_dec_batch. Process id: 35. Found valid decoding!
+[1 1 0 1 0 1 0 0 1 1 0 1 1 1 0]
+Testing LPN_dec_batch. Process id: 45. Found valid decoding!
+[0 0 0 0 0 0 0 0 0 0 0 0 0 0 1]
+00111110100011110100101010011011100110011011101001011000100111101111011010000000000110101010110000011101011100010010001011110011 0011100111001110011100011000011011101111100100110001011111000001101000001001001000010100101010101111101100100001100010101101100011000010110110100000100010011001010011001110100000101110110111001111011011011000101000100100101101011001110110000011011011110100
+Calculated MAC in 91.99267721176147 seconds
+x^123 + x^122 + x^121 + x^120 + x^119 + x^116 + x^114 + x^113 + x^112 + x^109 + x^108 + x^107 + x^106 + x^105 + x^104 + x^103 + x^100 + x^99 + x^98 + x^97 + x^95 + x^94 + x^93 + x^92 + x^88 + x^87 + x^83 + x^81 + x^79 + x^77 + x^76 + x^75 + x^73 + x^71 + x^69 + x^61 + x^54 + x^52 + x^51 + x^48 + x^46 + x^45 + x^41 + x^40 + x^38 + x^36 + x^35 + x^32 + x^30 + x^28 + x^26 + x^25 + x^24 + x^19 + x^16 + x^15 + x^14 + x^12 + x^11 + x^9 + x^7 + x^5 + x^2
+x^123 + x^122 + x^121 + x^120 + x^119 + x^116 + x^114 + x^113 + x^112 + x^109 + x^108 + x^107 + x^106 + x^105 + x^104 + x^103 + x^100 + x^99 + x^98 + x^97 + x^95 + x^94 + x^93 + x^92 + x^88 + x^87 + x^83 + x^81 + x^79 + x^77 + x^76 + x^75 + x^73 + x^71 + x^69 + x^61 + x^54 + x^52 + x^51 + x^48 + x^46 + x^45 + x^41 + x^40 + x^38 + x^36 + x^35 + x^32 + x^30 + x^28 + x^26 + x^25 + x^24 + x^19 + x^16 + x^15 + x^14 + x^12 + x^11 + x^9 + x^7 + x^5 + x^2
+Check passed
+Testing LPN_dec_batch. Process id: 23. Found valid decoding!
+[1 0 0 1 1 1 1 0 1 1 0 1 0 0 1]
+Testing LPN_dec_batch. Process id: 27. Found valid decoding!
+[1 1 0 0 0 1 0 1 0 1 0 1 0 1 0]
+Testing LPN_dec_batch. Process id: 5. Found valid decoding!
+[1 0 1 1 0 1 1 1 0 0 0 0 1 0 1]
+Testing LPN_dec_batch. Process id: 8. Found valid decoding!
+[0 1 1 0 1 1 1 0 0 1 0 1 0 0 1]
+Testing LPN_dec_batch. Process id: 29. Found valid decoding!
+[1 0 1 0 1 0 1 0 0 0 0 0 0 1 0]
+Testing LPN_dec_batch. Process id: 22. Found valid decoding!
+[0 1 1 0 1 1 0 1 0 1 0 1 1 0 0]
+Testing LPN_dec_batch. Process id: 20. Found valid decoding!
+[1 1 0 1 0 1 0 0 1 1 1 0 0 1 1]
+Testing LPN_dec_batch. Process id: 17. Found valid decoding!
+[1 0 0 1 1 0 0 1 0 0 1 1 0 1 0]
+Testing LPN_dec_batch. Process id: 31. Found valid decoding!
+[1 1 1 1 1 0 0 0 1 0 0 1 1 0 1]
+Testing LPN_dec_batch. Process id: 28. Found valid decoding!
+[1 0 0 1 1 0 0 1 0 1 0 1 1 1 1]
+Testing LPN_dec_batch. Process id: 33. Found valid decoding!
+[1 0 1 1 1 0 1 1 0 0 0 1 1 1 1]
+Testing LPN_dec_batch. Process id: 11. Found valid decoding!
+[0 0 0 0 0 0 0 0 0 0 0 0 0 0 1]
+00111110100011110100101010011011100110011011101001011000100111101111011010000000000110101010110000011101011100010010001011110011 0011100111001110011100011000011011101111100100110001011111000001101000001001001000010100101010101111101100100001100010101101100011000010110110100000100010011001010011001110100000101110110111001111011011011000101000100100101101011001110110000011011011110100
+Calculated MAC in 46.06103277206421 seconds
+x^123 + x^122 + x^121 + x^120 + x^119 + x^116 + x^114 + x^113 + x^112 + x^109 + x^108 + x^107 + x^106 + x^105 + x^104 + x^103 + x^100 + x^99 + x^98 + x^97 + x^95 + x^94 + x^93 + x^92 + x^88 + x^87 + x^83 + x^81 + x^79 + x^77 + x^76 + x^75 + x^73 + x^71 + x^69 + x^61 + x^54 + x^52 + x^51 + x^48 + x^46 + x^45 + x^41 + x^40 + x^38 + x^36 + x^35 + x^32 + x^30 + x^28 + x^26 + x^25 + x^24 + x^19 + x^16 + x^15 + x^14 + x^12 + x^11 + x^9 + x^7 + x^5 + x^2
+x^123 + x^122 + x^121 + x^120 + x^119 + x^116 + x^114 + x^113 + x^112 + x^109 + x^108 + x^107 + x^106 + x^105 + x^104 + x^103 + x^100 + x^99 + x^98 + x^97 + x^95 + x^94 + x^93 + x^92 + x^88 + x^87 + x^83 + x^81 + x^79 + x^77 + x^76 + x^75 + x^73 + x^71 + x^69 + x^61 + x^54 + x^52 + x^51 + x^48 + x^46 + x^45 + x^41 + x^40 + x^38 + x^36 + x^35 + x^32 + x^30 + x^28 + x^26 + x^25 + x^24 + x^19 + x^16 + x^15 + x^14 + x^12 + x^11 + x^9 + x^7 + x^5 + x^2
+Check passed
+Testing LPN_dec_batch. Process id: 41. Found valid decoding!
+[0 1 0 0 1 0 0 1 0 0 1 1 0 0 1]
+Testing LPN_dec_batch. Process id: 38. Found valid decoding!
+[1 1 0 0 1 0 0 1 0 0 0 1 0 1 0]
+Testing LPN_dec_batch. Process id: 36. Found valid decoding!
+[0 0 1 0 0 0 1 1 1 0 1 1 0 1 0]
+Testing LPN_dec_batch. Process id: 16. Found valid decoding!
+[0 1 1 0 0 1 0 0 0 0 1 0 1 1 1]
+Testing LPN_dec_batch. Process id: 19. Found valid decoding!
+[1 0 0 0 0 0 1 0 1 0 0 0 0 0 0]
+Testing LPN_dec_batch. Process id: 24. Found valid decoding!
+[0 0 1 1 1 1 1 1 1 0 1 0 1 1 1]
+Testing LPN_dec_batch. Process id: 1. Found valid decoding!
+[0 1 0 0 0 1 0 1 0 1 0 0 1 0 1]
+Testing LPN_dec_batch. Process id: 21. Found valid decoding!
+[1 0 1 1 1 1 1 1 1 1 1 1 0 0 0]
+Testing LPN_dec_batch. Process id: 2. Found valid decoding!
+[1 0 0 0 1 1 1 0 0 1 1 1 0 1 0]
+Testing LPN_dec_batch. Process id: 26. Found valid decoding!
+[1 1 0 1 0 1 1 1 0 0 0 1 0 0 0]
+Testing LPN_dec_batch. Process id: 10. Found valid decoding!
+[0 0 0 0 0 0 1 0 1 0 1 1 1 0 1]
+Testing LPN_dec_batch. Process id: 3. Found valid decoding!
+[1 0 1 1 0 0 1 1 0 1 1 0 0 0 0]
+Testing LPN_dec_batch. Process id: 44. Found valid decoding!
+[0 0 0 0 0 0 0 0 0 0 0 0 0 0 1]
+00111110100011110100101010011011100110011011101001011000100111101111011010000000000110101010110000011101011100010010001011110011 0011100111001110011100011000011011101111100100110001011111000001101000001001001000010100101010101111101100100001100010101101100011000010110110100000100010011001010011001110100000101110110111001111011011011000101000100100101101011001110110000011011011110100
+Calculated MAC in 45.574161529541016 seconds
+x^123 + x^122 + x^121 + x^120 + x^119 + x^116 + x^114 + x^113 + x^112 + x^109 + x^108 + x^107 + x^106 + x^105 + x^104 + x^103 + x^100 + x^99 + x^98 + x^97 + x^95 + x^94 + x^93 + x^92 + x^88 + x^87 + x^83 + x^81 + x^79 + x^77 + x^76 + x^75 + x^73 + x^71 + x^69 + x^61 + x^54 + x^52 + x^51 + x^48 + x^46 + x^45 + x^41 + x^40 + x^38 + x^36 + x^35 + x^32 + x^30 + x^28 + x^26 + x^25 + x^24 + x^19 + x^16 + x^15 + x^14 + x^12 + x^11 + x^9 + x^7 + x^5 + x^2
+x^123 + x^122 + x^121 + x^120 + x^119 + x^116 + x^114 + x^113 + x^112 + x^109 + x^108 + x^107 + x^106 + x^105 + x^104 + x^103 + x^100 + x^99 + x^98 + x^97 + x^95 + x^94 + x^93 + x^92 + x^88 + x^87 + x^83 + x^81 + x^79 + x^77 + x^76 + x^75 + x^73 + x^71 + x^69 + x^61 + x^54 + x^52 + x^51 + x^48 + x^46 + x^45 + x^41 + x^40 + x^38 + x^36 + x^35 + x^32 + x^30 + x^28 + x^26 + x^25 + x^24 + x^19 + x^16 + x^15 + x^14 + x^12 + x^11 + x^9 + x^7 + x^5 + x^2
+Check passed
+Rep succeeded
+Ran REP parallel in 773.0519580841064 seconds
+Bad character in binary file (not '0' or '1')
+Testing LPN_dec_batch. Process id: 3. Found valid decoding!
+[1 1 0 0 1 0 1 0 1 0 1 0 0 0 0]
+Testing LPN_dec_batch. Process id: 21. Found valid decoding!
+[0 0 1 0 0 0 1 0 1 1 1 1 1 0 0]
+Testing LPN_dec_batch. Process id: 35. Found valid decoding!
+[0 0 0 1 1 0 0 1 1 1 0 0 1 1 1]
+Rep failed
+Ran REP parallel in 735.6291317939758 seconds
+Bad character in binary file (not '0' or '1')
+Process Process-2450:
+Traceback (most recent call last):
+  File "/global/software/python/3.10.4/lib/python3.10/multiprocessing/process.py", line 315, in _bootstrap
+    self.run()
+  File "/global/software/python/3.10.4/lib/python3.10/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/nikita.tripathi/fuzzy_extractor/fuzzy_extractor.py", line 243, in rep_process
+    ctxts.append(self.ctexts[i])
+  File "/home/nikita.tripathi/fuzzy_extractor/fuzzy_extractor.py", line 146, in LPN_dec_batch
+IndexError: list index out of range
+Testing LPN_dec_batch. Process id: 47. Found valid decoding!
+Bad character in binary file (not '0' or '1')
+Testing LPN_dec_batch. Process id: 38. Found valid decoding!
+[0 1 0 1 0 1 0 1 0 1 1 1 1 1 1]
+Testing LPN_dec_batch. Process id: 2. Found valid decoding!
+[0 0 1 1 0 0 0 1 0 0 1 0 1 0 0]
+Testing LPN_dec_batch. Process id: 35. Found valid decoding!
+[1 1 1 0 1 1 1 0 1 0 0 1 0 1 1]
+Testing LPN_dec_batch. Process id: 5. Found valid decoding!
+[1 1 1 0 0 1 1 0 1 0 0 1 0 1 0]
+Testing LPN_dec_batch. Process id: 44. Found valid decoding!
+[0 0 1 0 0 1 1 1 0 0 1 0 0 1 1]
+Testing LPN_dec_batch. Process id: 0. Found valid decoding!
+[1 1 0 0 1 0 1 1 1 1 1 1 1 1 1]
+Testing LPN_dec_batch. Process id: 9. Found valid decoding!
+[0 0 1 1 1 1 1 1 0 0 1 0 1 1 1]
+Testing LPN_dec_batch. Process id: 34. Found valid decoding!
+[0 1 1 1 1 0 0 0 0 0 1 1 1 0 0]
+Testing LPN_dec_batch. Process id: 29. Found valid decoding!
+[0 1 0 1 1 1 1 1 1 1 0 1 0 1 0]
+Testing LPN_dec_batch. Process id: 18. Found valid decoding!
+[1 1 1 0 0 0 1 1 0 0 0 0 1 1 1]
+Testing LPN_dec_batch. Process id: 17. Found valid decoding!
+[1 0 1 1 0 1 0 1 0 0 0 1 1 0 0]
+Testing LPN_dec_batch. Process id: 22. Found valid decoding!
+[1 0 1 1 1 1 0 0 1 0 0 0 0 1 0]
+Testing LPN_dec_batch. Process id: 3. Found valid decoding!
+[1 0 0 1 0 1 1 1 0 0 0 1 0 1 0]
+Testing LPN_dec_batch. Process id: 12. Found valid decoding!
+[1 1 1 0 0 0 0 0 1 1 1 0 1 0 0]
+Testing LPN_dec_batch. Process id: 23. Found valid decoding!
+[1 1 0 0 1 0 0 0 1 0 1 1 0 1 0]
+Testing LPN_dec_batch. Process id: 39. Found valid decoding!
+[1 0 0 1 0 0 1 0 0 1 1 0 0 1 0]
+Testing LPN_dec_batch. Process id: 19. Found valid decoding!
+[0 1 1 0 1 1 1 1 1 0 1 1 1 0 1]
+Testing LPN_dec_batch. Process id: 28. Found valid decoding!
+[1 1 1 0 1 1 0 0 1 1 0 1 0 1 1]
+Testing LPN_dec_batch. Process id: 40. Found valid decoding!
+[0 1 0 1 0 1 1 1 0 1 0 0 1 1 1]
+Testing LPN_dec_batch. Process id: 27. Found valid decoding!
+[0 1 1 0 1 1 1 1 0 0 1 0 1 0 1]
+Testing LPN_dec_batch. Process id: 33. Found valid decoding!
+[0 0 0 0 0 0 0 0 0 0 0 0 0 0 1]
+00111110100011110100101010011011100110011011101001011000100111101111011010000000000110101010110000011101011100010010001011110011 0011100111001110011100011000011011101111100100110001011111000001101000001001001000010100101010101111101100100001100010101101100011000010110110100000100010011001010011001110100000101110110111001111011011011000101000100100101101011001110110000011011011110100
+Calculated MAC in 45.158101320266724 seconds
+x^123 + x^122 + x^121 + x^120 + x^119 + x^116 + x^114 + x^113 + x^112 + x^109 + x^108 + x^107 + x^106 + x^105 + x^104 + x^103 + x^100 + x^99 + x^98 + x^97 + x^95 + x^94 + x^93 + x^92 + x^88 + x^87 + x^83 + x^81 + x^79 + x^77 + x^76 + x^75 + x^73 + x^71 + x^69 + x^61 + x^54 + x^52 + x^51 + x^48 + x^46 + x^45 + x^41 + x^40 + x^38 + x^36 + x^35 + x^32 + x^30 + x^28 + x^26 + x^25 + x^24 + x^19 + x^16 + x^15 + x^14 + x^12 + x^11 + x^9 + x^7 + x^5 + x^2
+x^123 + x^122 + x^121 + x^120 + x^119 + x^116 + x^114 + x^113 + x^112 + x^109 + x^108 + x^107 + x^106 + x^105 + x^104 + x^103 + x^100 + x^99 + x^98 + x^97 + x^95 + x^94 + x^93 + x^92 + x^88 + x^87 + x^83 + x^81 + x^79 + x^77 + x^76 + x^75 + x^73 + x^71 + x^69 + x^61 + x^54 + x^52 + x^51 + x^48 + x^46 + x^45 + x^41 + x^40 + x^38 + x^36 + x^35 + x^32 + x^30 + x^28 + x^26 + x^25 + x^24 + x^19 + x^16 + x^15 + x^14 + x^12 + x^11 + x^9 + x^7 + x^5 + x^2
+Check passed
+Rep succeeded
+Ran REP parallel in 773.0024495124817 seconds
+Bad character in binary file (not '0' or '1')
+Bad character in binary file (not '0' or '1')
+Rep failed
+Ran REP parallel in 746.0275266170502 seconds
+00111110100011110100101010011011100110011011101001011000100111101111011010000000000110101010110000011101011100010010001011110011
+[None, None, None, '00111110100011110100101010011011100110011011101001011000100111101111011010000000000110101010110000011101011100010010001011110011', '00111110100011110100101010011011100110011011101001011000100111101111011010000000000110101010110000011101011100010010001011110011', None, None, '00111110100011110100101010011011100110011011101001011000100111101111011010000000000110101010110000011101011100010010001011110011', None, None, None, '00111110100011110100101010011011100110011011101001011000100111101111011010000000000110101010110000011101011100010010001011110011', None, None, None, None, '00111110100011110100101010011011100110011011101001011000100111101111011010000000000110101010110000011101011100010010001011110011', '00111110100011110100101010011011100110011011101001011000100111101111011010000000000110101010110000011101011100010010001011110011', None, None, None, None, '00111110100011110100101010011011100110011011101001011000100111101111011010000000000110101010110000011101011100010010001011110011', None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, '00111110100011110100101010011011100110011011101001011000100111101111011010000000000110101010110000011101011100010010001011110011', None, '00111110100011110100101010011011100110011011101001011000100111101111011010000000000110101010110000011101011100010010001011110011', None]
+no problems so far
