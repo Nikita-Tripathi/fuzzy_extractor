@@ -1,5 +1,5 @@
 #!/bin/bash
-while getopts 'c:e:p:' OPTION; do
+while getopts 'c:e:p:f:' OPTION; do
     case "$OPTION" in
         c) 
             CODE=${OPTARG}
@@ -12,7 +12,10 @@ while getopts 'c:e:p:' OPTION; do
         p)
             PROC=${OPTARG}
             # echo "Process number is ${PROC}"
-            ;;    
+            ;;
+        f)
+            CLASS=${OPTARG}
+            ;;
         # ?)
         #     echo "script usage: $(basename \$0) -m path/to/message.src -s seed_integer -e error_rate_double"
         #     exit 1
@@ -28,8 +31,8 @@ if [ -f "$FILE" ]; then
 fi
 
 # FILENAME="temp${RANDOM}.src"
-FILE_DEC="d${PROC}.dec"
-FILE_OUT="e${PROC}.ext"
+FILE_DEC="d${CLASS}${PROC}.dec"
+FILE_OUT="e${CLASS}${PROC}.ext"
 
 # Assuming input CODE is a path to a .rec file
 # Decode the noisy message and store it to d.dec

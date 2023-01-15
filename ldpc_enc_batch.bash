@@ -1,5 +1,5 @@
 #!/bin/bash
-while getopts 's:e:' OPTION; do
+while getopts 's:e:f:' OPTION; do
     case "$OPTION" in
         s)
             SEED=${OPTARG}
@@ -8,6 +8,9 @@ while getopts 's:e:' OPTION; do
         e)
             ERROR=${OPTARG}
             # echo "Error rate is ${ERROR}"
+            ;;
+        f)
+            CLASS=${OPTARG}
             ;;
 
     esac
@@ -20,15 +23,7 @@ if [ -f "$FILE" ]; then
     ./make-gen parity.pchk gen.gen dense
 fi
 
-# FILENAME="temp${RANDOM}.src"
 
-# Put message into a temp file
-# echo ${MESSAGE} >> ${FILENAME}
-
-# Encode the message and send it to transmit
 # Assuming SEED is an integer and ERROR is a double
 # Populate encoded message with errors and send to stdout
-./transmit e.enc r.rec "${SEED}" bsc "${ERROR}"
-
-# Delete temp file
-# rm ${MESSAGE}
+./transmit e.enc "r${CLASS}.rec" "${SEED}" bsc "${ERROR}"
