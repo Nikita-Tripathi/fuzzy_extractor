@@ -24,7 +24,8 @@ if [ -f "$FILE" ]; then
 fi
 
 FILE_ENC="e${CLASS}.enc"
+FILE_REC="r${CLASS}.rec"
 
 # Assuming SEED is an integer and ERROR is a double
 # Populate encoded message with errors and send to stdout
-./transmit ${FILE_ENC} "r${CLASS}.rec" "${SEED}" bsc "${ERROR}"
+./transmit ${FILE_ENC} ${FILE_REC} "${SEED}" bsc "${ERROR}"

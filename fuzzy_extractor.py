@@ -18,36 +18,42 @@ import mx_par
 
 class FuzzyExtractor:
 
-    # Specify subsample size, number of lockers. and LPN encryption error rate
-    # Default parameters are k=43, l=10^6, err=0.12, etc.
-    def __init__(self, k=43, l=1000000, err=0.11, ecc_len=1224, lbd=128, xi = 128, t=12):
+    def __init__(self, k=43, l=1000000, err=0.11, ecc_len=1224, lbd=128, xi = 128, t=12, file_prefix=''):
+        '''
+        Specify subsample size, number of lockers. and LPN encryption error rate
+        Default parameters are k=43, l=10^6, err=0.12, etc.
+        '''
         self.k = k
         self.l = l
         self.error_rate = err
         self.nu = ecc_len
         self.lbd = lbd
         self.xi = xi
-        # (1-gamma)/2 = err
-        self.gamma = 1 - (err * 2)
-        self.dec_check = ecc_len * (0.5 - self.gamma/3)
 
+        # ------------
         self.t = t
         self.ecc_msg_len = t + lbd * 2 + xi
-        
-        # Below are the LPN matrices
-        # self.lpn_matrices = mx_par.generateLPN(self.bitarr, k, ecc_len, l)
+
+        # ------------
+        self.gamma = 1 - (err * 2)
+        self.dec_check = ecc_len * (0.5 - self.gamma/3)
 
         # Irreducible polynomial for GF(2^128)
         self.irreducible_poly = galois.primitive_poly(2, 128)
 
+        # SHA3-512 and corresponding parameters
         self.hash = hashlib.sha3_512()
         self.L = ceil((self.hash.digest_size * 8) / self.lbd) + 4
         self.hash = hashlib.sha3_512().name
-        print("Done initializing")
 
+        # File prefix
+        self.file_prefix = file_prefix
+
+        # Keep track of precise computation time (without disk IO)
         self.gen_timer = 0
         self.rep_timer = 0
 
+        print("Done initializing")
 
 
     def bitarr(self, i):
@@ -62,27 +68,27 @@ class FuzzyExtractor:
     # * call the batch enc function with all the LPN matrices & the subsamples
     def LPN_batch_enc(self, keys, msgs):
         # Prep the messages to encode (put each on a new line)
-        with open('src.src', 'w') as f:
+        with open(f'src{self.file_prefix}.src', 'w') as f:
             f.writelines(msgs[0])
         
         # Encode message
-        check_output(["./encode", "parity.pchk", "gen.gen", "src.src", "e.enc"])
+        check_output(["./encode", "parity.pchk", "gen.gen", f"src{self.file_prefix}.src", f"e{self.file_prefix}.enc"])
         
         # Setup for adding errors to l encodings 
         code = []
-        with open('e.enc', 'r') as f:
+        with open(f'e{self.file_prefix}.enc', 'r') as f:
             code = f.read().strip()
             code = [code+'\n'] * self.l
         
-        with open('e.enc', 'w') as f:
+        with open(f'e{self.file_prefix}.enc', 'w') as f:
             f.writelines(code)
 
         # Adding errors
         # check_output(["./transmit", "e.enc", "r.rec", f"{randbits(32)}", "bsc", f"{self.error_rate}"])
-        check_output(["bash", "ldpc_enc_batch.bash", f"-s {randbits(32)}", f"-e {self.error_rate}"])
+        check_output(["bash", "ldpc_enc_batch.bash", f"-s {randbits(32)}", f"-e {self.error_rate}", "-f", self.file_prefix])
 
         # Reading noisy codes
-        with open('r.rec', 'r') as f:
+        with open(f'r{self.file_prefix}.rec', 'r') as f:
             noisy_msg = f.readlines()
 
         # Transform the str output to a binary vector
@@ -91,7 +97,6 @@ class FuzzyExtractor:
         # Multiply LPN matrices by the LPN keys (subsamples of iris code)
         t = time.time()
         d = mx_par.gen_helper(self.read_matrix, self.l, keys)
-
         print(f"Computed {len(d)} matrices in {time.time() - t} seconds")
 
         # Compute l ciphetexts
@@ -103,11 +108,12 @@ class FuzzyExtractor:
 
 
     def LPN_dec_batch(self, As, keys, ctxts, process):
-        # Decypts a batch of ciphertexts in one go (in one call)
+        '''
+        Decypts a batch of ciphertexts in one go (in one call)
+        '''
+
         # multiply LPN matrix by the key
-        # d = np.matmul(A, keys) % 2
         d = [np.matmul(self.read_matrix(As[i]), keys[i]) % 2 for i in range(len(ctxts))]
-        # d = [np.matmul(self.lpn_matrices[As[i]], keys[i]) % 2 for i in range(len(ctxts))]
 
         # Add (mod 2) d and ctxt (assuming ctxt is a numpy array)
         tmp = ''
@@ -116,12 +122,14 @@ class FuzzyExtractor:
                 tmp += str(j)
 
         # print(f'Testing LPN_dec_batch. Process id: {process}\n temp: {len(tmp)}')
-        # encode temp into a bitstring
-        input_file_name = f'r{process}.rec'
+        
+        # Encode temp into a bitstring
+        input_file_name = f'r{self.file_prefix}-{process}.rec'
         with open(input_file_name, 'w') as f:
             f.write(tmp)
+        
         # Call LDPC code (C) and decode temp
-        decoded = check_output(["bash", "ldpc_dec_batch.bash", f"-c {input_file_name}", f"-e {self.error_rate}", "-p", str(process)])
+        decoded = check_output(["bash", "ldpc_dec_batch.bash", f"-c {input_file_name}", f"-e {self.error_rate}", "-p", str(process), "-f", self.file_prefix])
         decoded = decoded.decode("ASCII").split("\n")
         details, test = [i.split() for i in decoded[1:-3]], decoded[-3]
         # print(f'Testing LPN_dec_batch. Process id: {process}\n bash script output:',details)
@@ -138,7 +146,7 @@ class FuzzyExtractor:
                 break
         
 
-        output_file_name = f'e{process}.ext'
+        output_file_name = f'e{self.file_prefix}-{process}.ext'
         with open(output_file_name, 'r') as f:
             out = f.readlines()
 
@@ -211,8 +219,8 @@ class FuzzyExtractor:
         # Pre-compute hash of ctxt TODO
 
         finished = multiprocessing.Array('b', False)
-        a = np.array_split(range(self.l), 1000)
-        b = np.array_split(range(1000), num_processes)
+        a = np.array_split(range(self.l), 100)
+        b = np.array_split(range(100), num_processes)
         finished = multiprocessing.Manager().list([None for _ in range(num_processes)])
         processes = []
         for x in range(num_processes):
@@ -270,13 +278,14 @@ class FuzzyExtractor:
 
 
 
-# IMG_OPENER 
-# INPUTS:
-# path: String - Path to an image to be opened
-# mask: Boolean - Optional flag to indicate whether the image is a mask
-# OUTPUT: Flattened (1D) NumPy array of bits.
-# Depending on `mask`, this is either just one array of length 512*64 or 6 of them
 def img_opener(path, mask=False):
+    ''' 
+    INPUTS:
+    `path`: String - Path to an image to be opened
+    `mask`: Boolean - Optional flag to indicate whether the image is a mask
+    OUTPUT: Flattened (1D) NumPy array of bits.
+    Depending on `mask`, this is either just one or six array(s) of length 512 x 64
+    '''
     image = Image.open(path)
     data = np.asarray(image) % 2 # map everything to 0 or 1 since it's B&W values (0 or 255)
     if mask:
@@ -299,7 +308,7 @@ def main():
 
 
     t1 = time.time()
-    fe = FuzzyExtractor(l=1000000)
+    fe = FuzzyExtractor(l=1000, file_prefix="04569")
     t2 = time.time()
     print(f"Initialized (generated lpn arrays & GF(2^128)) in {t2 - t1} seconds")
 

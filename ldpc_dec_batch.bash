@@ -31,8 +31,8 @@ if [ -f "$FILE" ]; then
 fi
 
 # FILENAME="temp${RANDOM}.src"
-FILE_DEC="d${CLASS}${PROC}.dec"
-FILE_OUT="e${CLASS}${PROC}.ext"
+FILE_DEC="d${CLASS}-${PROC}.dec"
+FILE_OUT="e${CLASS}-${PROC}.ext"
 
 # Assuming input CODE is a path to a .rec file
 # Decode the noisy message and store it to d.dec
