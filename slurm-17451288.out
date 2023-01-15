@@ -1,0 +1,1641 @@
+Encoded 1 blocks, source block size 396, encoded block size 1224
+Transmitted 1224000000 bits
+Done initializing
+Initialized (generated lpn arrays & GF(2^128)) in 2.971099615097046 seconds
+Computed 1000000 matrices in 372.84792590141296 seconds
+Calculated MAC in 46.97597002983093 seconds
+Ran GEN in 1551.1947836875916 seconds
+Rep failed
+Ran REP parallel in 554.7975778579712 seconds
+Rep failed
+Ran REP parallel in 562.0410869121552 seconds
+Rep failed
+Ran REP parallel in 552.3107676506042 seconds
+Testing LPN_dec_batch. Process id: 4. Found valid decoding!
+[0 0 0 0 0 0 0 0 0 0 0 0 1 1 0]
+Calculated MAC in 48.33643555641174 seconds
+Check passed
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+Testing LPN_dec_batch. Process id: 3. Found valid decoding!
+[0 0 0 0 0 0 0 0 0 0 0 0 1 1 0]
+Calculated MAC in 47.53094005584717 seconds
+Check passed
+Testing LPN_dec_batch. Process id: 8. Found valid decoding!
+[0 0 0 0 0 0 0 0 0 0 0 0 1 1 0]
+Calculated MAC in 49.31301951408386 seconds
+Check passed
+Rep succeeded
+Ran REP parallel in 124.2059485912323 seconds
+Testing LPN_dec_batch. Process id: 11. Found valid decoding!
+[0 0 0 0 0 0 0 0 0 0 0 0 1 1 0]
+Calculated MAC in 47.596415519714355 seconds
+Check passed
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+Testing LPN_dec_batch. Process id: 21. Found valid decoding!
+[0 0 0 0 0 0 0 0 0 0 0 0 1 1 0]
+Calculated MAC in 47.63800668716431 seconds
+Check passed
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+Testing LPN_dec_batch. Process id: 6. Found valid decoding!
+[0 0 0 0 0 0 0 0 0 0 0 0 1 1 0]
+Calculated MAC in 47.90363550186157 seconds
+Check passed
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+Testing LPN_dec_batch. Process id: 10. Found valid decoding!
+[0 0 0 0 0 0 0 0 0 0 0 0 1 1 0]
+Calculated MAC in 47.552231311798096 seconds
+Check passed
+Testing LPN_dec_batch. Process id: 32. Found valid decoding!
+[0 0 0 0 0 0 0 0 0 0 0 0 1 1 0]
+Calculated MAC in 47.517136573791504 seconds
+Check passed
+Testing LPN_dec_batch. Process id: 25. Found valid decoding!
+[0 0 0 0 0 0 0 0 0 0 0 0 1 1 0]
+Calculated MAC in 48.01879262924194 seconds
+Check passed
+Rep succeeded
+Ran REP parallel in 110.7710645198822 seconds
+Rep failed
+Ran REP parallel in 567.354368686676 seconds
+Rep failed
+Ran REP parallel in 578.7477068901062 seconds
+Testing LPN_dec_batch. Process id: 0. Found valid decoding!
+[0 0 0 0 0 0 0 0 0 0 0 0 1 1 0]
+Calculated MAC in 47.553391456604004 seconds
+Check passed
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+Testing LPN_dec_batch. Process id: 4. Found valid decoding!
+[0 0 0 0 0 0 0 0 0 0 0 0 1 1 0]
+Calculated MAC in 48.15501952171326 seconds
+Check passed
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+Testing LPN_dec_batch. Process id: 20. Found valid decoding!
+[0 0 0 0 0 0 0 0 0 0 0 0 1 1 0]
+Calculated MAC in 48.003496170043945 seconds
+Check passed
+Testing LPN_dec_batch. Process id: 19. Found valid decoding!
+[0 0 0 0 0 0 0 0 0 0 0 0 1 1 0]
+Calculated MAC in 47.77293825149536 seconds
+Check passed
+Testing LPN_dec_batch. Process id: 24. Found valid decoding!
+[0 0 0 0 0 0 0 0 0 0 0 0 1 1 0]
+Calculated MAC in 47.973127603530884 seconds
+Check passed
+Testing LPN_dec_batch. Process id: 32. Found valid decoding!
+[0 0 0 0 0 0 0 0 0 0 0 0 1 1 0]
+Calculated MAC in 48.6544132232666 seconds
+Check passed
+Testing LPN_dec_batch. Process id: 2. Found valid decoding!
+[0 0 0 0 0 0 0 0 0 0 0 0 1 1 0]
+Calculated MAC in 47.74233889579773 seconds
+Check passed
+Testing LPN_dec_batch. Process id: 22. Found valid decoding!
+[0 0 0 0 0 0 0 0 0 0 0 0 1 1 0]
+Calculated MAC in 50.903231143951416 seconds
+Check passed
+Rep succeeded
+Ran REP parallel in 117.72975182533264 seconds
+Testing LPN_dec_batch. Process id: 26. Found valid decoding!
+[0 0 0 0 0 0 0 0 0 0 0 0 1 1 0]
+Calculated MAC in 48.03597116470337 seconds
+Check passed
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+Rep succeeded
+Ran REP parallel in 302.861691236496 seconds
+Testing LPN_dec_batch. Process id: 8. Found valid decoding!
+[0 0 0 0 0 0 0 0 0 0 0 0 1 1 0]
+Calculated MAC in 47.633957862854004 seconds
+Check passed
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+Rep succeeded
+Ran REP parallel in 272.72319746017456 seconds
+Rep failed
+Ran REP parallel in 533.9871146678925 seconds
+Testing LPN_dec_batch. Process id: 18. Found valid decoding!
+[0 0 0 0 0 0 0 0 0 0 0 0 1 1 0]
+Calculated MAC in 47.59247303009033 seconds
+Check passed
+One of the other threads returned
+One of the other threads returned
+Testing LPN_dec_batch. Process id: 20. Found valid decoding!
+[0 0 0 0 0 0 0 0 0 0 0 0 1 1 0]
+Calculated MAC in 47.90275192260742 seconds
+Check passed
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+Testing LPN_dec_batch. Process id: 30. Found valid decoding!
+[0 0 0 0 0 0 0 0 0 0 0 0 1 1 0]
+Calculated MAC in 48.42257022857666 seconds
+Check passed
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+Testing LPN_dec_batch. Process id: 1. Found valid decoding!
+[0 0 0 0 0 0 0 0 0 0 0 0 1 1 0]
+Calculated MAC in 47.721089124679565 seconds
+Check passed
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+Testing LPN_dec_batch. Process id: 44. Found valid decoding!
+[0 0 0 0 0 0 0 0 0 0 0 0 1 1 0]
+Calculated MAC in 48.31041646003723 seconds
+Check passed
+Testing LPN_dec_batch. Process id: 12. Found valid decoding!
+[0 0 0 0 0 0 0 0 0 0 0 0 1 1 0]
+Calculated MAC in 49.357908725738525 seconds
+Check passed
+Testing LPN_dec_batch. Process id: 23. Found valid decoding!
+[0 0 0 0 0 0 0 0 0 0 0 0 1 1 0]
+Calculated MAC in 47.44853615760803 seconds
+Check passed
+Rep succeeded
+Ran REP parallel in 136.73869824409485 seconds
+Testing LPN_dec_batch. Process id: 18. Found valid decoding!
+[0 0 0 0 0 0 0 0 0 0 0 0 1 1 0]
+Calculated MAC in 47.836021423339844 seconds
+Check passed
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+Testing LPN_dec_batch. Process id: 31. Found valid decoding!
+[0 0 0 0 0 0 0 0 0 0 0 0 1 1 0]
+Calculated MAC in 46.99930167198181 seconds
+Check passed
+Rep succeeded
+Ran REP parallel in 284.95255064964294 seconds
+Rep failed
+Ran REP parallel in 471.9188497066498 seconds
+Rep failed
+Ran REP parallel in 532.5820508003235 seconds
+Rep failed
+Ran REP parallel in 516.1152927875519 seconds
+Testing LPN_dec_batch. Process id: 0. Found valid decoding!
+[0 0 0 0 0 0 0 0 0 0 0 0 1 1 0]
+Calculated MAC in 55.493765354156494 seconds
+Check passed
+Testing LPN_dec_batch. Process id: 2. Found valid decoding!
+[0 0 0 0 0 0 0 0 0 0 0 0 1 1 0]
+Calculated MAC in 61.871803998947144 seconds
+Check passed
+Testing LPN_dec_batch. Process id: 6. Found valid decoding!
+[0 0 0 0 0 0 0 0 0 0 0 0 1 1 0]
+Calculated MAC in 57.54625415802002 seconds
+Check passed
+Testing LPN_dec_batch. Process id: 3. Found valid decoding!
+[0 0 0 0 0 0 0 0 0 0 0 0 1 1 0]
+Calculated MAC in 64.48075151443481 seconds
+Check passed
+Testing LPN_dec_batch. Process id: 4. Found valid decoding!
+[0 0 0 0 0 0 0 0 0 0 0 0 1 1 0]
+Calculated MAC in 65.71414542198181 seconds
+Check passed
+Testing LPN_dec_batch. Process id: 15. Found valid decoding!
+[0 0 0 0 0 0 0 0 0 0 0 0 1 1 0]
+Calculated MAC in 60.10192322731018 seconds
+Check passed
+Testing LPN_dec_batch. Process id: 7. Found valid decoding!
+[0 0 0 0 0 0 0 0 0 0 0 0 1 1 0]
+Calculated MAC in 65.8899655342102 seconds
+Check passed
+Testing LPN_dec_batch. Process id: 13. Found valid decoding!
+[0 0 0 0 0 0 0 0 0 0 0 0 1 1 0]
+Calculated MAC in 62.58737516403198 seconds
+Check passed
+One of the other threads returned
+One of the other threads returned
+Testing LPN_dec_batch. Process id: 14. Found valid decoding!
+[0 0 0 0 0 0 0 0 0 0 0 0 1 1 0]
+Calculated MAC in 74.65773057937622 seconds
+Check passed
+Testing LPN_dec_batch. Process id: 9. Found valid decoding!
+[0 0 0 0 0 0 0 0 0 0 0 0 1 1 0]
+Calculated MAC in 68.44596242904663 seconds
+Check passed
+One of the other threads returned
+Testing LPN_dec_batch. Process id: 11. Found valid decoding!
+[0 0 0 0 0 0 0 0 0 0 0 0 1 1 0]
+Calculated MAC in 77.77297902107239 seconds
+Check passed
+Testing LPN_dec_batch. Process id: 42. Found valid decoding!
+[0 0 0 0 0 0 0 0 0 0 0 0 1 1 0]
+Calculated MAC in 68.45294666290283 seconds
+Check passed
+Testing LPN_dec_batch. Process id: 8. Found valid decoding!
+[0 0 0 0 0 0 0 0 0 0 0 0 1 1 0]
+Calculated MAC in 71.30280661582947 seconds
+Check passed
+Testing LPN_dec_batch. Process id: 40. Found valid decoding!
+[0 0 0 0 0 0 0 0 0 0 0 0 1 1 0]
+Calculated MAC in 70.40764331817627 seconds
+Check passed
+Testing LPN_dec_batch. Process id: 33. Found valid decoding!
+[0 0 0 0 0 0 0 0 0 0 0 0 1 1 0]
+Calculated MAC in 69.16344499588013 seconds
+Check passed
+Testing LPN_dec_batch. Process id: 47. Found valid decoding!
+[0 0 0 0 0 0 0 0 0 0 0 0 1 1 0]
+Calculated MAC in 70.69522666931152 seconds
+Check passed
+Testing LPN_dec_batch. Process id: 18. Found valid decoding!
+[0 0 0 0 0 0 0 0 0 0 0 0 1 1 0]
+Calculated MAC in 72.39127731323242 seconds
+Check passed
+Testing LPN_dec_batch. Process id: 44. Found valid decoding!
+[0 0 0 0 0 0 0 0 0 0 0 0 1 1 0]
+Calculated MAC in 71.85024309158325 seconds
+Check passed
+Testing LPN_dec_batch. Process id: 20. Found valid decoding!
+[0 0 0 0 0 0 0 0 0 0 0 0 1 1 0]
+Calculated MAC in 64.45533633232117 seconds
+Check passed
+Testing LPN_dec_batch. Process id: 5. Found valid decoding!
+[0 0 0 0 0 0 0 0 0 0 0 0 1 1 0]
+Calculated MAC in 62.271066188812256 seconds
+Check passed
+Testing LPN_dec_batch. Process id: 12. Found valid decoding!
+[0 0 0 0 0 0 0 0 0 0 0 0 1 1 0]
+Calculated MAC in 68.43554878234863 seconds
+Check passed
+Testing LPN_dec_batch. Process id: 24. Found valid decoding!
+[0 0 0 0 0 0 0 0 0 0 0 0 1 1 0]
+Calculated MAC in 65.19879579544067 seconds
+Check passed
+Testing LPN_dec_batch. Process id: 45. Found valid decoding!
+[0 0 0 0 0 0 0 0 0 0 0 0 1 1 0]
+Calculated MAC in 72.27201271057129 seconds
+Check passed
+Testing LPN_dec_batch. Process id: 23. Found valid decoding!
+[0 0 0 0 0 0 0 0 0 0 0 0 1 1 0]
+Calculated MAC in 81.31397318840027 seconds
+Check passed
+Testing LPN_dec_batch. Process id: 39. Found valid decoding!
+[0 0 0 0 0 0 0 0 0 0 0 0 1 1 0]
+Calculated MAC in 63.76103329658508 seconds
+Check passed
+Testing LPN_dec_batch. Process id: 10. Found valid decoding!
+[0 0 0 0 0 0 0 0 0 0 0 0 1 1 0]
+Calculated MAC in 79.47709202766418 seconds
+Check passed
+Testing LPN_dec_batch. Process id: 28. Found valid decoding!
+[0 0 0 0 0 0 0 0 0 0 0 0 1 1 0]
+Calculated MAC in 56.2600417137146 seconds
+Check passed
+Testing LPN_dec_batch. Process id: 16. Found valid decoding!
+[0 0 0 0 0 0 0 0 0 0 0 0 1 1 0]
+Calculated MAC in 81.56736588478088 seconds
+Check passed
+Testing LPN_dec_batch. Process id: 38. Found valid decoding!
+[0 0 0 0 0 0 0 0 0 0 0 0 1 1 0]
+Calculated MAC in 61.70388412475586 seconds
+Check passed
+Testing LPN_dec_batch. Process id: 1. Found valid decoding!
+[0 0 0 0 0 0 0 0 0 0 0 0 1 1 0]
+Calculated MAC in 72.69620537757874 seconds
+Check passed
+Testing LPN_dec_batch. Process id: 35. Found valid decoding!
+[0 0 0 0 0 0 0 0 0 0 0 0 1 1 0]
+Calculated MAC in 65.23867607116699 seconds
+Check passed
+Testing LPN_dec_batch. Process id: 36. Found valid decoding!
+[0 0 0 0 0 0 0 0 0 0 0 0 1 1 0]
+Calculated MAC in 70.81630158424377 seconds
+Check passed
+Testing LPN_dec_batch. Process id: 37. Found valid decoding!
+[0 0 0 0 0 0 0 0 0 0 0 0 1 1 0]
+Calculated MAC in 74.33906722068787 seconds
+Check passed
+Testing LPN_dec_batch. Process id: 26. Found valid decoding!
+[0 0 0 0 0 0 0 0 0 0 0 0 1 1 0]
+Calculated MAC in 88.39142084121704 seconds
+Check passed
+Testing LPN_dec_batch. Process id: 17. Found valid decoding!
+[0 0 0 0 0 0 0 0 0 0 0 0 1 1 0]
+Calculated MAC in 75.42192792892456 seconds
+Check passed
+Testing LPN_dec_batch. Process id: 41. Found valid decoding!
+[0 0 0 0 0 0 0 0 0 0 0 0 1 1 0]
+Calculated MAC in 73.52598285675049 seconds
+Check passed
+Testing LPN_dec_batch. Process id: 46. Found valid decoding!
+[0 0 0 0 0 0 0 0 0 0 0 0 1 1 0]
+Calculated MAC in 47.63571786880493 seconds
+Check passed
+Testing LPN_dec_batch. Process id: 30. Found valid decoding!
+[0 0 0 0 0 0 0 0 0 0 0 0 1 1 0]
+Calculated MAC in 80.48444652557373 seconds
+Check passed
+Testing LPN_dec_batch. Process id: 19. Found valid decoding!
+[0 0 0 0 0 0 0 0 0 0 0 0 1 1 0]
+Calculated MAC in 47.918904304504395 seconds
+Check passed
+Testing LPN_dec_batch. Process id: 32. Found valid decoding!
+[0 0 0 0 0 0 0 0 0 0 0 0 1 1 0]
+Calculated MAC in 47.41345572471619 seconds
+Check passed
+Testing LPN_dec_batch. Process id: 27. Found valid decoding!
+[0 0 0 0 0 0 0 0 0 0 0 0 1 1 0]
+Calculated MAC in 62.33429741859436 seconds
+Check passed
+Testing LPN_dec_batch. Process id: 25. Found valid decoding!
+[0 0 0 0 0 0 0 0 0 0 0 0 1 1 0]
+Calculated MAC in 65.86336708068848 seconds
+Check passed
+Testing LPN_dec_batch. Process id: 29. Found valid decoding!
+[0 0 0 0 0 0 0 0 0 0 0 0 1 1 0]
+Calculated MAC in 68.82319140434265 seconds
+Check passed
+Testing LPN_dec_batch. Process id: 21. Found valid decoding!
+[0 0 0 0 0 0 0 0 0 0 0 0 1 1 0]
+Calculated MAC in 57.65876388549805 seconds
+Check passed
+Testing LPN_dec_batch. Process id: 31. Found valid decoding!
+[0 0 0 0 0 0 0 0 0 0 0 0 1 1 0]
+Calculated MAC in 46.223066091537476 seconds
+Check passed
+Rep succeeded
+Ran REP parallel in 158.2994499206543 seconds
+Testing LPN_dec_batch. Process id: 26. Found valid decoding!
+[0 0 0 0 0 0 0 0 0 0 0 0 1 1 0]
+Calculated MAC in 47.20724964141846 seconds
+Check passed
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+Testing LPN_dec_batch. Process id: 29. Found valid decoding!
+[0 0 0 0 0 0 0 0 0 0 0 0 1 1 0]
+Calculated MAC in 46.94122505187988 seconds
+Check passed
+Rep succeeded
+Ran REP parallel in 116.38449740409851 seconds
+Rep failed
+Ran REP parallel in 509.39113688468933 seconds
+Testing LPN_dec_batch. Process id: 37. Found valid decoding!
+[0 0 0 0 0 0 0 0 0 0 0 0 1 1 0]
+Calculated MAC in 47.099920988082886 seconds
+Check passed
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+Testing LPN_dec_batch. Process id: 23. Found valid decoding!
+[0 0 0 0 0 0 0 0 0 0 0 0 1 1 0]
+Calculated MAC in 48.82551383972168 seconds
+Check passed
+Testing LPN_dec_batch. Process id: 32. Found valid decoding!
+[0 0 0 0 0 0 0 0 0 0 0 0 1 1 0]
+Calculated MAC in 47.27129530906677 seconds
+Check passed
+Rep succeeded
+Ran REP parallel in 169.05615305900574 seconds
+Rep failed
+Ran REP parallel in 530.0452239513397 seconds
+Rep failed
+Ran REP parallel in 515.0676589012146 seconds
+Testing LPN_dec_batch. Process id: 6. Found valid decoding!
+[0 0 0 0 0 0 0 0 0 0 0 0 1 1 0]
+Calculated MAC in 46.622840881347656 seconds
+Check passed
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+Testing LPN_dec_batch. Process id: 9. Found valid decoding!
+[0 0 0 0 0 0 0 0 0 0 0 0 1 1 0]
+Calculated MAC in 46.86751866340637 seconds
+Check passed
+One of the other threads returned
+Testing LPN_dec_batch. Process id: 10. Found valid decoding!
+[0 0 0 0 0 0 0 0 0 0 0 0 1 1 0]
+Calculated MAC in 50.05762815475464 seconds
+Check passed
+Testing LPN_dec_batch. Process id: 14. Found valid decoding!
+[0 0 0 0 0 0 0 0 0 0 0 0 1 1 0]
+Calculated MAC in 47.0396614074707 seconds
+Check passed
+Testing LPN_dec_batch. Process id: 15. Found valid decoding!
+[0 0 0 0 0 0 0 0 0 0 0 0 1 1 0]
+Calculated MAC in 46.856019020080566 seconds
+Check passed
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+Testing LPN_dec_batch. Process id: 1. Found valid decoding!
+[0 0 0 0 0 0 0 0 0 0 0 0 1 1 0]
+Calculated MAC in 46.758540868759155 seconds
+Check passed
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+Testing LPN_dec_batch. Process id: 11. Found valid decoding!
+[0 0 0 0 0 0 0 0 0 0 0 0 1 1 0]
+Calculated MAC in 59.943692445755005 seconds
+Check passed
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+Testing LPN_dec_batch. Process id: 38. Found valid decoding!
+[0 0 0 0 0 0 0 0 0 0 0 0 1 1 0]
+Calculated MAC in 49.14035129547119 seconds
+Check passed
+Testing LPN_dec_batch. Process id: 45. Found valid decoding!
+[0 0 0 0 0 0 0 0 0 0 0 0 1 1 0]
+Calculated MAC in 47.72044062614441 seconds
+Check passed
+Testing LPN_dec_batch. Process id: 23. Found valid decoding!
+[0 0 0 0 0 0 0 0 0 0 0 0 1 1 0]
+Calculated MAC in 56.68679857254028 seconds
+Check passed
+Testing LPN_dec_batch. Process id: 21. Found valid decoding!
+[0 0 0 0 0 0 0 0 0 0 0 0 1 1 0]
+Calculated MAC in 46.62334394454956 seconds
+Check passed
+Testing LPN_dec_batch. Process id: 19. Found valid decoding!
+[0 0 0 0 0 0 0 0 0 0 0 0 1 1 0]
+Calculated MAC in 47.42733407020569 seconds
+Check passed
+Testing LPN_dec_batch. Process id: 22. Found valid decoding!
+[0 0 0 0 0 0 0 0 0 0 0 0 1 1 0]
+Calculated MAC in 55.55397629737854 seconds
+Check passed
+Testing LPN_dec_batch. Process id: 18. Found valid decoding!
+[0 0 0 0 0 0 0 0 0 0 0 0 1 1 0]
+Calculated MAC in 48.611281871795654 seconds
+Check passed
+Testing LPN_dec_batch. Process id: 4. Found valid decoding!
+[0 0 0 0 0 0 0 0 0 0 0 0 1 1 0]
+Calculated MAC in 48.12272310256958 seconds
+Check passed
+Testing LPN_dec_batch. Process id: 28. Found valid decoding!
+[0 0 0 0 0 0 0 0 0 0 0 0 1 1 0]
+Calculated MAC in 46.72233057022095 seconds
+Check passed
+Testing LPN_dec_batch. Process id: 24. Found valid decoding!
+[0 0 0 0 0 0 0 0 0 0 0 0 1 1 0]
+Calculated MAC in 46.426753520965576 seconds
+Check passed
+Testing LPN_dec_batch. Process id: 16. Found valid decoding!
+[0 0 0 0 0 0 0 0 0 0 0 0 1 1 0]
+Calculated MAC in 46.716785192489624 seconds
+Check passed
+Testing LPN_dec_batch. Process id: 12. Found valid decoding!
+[0 0 0 0 0 0 0 0 0 0 0 0 1 1 0]
+Calculated MAC in 47.30818510055542 seconds
+Check passed
+Testing LPN_dec_batch. Process id: 37. Found valid decoding!
+[0 0 0 0 0 0 0 0 0 0 0 0 1 1 0]
+Calculated MAC in 46.85894155502319 seconds
+Check passed
+Testing LPN_dec_batch. Process id: 7. Found valid decoding!
+[0 0 0 0 0 0 0 0 0 0 0 0 1 1 0]
+Calculated MAC in 49.243122577667236 seconds
+Check passed
+Rep succeeded
+Ran REP parallel in 128.75856685638428 seconds
+Testing LPN_dec_batch. Process id: 29. Found valid decoding!
+[0 0 0 0 0 0 0 0 0 0 0 0 1 1 0]
+Calculated MAC in 47.01233196258545 seconds
+Check passed
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+Rep succeeded
+Ran REP parallel in 205.38917708396912 seconds
+Testing LPN_dec_batch. Process id: 36. Found valid decoding!
+[0 0 0 0 0 0 0 0 0 0 0 0 1 1 0]
+Calculated MAC in 46.84737229347229 seconds
+Check passed
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+Rep succeeded
+Ran REP parallel in 189.31878089904785 seconds
+Rep failed
+Ran REP parallel in 522.4175477027893 seconds
+Rep failed
+Ran REP parallel in 520.3455092906952 seconds
+Testing LPN_dec_batch. Process id: 47. Found valid decoding!
+[0 0 0 0 0 0 0 0 0 0 0 0 1 1 0]
+Calculated MAC in 47.49413585662842 seconds
+Check passed
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+Testing LPN_dec_batch. Process id: 40. Found valid decoding!
+[0 0 0 0 0 0 0 0 0 0 0 0 1 1 0]
+Calculated MAC in 46.94709897041321 seconds
+Check passed
+Rep succeeded
+Ran REP parallel in 133.22607564926147 seconds
+Testing LPN_dec_batch. Process id: 31. Found valid decoding!
+[0 0 0 0 0 0 0 0 0 0 0 0 1 1 0]
+Calculated MAC in 47.14324140548706 seconds
+Check passed
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+Testing LPN_dec_batch. Process id: 3. Found valid decoding!
+[0 0 0 0 0 0 0 0 0 0 0 0 1 1 0]
+Calculated MAC in 46.42737674713135 seconds
+Check passed
+Testing LPN_dec_batch. Process id: 10. Found valid decoding!
+[0 0 0 0 0 0 0 0 0 0 0 0 1 1 0]
+Calculated MAC in 46.42837429046631 seconds
+Check passed
+Testing LPN_dec_batch. Process id: 18. Found valid decoding!
+[0 0 0 0 0 0 0 0 0 0 0 0 1 1 0]
+Calculated MAC in 49.52009558677673 seconds
+Check passed
+Rep succeeded
+Ran REP parallel in 180.42977023124695 seconds
+Rep failed
+Ran REP parallel in 579.4042763710022 seconds
+Rep failed
+Ran REP parallel in 539.0078654289246 seconds
+Testing LPN_dec_batch. Process id: 35. Found valid decoding!
+[0 0 0 0 0 0 0 0 0 0 0 0 1 1 0]
+Calculated MAC in 53.86531662940979 seconds
+Check passed
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+Rep succeeded
+Ran REP parallel in 483.90652322769165 seconds
+Testing LPN_dec_batch. Process id: 43. Found valid decoding!
+[0 0 0 0 0 0 0 0 0 0 0 0 1 1 0]
+Calculated MAC in 47.94617986679077 seconds
+Check passed
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+Rep succeeded
+Ran REP parallel in 176.2490782737732 seconds
+Rep failed
+Ran REP parallel in 540.5453722476959 seconds
+Rep failed
+Ran REP parallel in 565.3465168476105 seconds
+Rep failed
+Ran REP parallel in 574.9826099872589 seconds
+Rep failed
+Ran REP parallel in 540.3191924095154 seconds
+Testing LPN_dec_batch. Process id: 6. Found valid decoding!
+[0 0 0 0 0 0 0 0 0 0 0 0 1 1 0]
+Calculated MAC in 53.49097442626953 seconds
+Check passed
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+Rep succeeded
+Ran REP parallel in 109.7841386795044 seconds
+Rep failed
+Ran REP parallel in 554.8231906890869 seconds
+Rep failed
+Ran REP parallel in 573.7897794246674 seconds
+Rep failed
+Ran REP parallel in 532.3041183948517 seconds
+Rep failed
+Ran REP parallel in 558.5275523662567 seconds
+Testing LPN_dec_batch. Process id: 4. Found valid decoding!
+[0 0 0 0 0 0 0 0 0 0 0 0 1 1 0]
+Calculated MAC in 46.90755486488342 seconds
+Check passed
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+Rep succeeded
+Ran REP parallel in 80.57419943809509 seconds
+Testing LPN_dec_batch. Process id: 10. Found valid decoding!
+[0 0 0 0 0 0 0 0 0 0 0 0 1 1 0]
+Calculated MAC in 47.09954333305359 seconds
+Check passed
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+Testing LPN_dec_batch. Process id: 14. Found valid decoding!
+[0 0 0 0 0 0 0 0 0 0 0 0 1 1 0]
+Calculated MAC in 47.43493723869324 seconds
+Check passed
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+Rep succeeded
+Ran REP parallel in 196.05713367462158 seconds
+Testing LPN_dec_batch. Process id: 13. Found valid decoding!
+[0 0 0 0 0 0 0 0 0 0 0 0 1 1 0]
+Calculated MAC in 47.07068157196045 seconds
+Check passed
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+Testing LPN_dec_batch. Process id: 33. Found valid decoding!
+[0 0 0 0 0 0 0 0 0 0 0 0 1 1 0]
+Calculated MAC in 48.09576725959778 seconds
+Check passed
+Rep succeeded
+Ran REP parallel in 83.4877073764801 seconds
+Rep failed
+Ran REP parallel in 553.4301197528839 seconds
+Testing LPN_dec_batch. Process id: 11. Found valid decoding!
+[0 0 0 0 0 0 0 0 0 0 0 0 1 1 0]
+Calculated MAC in 46.96745014190674 seconds
+Check passed
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+Rep succeeded
+Ran REP parallel in 514.3032953739166 seconds
+Testing LPN_dec_batch. Process id: 8. Found valid decoding!
+[0 0 0 0 0 0 0 0 0 0 0 0 1 1 0]
+Calculated MAC in 47.28593468666077 seconds
+Check passed
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+Testing LPN_dec_batch. Process id: 20. Found valid decoding!
+[0 0 0 0 0 0 0 0 0 0 0 0 1 1 0]
+Calculated MAC in 46.917643785476685 seconds
+Check passed
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+Testing LPN_dec_batch. Process id: 3. Found valid decoding!
+[0 0 0 0 0 0 0 0 0 0 0 0 1 1 0]
+Calculated MAC in 46.949310302734375 seconds
+Check passed
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+Testing LPN_dec_batch. Process id: 17. Found valid decoding!
+[0 0 0 0 0 0 0 0 0 0 0 0 1 1 0]
+Calculated MAC in 46.81852698326111 seconds
+Check passed
+Testing LPN_dec_batch. Process id: 45. Found valid decoding!
+[0 0 0 0 0 0 0 0 0 0 0 0 1 1 0]
+Calculated MAC in 48.24461793899536 seconds
+Check passed
+Testing LPN_dec_batch. Process id: 23. Found valid decoding!
+[0 0 0 0 0 0 0 0 0 0 0 0 1 1 0]
+Calculated MAC in 46.44523000717163 seconds
+Check passed
+Testing LPN_dec_batch. Process id: 38. Found valid decoding!
+[0 0 0 0 0 0 0 0 0 0 0 0 1 1 0]
+Calculated MAC in 48.30810022354126 seconds
+Check passed
+Testing LPN_dec_batch. Process id: 37. Found valid decoding!
+[0 0 0 0 0 0 0 0 0 0 0 0 1 1 0]
+Calculated MAC in 46.911452770233154 seconds
+Check passed
+Testing LPN_dec_batch. Process id: 27. Found valid decoding!
+[0 0 0 0 0 0 0 0 0 0 0 0 1 1 0]
+Calculated MAC in 48.084842920303345 seconds
+Check passed
+Testing LPN_dec_batch. Process id: 44. Found valid decoding!
+[0 0 0 0 0 0 0 0 0 0 0 0 1 1 0]
+Calculated MAC in 46.900898933410645 seconds
+Check passed
+Rep succeeded
+Ran REP parallel in 127.42149686813354 seconds
+Testing LPN_dec_batch. Process id: 47. Found valid decoding!
+[0 0 0 0 0 0 0 0 0 0 0 0 1 1 0]
+Calculated MAC in 46.914135456085205 seconds
+Check passed
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+Testing LPN_dec_batch. Process id: 26. Found valid decoding!
+[0 0 0 0 0 0 0 0 0 0 0 0 1 1 0]
+Calculated MAC in 46.332990407943726 seconds
+Check passed
+Rep succeeded
+Ran REP parallel in 149.31861186027527 seconds
+Testing LPN_dec_batch. Process id: 0. Found valid decoding!
+[0 0 0 0 0 0 0 0 0 0 0 0 1 1 0]
+Calculated MAC in 47.10537147521973 seconds
+Check passed
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+Testing LPN_dec_batch. Process id: 6. Found valid decoding!
+[0 0 0 0 0 0 0 0 0 0 0 0 1 1 0]
+Calculated MAC in 47.45688557624817 seconds
+Check passed
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+One of the other threads returned
+Testing LPN_dec_batch. Process id: 34. Found valid decoding!
+[0 0 0 0 0 0 0 0 0 0 0 0 1 1 0]
+Calculated MAC in 47.092339515686035 seconds
+Check passed
+Testing LPN_dec_batch. Process id: 40. Found valid decoding!
+[0 0 0 0 0 0 0 0 0 0 0 0 1 1 0]
+Calculated MAC in 49.49056959152222 seconds
+Check passed
+Testing LPN_dec_batch. Process id: 18. Found valid decoding!
+[0 0 0 0 0 0 0 0 0 0 0 0 1 1 0]
+Calculated MAC in 47.19934892654419 seconds
+Check passed
+Rep succeeded
+Ran REP parallel in 114.46778917312622 seconds
+Rep failed
+Ran REP parallel in 549.6903982162476 seconds
+11010000100011001111001010010001110101100111100000010111100101100000010100010000001100100110111111001100000110111001011001000010
+[None, None, None, '11010000100011001111001010010001110101100111100000010111100101100000010100010000001100100110111111001100000110111001011001000010', '11010000100011001111001010010001110101100111100000010111100101100000010100010000001100100110111111001100000110111001011001000010', None, None, '11010000100011001111001010010001110101100111100000010111100101100000010100010000001100100110111111001100000110111001011001000010', '11010000100011001111001010010001110101100111100000010111100101100000010100010000001100100110111111001100000110111001011001000010', '11010000100011001111001010010001110101100111100000010111100101100000010100010000001100100110111111001100000110111001011001000010', None, '11010000100011001111001010010001110101100111100000010111100101100000010100010000001100100110111111001100000110111001011001000010', '11010000100011001111001010010001110101100111100000010111100101100000010100010000001100100110111111001100000110111001011001000010', None, None, None, '11010000100011001111001010010001110101100111100000010111100101100000010100010000001100100110111111001100000110111001011001000010', '11010000100011001111001010010001110101100111100000010111100101100000010100010000001100100110111111001100000110111001011001000010', None, '11010000100011001111001010010001110101100111100000010111100101100000010100010000001100100110111111001100000110111001011001000010', None, None, '11010000100011001111001010010001110101100111100000010111100101100000010100010000001100100110111111001100000110111001011001000010', '11010000100011001111001010010001110101100111100000010111100101100000010100010000001100100110111111001100000110111001011001000010', '11010000100011001111001010010001110101100111100000010111100101100000010100010000001100100110111111001100000110111001011001000010', None, None, '11010000100011001111001010010001110101100111100000010111100101100000010100010000001100100110111111001100000110111001011001000010', '11010000100011001111001010010001110101100111100000010111100101100000010100010000001100100110111111001100000110111001011001000010', None, None, '11010000100011001111001010010001110101100111100000010111100101100000010100010000001100100110111111001100000110111001011001000010', '11010000100011001111001010010001110101100111100000010111100101100000010100010000001100100110111111001100000110111001011001000010', None, None, None, None, '11010000100011001111001010010001110101100111100000010111100101100000010100010000001100100110111111001100000110111001011001000010', None, None, None, None, '11010000100011001111001010010001110101100111100000010111100101100000010100010000001100100110111111001100000110111001011001000010', '11010000100011001111001010010001110101100111100000010111100101100000010100010000001100100110111111001100000110111001011001000010', '11010000100011001111001010010001110101100111100000010111100101100000010100010000001100100110111111001100000110111001011001000010', None, '11010000100011001111001010010001110101100111100000010111100101100000010100010000001100100110111111001100000110111001011001000010', '11010000100011001111001010010001110101100111100000010111100101100000010100010000001100100110111111001100000110111001011001000010', '11010000100011001111001010010001110101100111100000010111100101100000010100010000001100100110111111001100000110111001011001000010', '11010000100011001111001010010001110101100111100000010111100101100000010100010000001100100110111111001100000110111001011001000010', None]
+no problems so far
+
+real	339m23.229s
+user	3810m30.777s
+sys	259m10.648s
