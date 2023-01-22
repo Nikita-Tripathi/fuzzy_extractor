@@ -45,6 +45,7 @@ class FuzzyExtractor:
         self.hash = hashlib.sha3_512()
         self.L = ceil((self.hash.digest_size * 8) / self.lbd) + 4
         self.hash = hashlib.sha3_512().name
+        self.bigctxt = ''
 
         # File prefix
         self.file_prefix = file_prefix
@@ -96,11 +97,11 @@ class FuzzyExtractor:
         
         # Multiply LPN matrices by the LPN keys (subsamples of iris code)
         t = time.time()
-        d = mx_par.gen_helper(self.read_matrix, self.l, keys)
-        print(f"Computed {len(d)} matrices in {time.time() - t} seconds")
+        ctxt = mx_par.gen_helper(self.l, keys, m)
+        print(f"Computed {len(ctxt)} ciphertexts in {time.time() - t} seconds")
 
         # Compute l ciphetexts
-        ctxt = [m[i] ^ d[i] for i in range(self.l)]
+        # ctxt = [m[i] ^ d[i] for i in range(self.l)]
 
         d = []
 
@@ -163,7 +164,9 @@ class FuzzyExtractor:
     def mac(self, key, ciphertexts):
         t = time.time()
         h = hashlib.new(self.hash)
-        bigctxt = str(ciphertexts)
+
+        if not self.bigctxt: self.bigctxt = str(ciphertexts)
+        bigctxt = self.bigctxt
 
         # Generate a digest of entire ciphertexts
         bigctxt = bigctxt.encode()
@@ -197,8 +200,9 @@ class FuzzyExtractor:
         to_enc = (R + R_1).zfill(self.ecc_msg_len)
 
         # Generate l sets of unmasked positions 
+        t = time.time()
         self.positions = [ random.SystemRandom().sample(np.flatnonzero(n).tolist(), k=self.k) for _ in range(self.l) ]
-
+        print(f"Generating sample positions: {time.time() - t} sec ")
         samples = []
         # step 2: start a loop
         for i in range(self.l):
@@ -240,7 +244,7 @@ class FuzzyExtractor:
     def rep_process(self, w_, arr_of_indices, finished, process_id):
         for indices in arr_of_indices:
             if any(finished):
-                print("One of the other threads returned")
+                # print("One of the other threads returned")
                 return 
 
             samples = []
@@ -272,7 +276,6 @@ class FuzzyExtractor:
                     print("Check passed")
                     finished[process_id] = R
                     return
-
         
         return
 
@@ -294,34 +297,30 @@ def img_opener(path, mask=False):
         return [data[i:i+64].flatten() for i in range(0, 384, 64)]
 
 
-def main():
-    mask1 = "./test_msk/04569d753_mano.bmp"
-    code1 = "./test_code/04569d753_code.bmp"
-
-    toTest = ['04560d877', '04560d858', '04560d828', '04560d855', '04560d731', '04560d892', '04560d698', '04560d721', '04560d888', '04560d643', '04560d727', '04560d712', '04560d843', '04560d886', '04560d702', '04560d671', '04560d649', '04560d670', '04560d848', '04560d715', '04560d837', '04560d890', '04560d679', '04560d882', '04560d699', '04560d860', '04560d714', '04560d844', '04560d875', '04560d654', '04560d696', '04560d857', '04560d705', '04560d887', '04560d664', '04560d690', '04560d694', '04560d847', '04560d885', '04560d648', '04560d645', '04560d659', '04560d653', '04560d638', '04560d661', '04560d681', '04560d686', '04560d729', '04560d853', '04560d637']
-    # toTest = ['04569d733', '04569d758', '04569d616', '04569d520', '04569d625', '04569d630', '04569d613', '04569d517', '04569d767', '04569d595', '04569d521', '04569d729', '04569d620', '04569d604', '04569d591', '04569d642', '04569d750', '04569d766', '04569d593', '04569d744', '04569d605', '04569d612', '04569d754', '04569d602', '04569d768', '04569d749', '04569d618', '04569d527', '04569d714', '04569d525', '04569d731', '04569d632', '04569d757', '04569d644', '04569d648', '04569d528', '04569d752', '04569d524', '04569d769', '04569d603', '04569d519', '04569d608', '04569d532', '04569d730', '04569d763', '04569d719', '04569d614', '04569d738', '04569d512', '04569d634', '04569d606']
-    # toTest = ['04569d734']
+def main(first, toTest):
+    mask1 = f"./NEWOutput/NormalizedMasks/{first}_mano.bmp"
+    code1 = f"./NEWOutput/IrisCodes/{first}_code.bmp"
 
     m1 = img_opener(mask1, mask=True)
     c1 = [ m1 & c for c in img_opener(code1) ] # XOR all 6 codes (one per Gabor filter pair) with mask here
 
 
-
+    print("Testing ", first)
     t1 = time.time()
-    fe = FuzzyExtractor(l=1000000, file_prefix="04560")
+    fe = FuzzyExtractor(l=1000000, file_prefix=first)
     t2 = time.time()
     print(f"Initialized (generated lpn arrays & GF(2^128)) in {t2 - t1} seconds")
 
     # HACK ACCORDING TO FULLERS PAPER (SECTION 4), TRANSFORM #5 HAS THE BEST RATE FOR IMAGES OF SAME IRIS
     a = fe.gen(c1[5], m1)
     t3 = time.time()
-    print(f"Ran GEN in {t3 - t2} seconds") # For l = 10000 = 10^4 typically takes 370 seconds
+    print(f"Ran GEN in {t3 - t2} seconds")
 
     results = []
 
     for t in toTest:
-        maskt = f"./test_msk/{t}_mano.bmp"
-        codet = f"./test_code/{t}_code.bmp"
+        maskt = f"./NEWOutput/NormalizedMasks/{t}_mano.bmp"
+        codet = f"./NEWOutput/IrisCodes/{t}_code.bmp"
 
         mt = img_opener(maskt, mask=True)
         ct = [ mt & c for c in img_opener(codet) ] # XOR all 6 codes (one per Gabor filter pair) with mask here
@@ -342,6 +341,58 @@ def main():
 
 
 if __name__ == '__main__':
-
-    main()
+    sec = [
+        '04841d617',
+        '04841d616',
+        '04841d613',
+        '04841d610',
+        '04841d305',
+        '04841d312',
+        '04841d591',
+        '04841d586',
+        '04841d602',
+        '04841d606',
+        '04841d603',
+        '04841d307',
+        '04841d320',
+        '04841d308',
+        '04841d590',
+        '04841d313',
+        '04841d593',
+        '04841d594',
+        '04841d597',
+        '04841d314',
+        '04841d321',
+        '04841d601',
+        '04841d589',
+        '04841d604',
+        '04841d319',
+        '04841d612',
+        '04841d306',
+        '04841d311',
+        '04841d618',
+        '04841d588',
+        '04841d596',
+        '04841d595',
+        '04841d309',
+        '04841d310',
+        '04841d605',
+        '04841d607',
+        '04841d315',
+        '04841d600',
+        '04841d592',
+        '04841d611',
+        '04841d587',
+        '04841d599',
+        '04841d318',
+        '04841d615',
+        '04841d598',
+        '04841d317',
+        '04841d609',
+        '04841d316',
+        '04841d614',
+        '04841d608',
+        '04841d304',
+        ]
+    main(first='04841d596', toTest=sec)
 

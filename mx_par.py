@@ -43,17 +43,17 @@ def f(i):
     '''
     Gen helper's helper
     '''
-    a, b = i
-    return np.matmul(np.load(f"LPN_Matrices/{a}.npy"), b) % 2
+    a, b, m = i
+    return (np.matmul(np.load(f"LPN_Matrices/{a}.npy"), b) % 2) ^ m
 
-def gen_helper(read_func, l, keys):
+def gen_helper(l, keys, messages):
     '''
     Takes the matrix read fuction, # of lockers, and the iris subsamples
     Returns l products of matrix and subsample (binary vectors)
     '''
     p = Pool()
 
-    d = p.map(f, zip(range(l), keys))
+    d = p.map(f, zip(range(l), keys, messages))
 
     p.close()
     p.join()
