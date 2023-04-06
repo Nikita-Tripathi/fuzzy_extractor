@@ -3,6 +3,7 @@ import galois
 from pathos.multiprocessing import ProcessingPool as Pool
 from multiprocessing import Pool
 import numpy as np
+import dask.array as da
 
 import time
 
@@ -51,6 +52,7 @@ def gen_helper(l, keys, messages):
     Takes the matrix read fuction, # of lockers, and the iris subsamples
     Returns l products of matrix and subsample (binary vectors)
     '''
+
     p = Pool()
 
     d = p.map(f, zip(range(l), keys, messages))

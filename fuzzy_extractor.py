@@ -10,6 +10,7 @@ import hashlib
 
 import sys, time, random
 import mx_par
+import iris_dictionary
 
 
 
@@ -69,27 +70,27 @@ class FuzzyExtractor:
     # * call the batch enc function with all the LPN matrices & the subsamples
     def LPN_batch_enc(self, keys, msgs):
         # Prep the messages to encode (put each on a new line)
-        with open(f'src{self.file_prefix}.src', 'w') as f:
+        with open(f'{self.file_prefix}.src', 'w') as f:
             f.writelines(msgs[0])
         
         # Encode message
-        check_output(["./encode", "parity.pchk", "gen.gen", f"src{self.file_prefix}.src", f"e{self.file_prefix}.enc"])
+        check_output(["./encode", "parity.pchk", "gen.gen", f"{self.file_prefix}.src", f"{self.file_prefix}.enc"])
         
         # Setup for adding errors to l encodings 
         code = []
-        with open(f'e{self.file_prefix}.enc', 'r') as f:
+        with open(f'{self.file_prefix}.enc', 'r') as f:
             code = f.read().strip()
-            code = [code+'\n'] * self.l
+        code = [code+'\n'] * self.l
         
-        with open(f'e{self.file_prefix}.enc', 'w') as f:
+        with open(f'{self.file_prefix}.enc', 'w') as f:
             f.writelines(code)
 
         # Adding errors
         # check_output(["./transmit", "e.enc", "r.rec", f"{randbits(32)}", "bsc", f"{self.error_rate}"])
-        check_output(["bash", "ldpc_enc_batch.bash", f"-s {randbits(32)}", f"-e {self.error_rate}", "-f", self.file_prefix])
+        check_output(["bash", "ldpc_enc_batch.bash", f"-s {randbits(12)}", f"-e {self.error_rate}", "-f", self.file_prefix])
 
         # Reading noisy codes
-        with open(f'r{self.file_prefix}.rec', 'r') as f:
+        with open(f'{self.file_prefix}.rec', 'r') as f:
             noisy_msg = f.readlines()
 
         # Transform the str output to a binary vector
@@ -125,7 +126,7 @@ class FuzzyExtractor:
         # print(f'Testing LPN_dec_batch. Process id: {process}\n temp: {len(tmp)}')
         
         # Encode temp into a bitstring
-        input_file_name = f'r{self.file_prefix}-{process}.rec'
+        input_file_name = f'{self.file_prefix}-{process}.rec'
         with open(input_file_name, 'w') as f:
             f.write(tmp)
         
@@ -147,7 +148,7 @@ class FuzzyExtractor:
                 break
         
 
-        output_file_name = f'e{self.file_prefix}-{process}.ext'
+        output_file_name = f'{self.file_prefix}-{process}.ext'
         with open(output_file_name, 'r') as f:
             out = f.readlines()
 
@@ -341,58 +342,22 @@ def main(first, toTest):
 
 
 if __name__ == '__main__':
-    sec = [
-        '04841d617',
-        '04841d616',
-        '04841d613',
-        '04841d610',
-        '04841d305',
-        '04841d312',
-        '04841d591',
-        '04841d586',
-        '04841d602',
-        '04841d606',
-        '04841d603',
-        '04841d307',
-        '04841d320',
-        '04841d308',
-        '04841d590',
-        '04841d313',
-        '04841d593',
-        '04841d594',
-        '04841d597',
-        '04841d314',
-        '04841d321',
-        '04841d601',
-        '04841d589',
-        '04841d604',
-        '04841d319',
-        '04841d612',
-        '04841d306',
-        '04841d311',
-        '04841d618',
-        '04841d588',
-        '04841d596',
-        '04841d595',
-        '04841d309',
-        '04841d310',
-        '04841d605',
-        '04841d607',
-        '04841d315',
-        '04841d600',
-        '04841d592',
-        '04841d611',
-        '04841d587',
-        '04841d599',
-        '04841d318',
-        '04841d615',
-        '04841d598',
-        '04841d317',
-        '04841d609',
-        '04841d316',
-        '04841d614',
-        '04841d608',
-        '04841d304',
-        ]
-    main(first='04841d596', toTest=sec)
+    keys = ['04847']
+
+    # keys = ['04423', '04692', '04857', '04633', '04311', '04347', '04613', '04747', '04632', '04233', '04754', '04876', '04556', '04821', '04730', '04603', '04461', '04703', '04823', '04320', '04890', '04622', '04225', '04763', '04557', '04670', '04810', '04892', '04239', '04916', '04748', '04922', '04843', '04598', '04697', '04349', '04418', '04727', '04907', '04871', '04286', '04888', '04816', '04813', '04725', '04615', '04302', '04689', '04496', '04481', '04853', '04585', '04831', '04893', '04855', '04701', '04904', '04387', '04476', '04838', '04889', '04883', '04827', '04327', '04848', '04673', '04343', '04580', '04509', '04460', '04767', '04774', '04924', '04427', '04866', '04878', '04911', '04863', '04344', '04880', '04797', '04309', '04910', '04470', '04851', '04840', '04724', '04600', '04896', '04934', '04881', '04400', '04869', '04297', '04626', '04839', '04846', '04339', '04768', '04873', '04882', '04803', '04933', '04434', '04449', '04850', '04581', '04683', '04684', '04482', '04514', '04301', '04495', '04914', '04885', '04609', '04811', '04786', '04867', '04350', '04341', '04745', '04596', '04213', '04542', '04629', '04900', '04477', '04505', '04379', '04841', '04530', '04388', '04628', '04738', '04473', '04588', '04587', '04682', '04447', '04872', '04463', '04404', '04849', '04936', '04472', '04324', '04901', '04798', '04511', '04734', '04265', '04334', '04829', '04370', '04815', '04891', '04446', '04765', '04715', '04921', '04719', '04776', '04744', '04711', '04905', '04842', '04833', '04854', '04667', '04456', '04899', '04884', '04419', '04915', '04743', '04336', '04488', '04699', '04312', '04708', '04407', '04372', '04385', '04202', '04201', '04453', '04261', '04898', '04749', '04928', '04894', '02463', '04531', '04772', '04338', '04773', '04822', '04430', '04702', '04319', '04731', '04777', '04647', '04726', '04917', '04709', '04870', '04887', '04691', '04760', '04830', '04631', '04436', '04429', '04493', '04675', '04790', '04451', '04782', '04868', '04485', '04203', '04714', '04716', '04593', '04758', '04475', '04865', '04351', '04221', '04537', '04284', '04847', '04408', '04507', '04757', '04796']
+
+    input_key = sys.argv[1]
+
+    key = keys[int(input_key)]
+
+    irises = iris_dictionary.big_dict[key]
+
+    print(key, irises)
+
+    gen_iris = irises.pop()
+
+    main(first=gen_iris, toTest=irises)
+
+    check_output(["rm", f"{gen_iris}*"])
+
 
